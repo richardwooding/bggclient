@@ -41,7 +41,7 @@ func ISearchFor(ctx context.Context, search string) (context.Context, error) {
 	if !ok {
 		return ctx, errors.New("api not found in context")
 	}
-	results, err := api.SearchBoardgames(search)
+	results, err := api.SearchBoardgames(ctx, search)
 	if err != nil {
 		return ctx, err
 	}
@@ -84,6 +84,51 @@ func iSearchForAnEmptyString(ctx context.Context) (context.Context, error) {
 	return ISearchFor(ctx, "")
 }
 
+func iRequestTheBoardgameWithID(ctx context.Context, id string) (context.Context, error) {
+	api, ok := ctx.Value(apiKey{}).(*API)
+	if !ok {
+		return ctx, errors.New("api not found in context")
+	}
+	results, err := api.GetBoardgamesById(ctx, id)
+	if err != nil {
+		return ctx, err
+	}
+	return context.WithValue(ctx, resultKey{}, results), nil
+}
+
+func convertTableToStringSlice(table *godog.Table) ([]string, error) {
+	var stringSlice []string
+	for _, row := range table.Rows {
+		for i, cell := range row.Cells {
+			if i != 0 {
+				return nil, errors.New("table must have only one column")
+			}
+			stringSlice = append(stringSlice, cell.Value)
+		}
+	}
+	return stringSlice, nil
+}
+
+func iRequestTheBoardGamesWithIDs(ctx context.Context, table *godog.Table) (context.Context, error) {
+	ids, err := convertTableToStringSlice(table)
+	if err != nil {
+		return ctx, err
+	}
+	api, ok := ctx.Value(apiKey{}).(*API)
+	if !ok {
+		return ctx, errors.New("api not found in context")
+	}
+	results, err := api.GetBoardgamesById(ctx, ids...)
+	if err != nil {
+		return ctx, err
+	}
+	return context.WithValue(ctx, resultKey{}, results), nil
+}
+
+func iRequestTheBoardgameWithAnEmptyID(ctx context.Context) (context.Context, error) {
+	return iRequestTheBoardgameWithID(ctx, "")
+}
+
 func InitializeScenario(ctx *godog.ScenarioContext) {
 	ctx.Step(`^the API is initialized with a valid base URL and HTTP client$`, theAPIIsInitializedWithAValidBaseURLAndHTTPClient)
 	ctx.Step(`^I search for "([^"]*)"$`, ISearchFor)
@@ -91,6 +136,9 @@ func InitializeScenario(ctx *godog.ScenarioContext) {
 	ctx.Step(`^the list should contain a boardgame with the name "([^"]*)"$`, theListShouldContainABoardgameWithTheName)
 	ctx.Step(`^I should receive an empty list of boardgames$`, iShouldReceiveAnEmptyListOfBoardgames)
 	ctx.Step(`^I search for an empty string$`, iSearchForAnEmptyString)
+	ctx.Step(`^I request the boardgame with ID "([^"]*)"$`, iRequestTheBoardgameWithID)
+	ctx.Step(`^I request the boardgame with an empty ID`, iRequestTheBoardGamesWithIDs)
+	ctx.Step(`^I request the boardgames with IDs$`, iRequestTheBoardGamesWithIDs)
 }
 
 func TestFeatures(t *testing.T) {

@@ -8,10 +8,13 @@ Feature: Get boardgames by ID
 
   Scenario: Get multiple boardgames by IDs
     Given the API is initialized with a valid base URL and HTTP client
-    When I request the boardgames with IDs "12345" and "67890"
+    When I request the boardgames with IDs
+      | 12345 |
+      | 67890 |
     Then I should receive a list of boardgames
-    And the list should contain a boardgame with the ID "12345"
-    And the list should contain a boardgame with the ID "67890"
+    And the list should contain a boardgame with the IDs
+      | 12345 |
+      | 67890 |
 
   Scenario: Get a non-existent boardgame by ID
     Given the API is initialized with a valid base URL and HTTP client

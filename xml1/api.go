@@ -1,11 +1,11 @@
 package xml1
 
 import (
+	"context"
 	"fmt"
 	"github.com/richardwooding/bggclient/xml1/model"
 	"net/http"
 	"net/url"
-	"strconv"
 	"strings"
 )
 
@@ -26,7 +26,7 @@ func NewAPI(options Options) *API {
 	}
 }
 
-func (x *API) get(params map[string]string, elem ...string) (xmlModel model.XML1Model, err error) {
+func (x *API) get(cfx context.Context, params map[string]string, elem ...string) (xmlModel model.XML1Model, err error) {
 	urlStr, err := url.JoinPath(x.baseURL, elem...)
 	if err != nil {
 		return nil, err
@@ -40,7 +40,8 @@ func (x *API) get(params map[string]string, elem ...string) (xmlModel model.XML1
 		values.Add(k, v)
 	}
 	url.RawQuery = values.Encode()
-	resp, err := x.httpClient.Get(url.String())
+	req, err := http.NewRequestWithContext(cfx, http.MethodGet, url.String(), nil)
+	resp, err := x.httpClient.Do(req)
 	if err != nil {
 		return nil, err
 	}
@@ -50,19 +51,17 @@ func (x *API) get(params map[string]string, elem ...string) (xmlModel model.XML1
 
 type SearchOption func(m map[string]string) map[string]string
 
-func ExactSearch() SearchOption {
-	return func(m map[string]string) map[string]string {
-		m["exact"] = "1"
-		return m
-	}
+var ExactSearch = func(m map[string]string) map[string]string {
+	m["exact"] = "1"
+	return m
 }
 
-func (x *API) SearchBoardgames(search string, searchOptions ...SearchOption) (*model.Boardgames, error) {
+func (x *API) SearchBoardgames(ctx context.Context, search string, searchOptions ...SearchOption) (*model.Boardgames, error) {
 	params := map[string]string{"search": search}
 	for _, opt := range searchOptions {
 		params = opt(params)
 	}
-	resp, err := x.get(params, "search")
+	resp, err := x.get(ctx, params, "search")
 	if err != nil {
 		return nil, err
 	}
@@ -73,8 +72,8 @@ func (x *API) SearchBoardgames(search string, searchOptions ...SearchOption) (*m
 	return bgs, nil
 }
 
-func (x *API) GetBoardgamesById(id ...string) (*model.Boardgame, error) {
-	resp, err := x.get(map[string]string{}, "boardgame", strings.Join(id, ","))
+func (x *API) GetBoardgamesById(ctx context.Context, ids ...string) (*model.Boardgames, error) {
+	resp, err := x.get(ctx, map[string]string{}, "boardgame", strings.Join(ids, ","))
 	if err != nil {
 		return nil, err
 	}
