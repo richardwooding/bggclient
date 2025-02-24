@@ -3,7 +3,7 @@ Feature: Get boardgames by ID
   Scenario: Get a specific boardgame by ID
     Given the API is initialized with a valid base URL and HTTP client
     When I request the boardgame with ID "12345"
-    Then I should receive a boardgame
+    Then I should receive a single boardgame
     And the boardgame should have the ID "12345"
 
   Scenario: Get multiple boardgames by IDs

@@ -2,10 +2,12 @@ package xml1
 
 import (
 	"context"
-	"fmt"
+	"github.com/richardwooding/bggclient/xml1/customerrors"
 	"github.com/richardwooding/bggclient/xml1/model"
 	"net/http"
 	"net/url"
+	"regexp"
+	"slices"
 	"strings"
 )
 
@@ -26,7 +28,9 @@ func NewAPI(options Options) *API {
 	}
 }
 
-func (x *API) get(cfx context.Context, params map[string]string, elem ...string) (xmlModel model.XML1Model, err error) {
+var generalSuccessCodes = []int{http.StatusOK}
+
+func (x *API) get(ctx context.Context, params map[string]string, successCodes []int, elem ...string) (xmlModel model.XML1Model, err error) {
 	urlStr, err := url.JoinPath(x.baseURL, elem...)
 	if err != nil {
 		return nil, err
@@ -40,12 +44,18 @@ func (x *API) get(cfx context.Context, params map[string]string, elem ...string)
 		values.Add(k, v)
 	}
 	url.RawQuery = values.Encode()
-	req, err := http.NewRequestWithContext(cfx, http.MethodGet, url.String(), nil)
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url.String(), nil)
+	if err != nil {
+		return nil, err
+	}
 	resp, err := x.httpClient.Do(req)
 	if err != nil {
 		return nil, err
 	}
 	defer resp.Body.Close()
+	if !slices.Contains(successCodes, resp.StatusCode) {
+		return nil, customerrors.UnexpectedStatusError{Status: resp.Status}
+	}
 	return model.Decode(resp.Body)
 }
 
@@ -61,25 +71,46 @@ func (x *API) SearchBoardgames(ctx context.Context, search string, searchOptions
 	for _, opt := range searchOptions {
 		params = opt(params)
 	}
-	resp, err := x.get(ctx, params, "search")
+	resp, err := x.get(ctx, params, generalSuccessCodes, "search")
 	if err != nil {
 		return nil, err
 	}
 	bgs, ok := resp.(*model.Boardgames)
 	if !ok {
-		return nil, fmt.Errorf("unexpected type: %T", resp)
+		return nil, customerrors.UnexpectedResponseTypeError{Response: resp}
 	}
 	return bgs, nil
 }
 
+var validIdRegex = regexp.MustCompile(`^\d+$`)
+
 func (x *API) GetBoardgamesById(ctx context.Context, ids ...string) (*model.Boardgames, error) {
-	resp, err := x.get(ctx, map[string]string{}, "boardgame", strings.Join(ids, ","))
+	for _, id := range ids {
+		if !validIdRegex.MatchString(id) {
+			return nil, customerrors.InvalidIdError{ID: id}
+		}
+	}
+	resp, err := x.get(ctx, map[string]string{}, generalSuccessCodes, "boardgame", strings.Join(ids, ","))
 	if err != nil {
 		return nil, err
 	}
 	bg, ok := resp.(*model.Boardgames)
 	if !ok {
-		return nil, fmt.Errorf("unexpected type: %T", resp)
+		return nil, customerrors.UnexpectedResponseTypeError{Response: resp}
 	}
 	return bg, nil
+}
+
+func (a *API) GetBoardgameById(ctx context.Context, id string) (*model.Boardgame, error) {
+	bg, err := a.GetBoardgamesById(ctx, id)
+	if err != nil {
+		return nil, err
+	}
+	if len(bg.Boardgames) == 0 {
+		return nil, customerrors.NotFoundError{ID: id}
+	}
+	if bg.Boardgames[0].ObjectID != id {
+		return nil, customerrors.NotFoundError{ID: id}
+	}
+	return &bg.Boardgames[0], nil
 }

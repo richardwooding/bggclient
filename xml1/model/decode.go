@@ -6,6 +6,8 @@ import (
 	"io"
 )
 
+var BOARDGAMES_XML_NAME = "boardgames"
+
 func Decode(reader io.Reader) (XML1Model, error) {
 	decoder := xml.NewDecoder(reader)
 	var result XML1Model
@@ -20,14 +22,10 @@ func Decode(reader io.Reader) (XML1Model, error) {
 		switch token := token.(type) {
 		case xml.StartElement:
 			switch token.Name.Local {
-			case "boardgames":
+			case BOARDGAMES_XML_NAME:
 				var bgs Boardgames
 				err = decoder.DecodeElement(&bgs, &token)
 				result = &bgs
-			case "boardgame":
-				var bg Boardgame
-				err = decoder.DecodeElement(&bg, &token)
-				result = &bg
 			default:
 				err = fmt.Errorf("unknown element: %v", token.Name.Local)
 			}
