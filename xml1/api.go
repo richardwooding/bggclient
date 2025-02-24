@@ -4,12 +4,15 @@ import (
 	"context"
 	"github.com/richardwooding/bggclient/xml1/customerrors"
 	"github.com/richardwooding/bggclient/xml1/model"
+	"golang.org/x/time/rate"
 	"net/http"
 	"net/url"
 	"regexp"
 	"slices"
 	"strings"
 )
+
+var MAX_ALLOWED_RETRIES = 5
 
 type Options struct {
 	HttpClient *http.Client
@@ -19,19 +22,30 @@ type Options struct {
 type API struct {
 	httpClient *http.Client
 	baseURL    string
+	limiter    *rate.Limiter
 }
 
 func NewAPI(options Options) *API {
 	return &API{
 		httpClient: options.HttpClient,
 		baseURL:    options.BaseURL,
+		limiter:    rate.NewLimiter(rate.Every(5), 1),
 	}
 }
 
 var generalSuccessCodes = []int{http.StatusOK}
+var collectrionRetryableCodes = []int{http.StatusAccepted}
 
-func (x *API) get(ctx context.Context, params map[string]string, successCodes []int, elem ...string) (xmlModel model.XML1Model, err error) {
-	urlStr, err := url.JoinPath(x.baseURL, elem...)
+func (a *API) get(ctx context.Context, params map[string]string, successCodes []int, retryableCodes []int, elem ...string) (xmlModel model.XML1Model, err error) {
+	return a.getInternal(ctx, params, successCodes, retryableCodes, MAX_ALLOWED_RETRIES, elem...)
+}
+
+func (a *API) getInternal(ctx context.Context, params map[string]string, successCodes []int, retryableCodes []int, allowedRetries int, elem ...string) (model.XML1Model, error) {
+	err := a.limiter.Wait(ctx)
+	if err != nil {
+		return nil, err
+	}
+	urlStr, err := url.JoinPath(a.baseURL, elem...)
 	if err != nil {
 		return nil, err
 	}
@@ -48,22 +62,21 @@ func (x *API) get(ctx context.Context, params map[string]string, successCodes []
 	if err != nil {
 		return nil, err
 	}
-	resp, err := x.httpClient.Do(req)
+	resp, err := a.httpClient.Do(req)
 	if err != nil {
 		return nil, err
 	}
 	defer resp.Body.Close()
+	if slices.Contains(retryableCodes, resp.StatusCode) {
+		if allowedRetries > 0 {
+			return a.getInternal(ctx, params, successCodes, retryableCodes, allowedRetries-1, elem...)
+		}
+		return nil, customerrors.TooManyRetriesError{Retries: MAX_ALLOWED_RETRIES}
+	}
 	if !slices.Contains(successCodes, resp.StatusCode) {
 		return nil, customerrors.UnexpectedStatusError{Status: resp.Status}
 	}
 	return model.Decode(resp.Body)
-}
-
-type SearchOption func(m map[string]string) map[string]string
-
-var ExactSearch = func(m map[string]string) map[string]string {
-	m["exact"] = "1"
-	return m
 }
 
 func (x *API) SearchBoardgames(ctx context.Context, search string, searchOptions ...SearchOption) (*model.Boardgames, error) {
@@ -71,7 +84,7 @@ func (x *API) SearchBoardgames(ctx context.Context, search string, searchOptions
 	for _, opt := range searchOptions {
 		params = opt(params)
 	}
-	resp, err := x.get(ctx, params, generalSuccessCodes, "search")
+	resp, err := x.getInternal(ctx, params, generalSuccessCodes, nil, 0, "search")
 	if err != nil {
 		return nil, err
 	}
@@ -90,7 +103,7 @@ func (x *API) GetBoardgamesById(ctx context.Context, ids ...string) (*model.Boar
 			return nil, customerrors.InvalidIdError{ID: id}
 		}
 	}
-	resp, err := x.get(ctx, map[string]string{}, generalSuccessCodes, "boardgame", strings.Join(ids, ","))
+	resp, err := x.getInternal(ctx, map[string]string{}, generalSuccessCodes, nil, 0, "boardgame", strings.Join(ids, ","))
 	if err != nil {
 		return nil, err
 	}
@@ -113,4 +126,27 @@ func (a *API) GetBoardgameById(ctx context.Context, id string) (*model.Boardgame
 		return nil, customerrors.NotFoundError{ID: id}
 	}
 	return &bg.Boardgames[0], nil
+}
+
+func (a *API) GetCollection(username string, collectionOptions ...CollectionOption) (*model.Items, error) {
+	if username == "" {
+		return nil, customerrors.InvalidUsernameSpecifiedError{}
+	}
+	params := map[string]string{}
+	var err error
+	for _, opt := range collectionOptions {
+		params, err = opt(params)
+		if err != nil {
+			return nil, err
+		}
+	}
+	resp, err := a.get(context.Background(), params, generalSuccessCodes, collectrionRetryableCodes, "collection", username)
+	if err != nil {
+		return nil, err
+	}
+	c, ok := resp.(*model.Items)
+	if !ok {
+		return nil, customerrors.UnexpectedResponseTypeError{Response: resp}
+	}
+	return c, nil
 }
