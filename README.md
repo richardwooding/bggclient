@@ -1,2 +1,2 @@
-# bgg-client
+# bggclient
 BoardGameGeek Client Library
