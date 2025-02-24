@@ -8,6 +8,7 @@ import (
 	"github.com/pborman/indent"
 	"github.com/richardwooding/bggclient/xml1/customerrors"
 	"github.com/richardwooding/bggclient/xml1/model"
+	"github.com/seborama/govcr/v15"
 	"net/http"
 	"os"
 	"strings"
@@ -33,11 +34,18 @@ func theAPIIsInitializedWithAValidBaseURLAndHTTPClient(ctx context.Context) (con
 
 	logger.SetOutput(indent.New(os.Stdout, "      [wire] "))
 
+	httpClient := &http.Client{
+		Transport: logger.RoundTripper(http.DefaultTransport),
+	}
+
+	vcr := govcr.NewVCR(
+		govcr.NewCassetteLoader("fixtures/bgg.json"),
+		govcr.WithClient(httpClient),
+	)
+
 	api := NewAPI(Options{
-		HttpClient: &http.Client{
-			Transport: logger.RoundTripper(http.DefaultTransport),
-		},
-		BaseURL: "https://boardgamegeek.com/xmlapi",
+		HttpClient: vcr.HTTPClient(),
+		BaseURL:    "https://boardgamegeek.com/xmlapi",
 	})
 	return context.WithValue(ctx, apiKey{}, api), nil
 }
