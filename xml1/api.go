@@ -34,7 +34,8 @@ func NewAPI(options Options) *API {
 }
 
 var generalSuccessCodes = []int{http.StatusOK}
-var collectrionRetryableCodes = []int{http.StatusAccepted}
+var generalRetryableCodes = []int{http.StatusTooManyRequests}
+var collectrionRetryableCodes = []int{http.StatusAccepted, http.StatusTooManyRequests}
 
 func (a *API) get(ctx context.Context, params map[string]string, successCodes []int, retryableCodes []int, elem ...string) (xmlModel model.XML1Model, err error) {
 	return a.getInternal(ctx, params, successCodes, retryableCodes, MAX_ALLOWED_RETRIES, elem...)
@@ -84,7 +85,7 @@ func (x *API) SearchBoardgames(ctx context.Context, search string, searchOptions
 	for _, opt := range searchOptions {
 		params = opt(params)
 	}
-	resp, err := x.getInternal(ctx, params, generalSuccessCodes, nil, 0, "search")
+	resp, err := x.get(ctx, params, generalSuccessCodes, generalRetryableCodes, "search")
 	if err != nil {
 		return nil, err
 	}

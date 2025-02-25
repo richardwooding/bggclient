@@ -288,6 +288,30 @@ func theErrorMessageShouldIndicateThatTheUsernameIsInvalid(ctx context.Context) 
 	return ctx, nil
 }
 
+func iRequestTheCollectionForUserWithInt(ctx context.Context, username, filter string, value int) (context.Context, error) {
+	api, ok := ctx.Value(apiKey{}).(*API)
+	if !ok {
+		return ctx, errors.New("api not found in context")
+	}
+	results, err := api.GetCollection(username, Filter(filter, value))
+	if err != nil {
+		return context.WithValue(ctx, errKey{}, err), nil
+	}
+	return context.WithValue(ctx, resultKey{}, results), nil
+}
+
+func iRequestTheCollectionForUserWithFilterOn(ctx context.Context, username, filter string) (context.Context, error) {
+	api, ok := ctx.Value(apiKey{}).(*API)
+	if !ok {
+		return ctx, errors.New("api not found in context")
+	}
+	results, err := api.GetCollection(username, Filter(filter, true))
+	if err != nil {
+		return context.WithValue(ctx, errKey{}, err), nil
+	}
+	return context.WithValue(ctx, resultKey{}, results), nil
+}
+
 func InitializeScenario(ctx *godog.ScenarioContext) {
 	ctx.Step(`^the API is initialized with a valid base URL and HTTP client$`, theAPIIsInitializedWithAValidBaseURLAndHTTPClient)
 	ctx.Step(`^I search for "([^"]*)"$`, iSearchFor)
@@ -310,6 +334,8 @@ func InitializeScenario(ctx *godog.ScenarioContext) {
 	ctx.Step(`^the error message should indicate that the user was not found$`, theErrorMessageShouldIndicateThatTheUserWasNotFound)
 	ctx.Step(`^I request the collection with an empty username$`, iRequestTheCollectionWithAnEmptyUsername)
 	ctx.Step(`^the error message should indicate that the username is invalid$`, theErrorMessageShouldIndicateThatTheUsernameIsInvalid)
+	ctx.Step(`^I request the collection for user "([^"]*)" with ([\w\s]*) (\d+)$`, iRequestTheCollectionForUserWithInt)
+	ctx.Step(`^I request the collection for user "([^"]*)" with ([\w\s]*) only$`, iRequestTheCollectionForUserWithFilterOn)
 }
 
 func TestFeatures(t *testing.T) {
