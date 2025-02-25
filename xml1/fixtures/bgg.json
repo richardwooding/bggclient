@@ -18257,6 +18257,1524 @@
       "ErrType": null,
       "ErrMsg": null,
       "UUID": "ab99a8ca-709e-470d-8af0-c5641dcaef53"
+    },
+    {
+      "Request": {
+        "Method": "GET",
+        "URL": {
+          "Scheme": "https",
+          "Opaque": "",
+          "User": null,
+          "Host": "boardgamegeek.com",
+          "Path": "/xmlapi/boardgame/12345,67890,67891,67892,67893,67894,67895,67896,67897,67898,67899,67900,67901,67902,67903,67904,67905,67906,67907,67908,67909,67910,67911",
+          "RawPath": "",
+          "OmitHost": false,
+          "ForceQuery": false,
+          "RawQuery": "",
+          "Fragment": "",
+          "RawFragment": ""
+        },
+        "Proto": "HTTP/1.1",
+        "ProtoMajor": 1,
+        "ProtoMinor": 1,
+        "Header": {},
+        "Body": "",
+        "ContentLength": 0,
+        "TransferEncoding": [],
+        "Close": false,
+        "Host": "boardgamegeek.com",
+        "Form": null,
+        "PostForm": null,
+        "MultipartForm": null,
+        "Trailer": null,
+        "RemoteAddr": "",
+        "RequestURI": ""
+      },
+      "Response": {
+        "Status": "400 Bad Request",
+        "StatusCode": 400,
+        "Proto": "HTTP/2.0",
+        "ProtoMajor": 2,
+        "ProtoMinor": 0,
+        "Header": {
+          "Alt-Svc": [
+            "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+          ],
+          "Content-Type": [
+            "text/html; charset=UTF-8"
+          ],
+          "Date": [
+            "Tue, 25 Feb 2025 08:03:24 GMT"
+          ],
+          "Server": [
+            "nginx"
+          ],
+          "Via": [
+            "1.1 google"
+          ]
+        },
+        "Body": "Q2Fubm90IGxvYWQgbW9yZSB0aGFuIDIwIGl0ZW1z",
+        "ContentLength": -1,
+        "TransferEncoding": [],
+        "Close": false,
+        "Uncompressed": false,
+        "Trailer": null,
+        "TLS": {
+          "Version": 772,
+          "HandshakeComplete": true,
+          "DidResume": false,
+          "CipherSuite": 4865,
+          "NegotiatedProtocol": "h2",
+          "NegotiatedProtocolIsMutual": true,
+          "ServerName": "boardgamegeek.com",
+          "PeerCertificates": [
+            {
+              "Raw": "MIIF0zCCBLugAwIBAgIRAPwJuKrz6BUdEsOaK4KwsQwwDQYJKoZIhvcNAQELBQAwOzELMAkGA1UEBhMCVVMxHjAcBgNVBAoTFUdvb2dsZSBUcnVzdCBTZXJ2aWNlczEMMAoGA1UEAxMDV1IzMB4XDTI1MDIxODEzNTI1MVoXDTI1MDUxOTE0NDcwNVowFjEUMBIGA1UEAxMLcnBnZ2Vlay5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDK0TnXl96F+NQ2GsyDUG3CTyrRIcpoiPQg+72RFXMx69we82xX6uXL73fIXM5JizrfVvzPYg3rvXdYvOM+L1evyNvQr5vKFFKAwJncFDJNFV3iFLZGDqQBimieLQQ21gYzIu+UXobO9ePKf3vMh+xefSiEYwXx3SCmGx3ufnFsgMhc+mzqYToHVLPIchVxbV4eMOcfRQ5IN0HtpVtCaMM0oCeam2x2NTSTDuNJmFhN6vgKENBaogRpUSLwkMjpol2YpYETzrig5klG0OSQopri9zmwll6/O2hRCIy8kLIRU4M4pLEJfwUEsCN7O0qENImHkjEhnpoIX43VkRMLT0BvAgMBAAGjggL1MIIC8TAOBgNVHQ8BAf8EBAMCBaAwEwYDVR0lBAwwCgYIKwYBBQUHAwEwDAYDVR0TAQH/BAIwADAdBgNVHQ4EFgQUFMT2WvX1TzjLoB1xKHzYjI4K/VYwHwYDVR0jBBgwFoAUx4H1/Y6I2QA8TWOiUDEkoM4j/iMwXgYIKwYBBQUHAQEEUjBQMCcGCCsGAQUFBzABhhtodHRwOi8vby5wa2kuZ29vZy9zL3dyMy9fQWswJQYIKwYBBQUHMAKGGWh0dHA6Ly9pLnBraS5nb29nL3dyMy5jcnQwgcUGA1UdEQSBvTCBuoILcnBnZ2Vlay5jb22CD3d3dy5ycGdnZWVrLmNvbYIRdmlkZW9nYW1lZ2Vlay5jb22CFXd3dy52aWRlb2dhbWVnZWVrLmNvbYIRYm9hcmRnYW1lZ2Vlay5jb22CFXd3dy5ib2FyZGdhbWVnZWVrLmNvbYIOcHV6emxlZ2Vlay5jb22CEnd3dy5wdXp6bGVnZWVrLmNvbYIGYmdnLmNjggp3d3cuYmdnLmNjgg5hcGkuZ2Vla2RvLmNvbTATBgNVHSAEDDAKMAgGBmeBDAECATA2BgNVHR8ELzAtMCugKaAnhiVodHRwOi8vYy5wa2kuZ29vZy93cjMvaEQxNkFsdkNHbmcuY3JsMIIBBQYKKwYBBAHWeQIEAgSB9gSB8wDxAHcAfVkeEuF4KnscYWd8Xv340IdcFKBOlZ65Ay/ZDowuebgAAAGVGYwvwAAABAMASDBGAiEAzMKy4GfCy1fxeRpAscEInoVUg7vV4+oh71ntZvbhYjkCIQCMqwAdFx3AWgQYCVT8/dzeMMoSwiVpIPw/hJcJYwYaJgB2AM8RVu7VLnyv84db2Wkum+kacWdKsBfsrAHSW3fOzDsIAAABlRmML88AAAQDAEcwRQIhAO3V4x/LpLnVMTQLFs4+GxdK5g4G9414YUqLI7kyxggPAiBtNveW0uBO8tVLZL34+KubzWzP1qsj1eaRy1nxm4/uqDANBgkqhkiG9w0BAQsFAAOCAQEAQ+FuZQ6Xg60nAon4WhRJ/K6kmMgF6iMjqgkB+cJCWyxG7T2seSti578HwmHaytId8NdRxr2av2wCXDfTdlHi5oyKWqhlMTRiuLEAD6Ggfp1Aft7CSMdfuId5U4n14jSD/J+o+66OLzamqd598yAWy9uvhJSWyI80rK815v6grW6QW/a8oj09iF/mchlxsHgb7+1RFjDGL8qVEJdIxnxJoJAtYpvHH7hzuJlcpmMKQ244378vlMe1tfqpuy+fLVWoAQUYmhiapGrw2nxIxtwMCWwuqj6z2bmohJGsmx78VDkJVCseKI+A++g2WyBUS36S+x3lZ/3PRnOBpkmSINptzg==",
+              "RawTBSCertificate": "MIIEu6ADAgECAhEA/Am4qvPoFR0Sw5orgrCxDDANBgkqhkiG9w0BAQsFADA7MQswCQYDVQQGEwJVUzEeMBwGA1UEChMVR29vZ2xlIFRydXN0IFNlcnZpY2VzMQwwCgYDVQQDEwNXUjMwHhcNMjUwMjE4MTM1MjUxWhcNMjUwNTE5MTQ0NzA1WjAWMRQwEgYDVQQDEwtycGdnZWVrLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMrROdeX3oX41DYazINQbcJPKtEhymiI9CD7vZEVczHr3B7zbFfq5cvvd8hczkmLOt9W/M9iDeu9d1i84z4vV6/I29Cvm8oUUoDAmdwUMk0VXeIUtkYOpAGKaJ4tBDbWBjMi75Rehs7148p/e8yH7F59KIRjBfHdIKYbHe5+cWyAyFz6bOphOgdUs8hyFXFtXh4w5x9FDkg3Qe2lW0JowzSgJ5qbbHY1NJMO40mYWE3q+AoQ0FqiBGlRIvCQyOmiXZilgRPOuKDmSUbQ5JCimuL3ObCWXr87aFEIjLyQshFTgziksQl/BQSwI3s7SoQ0iYeSMSGemghfjdWREwtPQG8CAwEAAaOCAvUwggLxMA4GA1UdDwEB/wQEAwIFoDATBgNVHSUEDDAKBggrBgEFBQcDATAMBgNVHRMBAf8EAjAAMB0GA1UdDgQWBBQUxPZa9fVPOMugHXEofNiMjgr9VjAfBgNVHSMEGDAWgBTHgfX9jojZADxNY6JQMSSgziP+IzBeBggrBgEFBQcBAQRSMFAwJwYIKwYBBQUHMAGGG2h0dHA6Ly9vLnBraS5nb29nL3Mvd3IzL19BazAlBggrBgEFBQcwAoYZaHR0cDovL2kucGtpLmdvb2cvd3IzLmNydDCBxQYDVR0RBIG9MIG6ggtycGdnZWVrLmNvbYIPd3d3LnJwZ2dlZWsuY29tghF2aWRlb2dhbWVnZWVrLmNvbYIVd3d3LnZpZGVvZ2FtZWdlZWsuY29tghFib2FyZGdhbWVnZWVrLmNvbYIVd3d3LmJvYXJkZ2FtZWdlZWsuY29tgg5wdXp6bGVnZWVrLmNvbYISd3d3LnB1enpsZWdlZWsuY29tggZiZ2cuY2OCCnd3dy5iZ2cuY2OCDmFwaS5nZWVrZG8uY29tMBMGA1UdIAQMMAowCAYGZ4EMAQIBMDYGA1UdHwQvMC0wK6ApoCeGJWh0dHA6Ly9jLnBraS5nb29nL3dyMy9oRDE2QWx2Q0duZy5jcmwwggEFBgorBgEEAdZ5AgQCBIH2BIHzAPEAdwB9WR4S4XgqexxhZ3xe/fjQh1wUoE6VnrkDL9kOjC55uAAAAZUZjC/AAAAEAwBIMEYCIQDMwrLgZ8LLV/F5GkCxwQiehVSDu9Xj6iHvWe1m9uFiOQIhAIyrAB0XHcBaBBgJVPz93N4wyhLCJWkg/D+ElwljBhomAHYAzxFW7tUufK/zh1vZaS6b6RpxZ0qwF+ysAdJbd87MOwgAAAGVGYwvzwAABAMARzBFAiEA7dXjH8ukudUxNAsWzj4bF0rmDgb3jXhhSosjuTLGCA8CIG0295bS4E7y1Utkvfj4q5vNbM/WqyPV5pHLWfGbj+6o",
+              "RawSubjectPublicKeyInfo": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAytE515fehfjUNhrMg1Btwk8q0SHKaIj0IPu9kRVzMevcHvNsV+rly+93yFzOSYs631b8z2IN6713WLzjPi9Xr8jb0K+byhRSgMCZ3BQyTRVd4hS2Rg6kAYponi0ENtYGMyLvlF6GzvXjyn97zIfsXn0ohGMF8d0gphsd7n5xbIDIXPps6mE6B1SzyHIVcW1eHjDnH0UOSDdB7aVbQmjDNKAnmptsdjU0kw7jSZhYTer4ChDQWqIEaVEi8JDI6aJdmKWBE864oOZJRtDkkKKa4vc5sJZevztoUQiMvJCyEVODOKSxCX8FBLAjeztKhDSJh5IxIZ6aCF+N1ZETC09AbwIDAQAB",
+              "RawSubject": "MBYxFDASBgNVBAMTC3JwZ2dlZWsuY29t",
+              "RawIssuer": "MDsxCzAJBgNVBAYTAlVTMR4wHAYDVQQKExVHb29nbGUgVHJ1c3QgU2VydmljZXMxDDAKBgNVBAMTA1dSMw==",
+              "Signature": "Q+FuZQ6Xg60nAon4WhRJ/K6kmMgF6iMjqgkB+cJCWyxG7T2seSti578HwmHaytId8NdRxr2av2wCXDfTdlHi5oyKWqhlMTRiuLEAD6Ggfp1Aft7CSMdfuId5U4n14jSD/J+o+66OLzamqd598yAWy9uvhJSWyI80rK815v6grW6QW/a8oj09iF/mchlxsHgb7+1RFjDGL8qVEJdIxnxJoJAtYpvHH7hzuJlcpmMKQ244378vlMe1tfqpuy+fLVWoAQUYmhiapGrw2nxIxtwMCWwuqj6z2bmohJGsmx78VDkJVCseKI+A++g2WyBUS36S+x3lZ/3PRnOBpkmSINptzg==",
+              "SignatureAlgorithm": 4,
+              "PublicKeyAlgorithm": 1,
+              "PublicKey": null,
+              "Version": 3,
+              "SerialNumber": 335015931117165740635452808747906281740,
+              "Issuer": {
+                "Country": [
+                  "US"
+                ],
+                "Organization": [
+                  "Google Trust Services"
+                ],
+                "OrganizationalUnit": null,
+                "Locality": null,
+                "Province": null,
+                "StreetAddress": null,
+                "PostalCode": null,
+                "SerialNumber": "",
+                "CommonName": "WR3",
+                "Names": [
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      6
+                    ],
+                    "Value": "US"
+                  },
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      10
+                    ],
+                    "Value": "Google Trust Services"
+                  },
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      3
+                    ],
+                    "Value": "WR3"
+                  }
+                ],
+                "ExtraNames": null
+              },
+              "Subject": {
+                "Country": null,
+                "Organization": null,
+                "OrganizationalUnit": null,
+                "Locality": null,
+                "Province": null,
+                "StreetAddress": null,
+                "PostalCode": null,
+                "SerialNumber": "",
+                "CommonName": "rpggeek.com",
+                "Names": [
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      3
+                    ],
+                    "Value": "rpggeek.com"
+                  }
+                ],
+                "ExtraNames": null
+              },
+              "NotBefore": "2025-02-18T13:52:51Z",
+              "NotAfter": "2025-05-19T14:47:05Z",
+              "KeyUsage": 5,
+              "Extensions": [
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    15
+                  ],
+                  "Critical": true,
+                  "Value": "AwIFoA=="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    37
+                  ],
+                  "Critical": false,
+                  "Value": "MAoGCCsGAQUFBwMB"
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    19
+                  ],
+                  "Critical": true,
+                  "Value": "MAA="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    14
+                  ],
+                  "Critical": false,
+                  "Value": "BBQUxPZa9fVPOMugHXEofNiMjgr9Vg=="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    35
+                  ],
+                  "Critical": false,
+                  "Value": "MBaAFMeB9f2OiNkAPE1jolAxJKDOI/4j"
+                },
+                {
+                  "Id": [
+                    1,
+                    3,
+                    6,
+                    1,
+                    5,
+                    5,
+                    7,
+                    1,
+                    1
+                  ],
+                  "Critical": false,
+                  "Value": "MFAwJwYIKwYBBQUHMAGGG2h0dHA6Ly9vLnBraS5nb29nL3Mvd3IzL19BazAlBggrBgEFBQcwAoYZaHR0cDovL2kucGtpLmdvb2cvd3IzLmNydA=="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    17
+                  ],
+                  "Critical": false,
+                  "Value": "MIG6ggtycGdnZWVrLmNvbYIPd3d3LnJwZ2dlZWsuY29tghF2aWRlb2dhbWVnZWVrLmNvbYIVd3d3LnZpZGVvZ2FtZWdlZWsuY29tghFib2FyZGdhbWVnZWVrLmNvbYIVd3d3LmJvYXJkZ2FtZWdlZWsuY29tgg5wdXp6bGVnZWVrLmNvbYISd3d3LnB1enpsZWdlZWsuY29tggZiZ2cuY2OCCnd3dy5iZ2cuY2OCDmFwaS5nZWVrZG8uY29t"
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    32
+                  ],
+                  "Critical": false,
+                  "Value": "MAowCAYGZ4EMAQIB"
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    31
+                  ],
+                  "Critical": false,
+                  "Value": "MC0wK6ApoCeGJWh0dHA6Ly9jLnBraS5nb29nL3dyMy9oRDE2QWx2Q0duZy5jcmw="
+                },
+                {
+                  "Id": [
+                    1,
+                    3,
+                    6,
+                    1,
+                    4,
+                    1,
+                    11129,
+                    2,
+                    4,
+                    2
+                  ],
+                  "Critical": false,
+                  "Value": "BIHzAPEAdwB9WR4S4XgqexxhZ3xe/fjQh1wUoE6VnrkDL9kOjC55uAAAAZUZjC/AAAAEAwBIMEYCIQDMwrLgZ8LLV/F5GkCxwQiehVSDu9Xj6iHvWe1m9uFiOQIhAIyrAB0XHcBaBBgJVPz93N4wyhLCJWkg/D+ElwljBhomAHYAzxFW7tUufK/zh1vZaS6b6RpxZ0qwF+ysAdJbd87MOwgAAAGVGYwvzwAABAMARzBFAiEA7dXjH8ukudUxNAsWzj4bF0rmDgb3jXhhSosjuTLGCA8CIG0295bS4E7y1Utkvfj4q5vNbM/WqyPV5pHLWfGbj+6o"
+                }
+              ],
+              "ExtraExtensions": null,
+              "UnhandledCriticalExtensions": null,
+              "ExtKeyUsage": [
+                1
+              ],
+              "UnknownExtKeyUsage": null,
+              "BasicConstraintsValid": true,
+              "IsCA": false,
+              "MaxPathLen": -1,
+              "MaxPathLenZero": false,
+              "SubjectKeyId": "FMT2WvX1TzjLoB1xKHzYjI4K/VY=",
+              "AuthorityKeyId": "x4H1/Y6I2QA8TWOiUDEkoM4j/iM=",
+              "OCSPServer": [
+                "http://o.pki.goog/s/wr3/_Ak"
+              ],
+              "IssuingCertificateURL": [
+                "http://i.pki.goog/wr3.crt"
+              ],
+              "DNSNames": [
+                "rpggeek.com",
+                "www.rpggeek.com",
+                "videogamegeek.com",
+                "www.videogamegeek.com",
+                "boardgamegeek.com",
+                "www.boardgamegeek.com",
+                "puzzlegeek.com",
+                "www.puzzlegeek.com",
+                "bgg.cc",
+                "www.bgg.cc",
+                "api.geekdo.com"
+              ],
+              "EmailAddresses": null,
+              "IPAddresses": null,
+              "URIs": null,
+              "PermittedDNSDomainsCritical": false,
+              "PermittedDNSDomains": null,
+              "ExcludedDNSDomains": null,
+              "PermittedIPRanges": null,
+              "ExcludedIPRanges": null,
+              "PermittedEmailAddresses": null,
+              "ExcludedEmailAddresses": null,
+              "PermittedURIDomains": null,
+              "ExcludedURIDomains": null,
+              "CRLDistributionPoints": [
+                "http://c.pki.goog/wr3/hD16AlvCGng.crl"
+              ],
+              "PolicyIdentifiers": [
+                [
+                  2,
+                  23,
+                  140,
+                  1,
+                  2,
+                  1
+                ]
+              ],
+              "Policies": [
+                "2.23.140.1.2.1"
+              ]
+            },
+            {
+              "Raw": "MIIFCzCCAvOgAwIBAgIQf/AFqRVo1jq8IoYWhKpLWjANBgkqhkiG9w0BAQsFADBHMQswCQYDVQQGEwJVUzEiMCAGA1UEChMZR29vZ2xlIFRydXN0IFNlcnZpY2VzIExMQzEUMBIGA1UEAxMLR1RTIFJvb3QgUjEwHhcNMjMxMjEzMDkwMDAwWhcNMjkwMjIwMTQwMDAwWjA7MQswCQYDVQQGEwJVUzEeMBwGA1UEChMVR29vZ2xlIFRydXN0IFNlcnZpY2VzMQwwCgYDVQQDEwNXUjMwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCPNHWHr4RyFI0HEJFvA6zx1Ag1mhnymxiJNGyYj3rU3eoF6N4bfIxUErp5ivsYDQ18nPO9OOSoXsYzy0aJb0ag6TdjjdzM1ZdOMq17HSMFufV7SUOY0LxXx1N4GLHtp1SyfIa+8FRFvIe6mVkd9LjbAPuBT0YrYl6xOqUqFyOsor7FjuVe/XEefaS0I30EUrI00t+ZrIfGTFlf+OZPjnWSwrIwRpLQtg3H5Iln/z9UlCdl4wHISiyEL2Vfza1c/aatQVvcTD8XlpF9qdg8Uyoc0ObUd+ZDSsK3+Eiiza1jtSVrlnIdgUVvhmnE5OZ4TDHmoX+nAXMKh++HiXLM08WNAgMBAAGjgf4wgfswDgYDVR0PAQH/BAQDAgGGMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjASBgNVHRMBAf8ECDAGAQH/AgEAMB0GA1UdDgQWBBTHgfX9jojZADxNY6JQMSSgziP+IzAfBgNVHSMEGDAWgBTkrysmcRorSCeFL1JmLO/wiRNxPjA0BggrBgEFBQcBAQQoMCYwJAYIKwYBBQUHMAKGGGh0dHA6Ly9pLnBraS5nb29nL3IxLmNydDArBgNVHR8EJDAiMCCgHqAchhpodHRwOi8vYy5wa2kuZ29vZy9yL3IxLmNybDATBgNVHSAEDDAKMAgGBmeBDAECATANBgkqhkiG9w0BAQsFAAOCAgEAnI1DlJQzSKcWbyXXrJSsgKMo6KG74TMqhsuTg67a0FX02752+eiJb5YsOJc8DVOHalwpOvbuPdl5BuAEgIK4Va7l9j3J9M1/EjeWjGTM3RoszmBJGu82oz6EWi5q75xeF+onJmh2Hm98a/yJAI/mODXq5LofYcQ9AffKP9ZMZu+YwW+/qHqyX2JhaOntvl7i8S+l1Y8CcKEqM1NFK4s4EBYPRFjZDawOHX7fSchbSMVPn5Nu04lrU6xufuZqRosEQw2o0UAyzDoyA52NXzJTWr1G2FVg/0A9hdrQ/6fe9G3167zKxNqXErs6MpHttEouGbpm2ftzrmcvruYxTfxc4G2GwBi3LFLozNpy042gDfXBzDyn1staWsy7+QnzMlR59Fz6jBOk5R4LT+ma0+KjnfRhMh5T2ucm69HkvNQtDZlVa1tLUlzs0zLEdQSehTCjZ6SYsGt2bMVK6dvtxzcyCP0QDUFnNXCwgw12+mGSkAuj4ORi8kMRpnL8UEjkNbdw9KL1eYbEC3D0GPue2Yk2AGhxkmcdm1BoOp05kYw/Nnqgh7QV8DKyBTUHbjH0pXlLiOsSOY+CLh1eTM+Do6rSjqGnDQeUXylZmPCmuveaw38IVnBaa6Eiz6pngZ1u6OeO/1UzfhmyTm0n0G+9JZ3KS2Mq08isNgXHLnhlHJaphpE=",
+              "RawTBSCertificate": "MIIC86ADAgECAhB/8AWpFWjWOrwihhaEqktaMA0GCSqGSIb3DQEBCwUAMEcxCzAJBgNVBAYTAlVTMSIwIAYDVQQKExlHb29nbGUgVHJ1c3QgU2VydmljZXMgTExDMRQwEgYDVQQDEwtHVFMgUm9vdCBSMTAeFw0yMzEyMTMwOTAwMDBaFw0yOTAyMjAxNDAwMDBaMDsxCzAJBgNVBAYTAlVTMR4wHAYDVQQKExVHb29nbGUgVHJ1c3QgU2VydmljZXMxDDAKBgNVBAMTA1dSMzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAI80dYevhHIUjQcQkW8DrPHUCDWaGfKbGIk0bJiPetTd6gXo3ht8jFQSunmK+xgNDXyc87045KhexjPLRolvRqDpN2ON3MzVl04yrXsdIwW59XtJQ5jQvFfHU3gYse2nVLJ8hr7wVEW8h7qZWR30uNsA+4FPRitiXrE6pSoXI6yivsWO5V79cR59pLQjfQRSsjTS35msh8ZMWV/45k+OdZLCsjBGktC2DcfkiWf/P1SUJ2XjAchKLIQvZV/NrVz9pq1BW9xMPxeWkX2p2DxTKhzQ5tR35kNKwrf4SKLNrWO1JWuWch2BRW+GacTk5nhMMeahf6cBcwqH74eJcszTxY0CAwEAAaOB/jCB+zAOBgNVHQ8BAf8EBAMCAYYwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMBIGA1UdEwEB/wQIMAYBAf8CAQAwHQYDVR0OBBYEFMeB9f2OiNkAPE1jolAxJKDOI/4jMB8GA1UdIwQYMBaAFOSvKyZxGitIJ4UvUmYs7/CJE3E+MDQGCCsGAQUFBwEBBCgwJjAkBggrBgEFBQcwAoYYaHR0cDovL2kucGtpLmdvb2cvcjEuY3J0MCsGA1UdHwQkMCIwIKAeoByGGmh0dHA6Ly9jLnBraS5nb29nL3IvcjEuY3JsMBMGA1UdIAQMMAowCAYGZ4EMAQIB",
+              "RawSubjectPublicKeyInfo": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjzR1h6+EchSNBxCRbwOs8dQINZoZ8psYiTRsmI961N3qBejeG3yMVBK6eYr7GA0NfJzzvTjkqF7GM8tGiW9GoOk3Y43czNWXTjKtex0jBbn1e0lDmNC8V8dTeBix7adUsnyGvvBURbyHuplZHfS42wD7gU9GK2JesTqlKhcjrKK+xY7lXv1xHn2ktCN9BFKyNNLfmayHxkxZX/jmT451ksKyMEaS0LYNx+SJZ/8/VJQnZeMByEoshC9lX82tXP2mrUFb3Ew/F5aRfanYPFMqHNDm1HfmQ0rCt/hIos2tY7Ula5ZyHYFFb4ZpxOTmeEwx5qF/pwFzCofvh4lyzNPFjQIDAQAB",
+              "RawSubject": "MDsxCzAJBgNVBAYTAlVTMR4wHAYDVQQKExVHb29nbGUgVHJ1c3QgU2VydmljZXMxDDAKBgNVBAMTA1dSMw==",
+              "RawIssuer": "MEcxCzAJBgNVBAYTAlVTMSIwIAYDVQQKExlHb29nbGUgVHJ1c3QgU2VydmljZXMgTExDMRQwEgYDVQQDEwtHVFMgUm9vdCBSMQ==",
+              "Signature": "nI1DlJQzSKcWbyXXrJSsgKMo6KG74TMqhsuTg67a0FX02752+eiJb5YsOJc8DVOHalwpOvbuPdl5BuAEgIK4Va7l9j3J9M1/EjeWjGTM3RoszmBJGu82oz6EWi5q75xeF+onJmh2Hm98a/yJAI/mODXq5LofYcQ9AffKP9ZMZu+YwW+/qHqyX2JhaOntvl7i8S+l1Y8CcKEqM1NFK4s4EBYPRFjZDawOHX7fSchbSMVPn5Nu04lrU6xufuZqRosEQw2o0UAyzDoyA52NXzJTWr1G2FVg/0A9hdrQ/6fe9G3167zKxNqXErs6MpHttEouGbpm2ftzrmcvruYxTfxc4G2GwBi3LFLozNpy042gDfXBzDyn1staWsy7+QnzMlR59Fz6jBOk5R4LT+ma0+KjnfRhMh5T2ucm69HkvNQtDZlVa1tLUlzs0zLEdQSehTCjZ6SYsGt2bMVK6dvtxzcyCP0QDUFnNXCwgw12+mGSkAuj4ORi8kMRpnL8UEjkNbdw9KL1eYbEC3D0GPue2Yk2AGhxkmcdm1BoOp05kYw/Nnqgh7QV8DKyBTUHbjH0pXlLiOsSOY+CLh1eTM+Do6rSjqGnDQeUXylZmPCmuveaw38IVnBaa6Eiz6pngZ1u6OeO/1UzfhmyTm0n0G+9JZ3KS2Mq08isNgXHLnhlHJaphpE=",
+              "SignatureAlgorithm": 4,
+              "PublicKeyAlgorithm": 1,
+              "PublicKey": null,
+              "Version": 3,
+              "SerialNumber": 170058221518966082820039192336031959898,
+              "Issuer": {
+                "Country": [
+                  "US"
+                ],
+                "Organization": [
+                  "Google Trust Services LLC"
+                ],
+                "OrganizationalUnit": null,
+                "Locality": null,
+                "Province": null,
+                "StreetAddress": null,
+                "PostalCode": null,
+                "SerialNumber": "",
+                "CommonName": "GTS Root R1",
+                "Names": [
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      6
+                    ],
+                    "Value": "US"
+                  },
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      10
+                    ],
+                    "Value": "Google Trust Services LLC"
+                  },
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      3
+                    ],
+                    "Value": "GTS Root R1"
+                  }
+                ],
+                "ExtraNames": null
+              },
+              "Subject": {
+                "Country": [
+                  "US"
+                ],
+                "Organization": [
+                  "Google Trust Services"
+                ],
+                "OrganizationalUnit": null,
+                "Locality": null,
+                "Province": null,
+                "StreetAddress": null,
+                "PostalCode": null,
+                "SerialNumber": "",
+                "CommonName": "WR3",
+                "Names": [
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      6
+                    ],
+                    "Value": "US"
+                  },
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      10
+                    ],
+                    "Value": "Google Trust Services"
+                  },
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      3
+                    ],
+                    "Value": "WR3"
+                  }
+                ],
+                "ExtraNames": null
+              },
+              "NotBefore": "2023-12-13T09:00:00Z",
+              "NotAfter": "2029-02-20T14:00:00Z",
+              "KeyUsage": 97,
+              "Extensions": [
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    15
+                  ],
+                  "Critical": true,
+                  "Value": "AwIBhg=="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    37
+                  ],
+                  "Critical": false,
+                  "Value": "MBQGCCsGAQUFBwMBBggrBgEFBQcDAg=="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    19
+                  ],
+                  "Critical": true,
+                  "Value": "MAYBAf8CAQA="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    14
+                  ],
+                  "Critical": false,
+                  "Value": "BBTHgfX9jojZADxNY6JQMSSgziP+Iw=="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    35
+                  ],
+                  "Critical": false,
+                  "Value": "MBaAFOSvKyZxGitIJ4UvUmYs7/CJE3E+"
+                },
+                {
+                  "Id": [
+                    1,
+                    3,
+                    6,
+                    1,
+                    5,
+                    5,
+                    7,
+                    1,
+                    1
+                  ],
+                  "Critical": false,
+                  "Value": "MCYwJAYIKwYBBQUHMAKGGGh0dHA6Ly9pLnBraS5nb29nL3IxLmNydA=="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    31
+                  ],
+                  "Critical": false,
+                  "Value": "MCIwIKAeoByGGmh0dHA6Ly9jLnBraS5nb29nL3IvcjEuY3Js"
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    32
+                  ],
+                  "Critical": false,
+                  "Value": "MAowCAYGZ4EMAQIB"
+                }
+              ],
+              "ExtraExtensions": null,
+              "UnhandledCriticalExtensions": null,
+              "ExtKeyUsage": [
+                1,
+                2
+              ],
+              "UnknownExtKeyUsage": null,
+              "BasicConstraintsValid": true,
+              "IsCA": true,
+              "MaxPathLen": 0,
+              "MaxPathLenZero": true,
+              "SubjectKeyId": "x4H1/Y6I2QA8TWOiUDEkoM4j/iM=",
+              "AuthorityKeyId": "5K8rJnEaK0gnhS9SZizv8IkTcT4=",
+              "OCSPServer": null,
+              "IssuingCertificateURL": [
+                "http://i.pki.goog/r1.crt"
+              ],
+              "DNSNames": null,
+              "EmailAddresses": null,
+              "IPAddresses": null,
+              "URIs": null,
+              "PermittedDNSDomainsCritical": false,
+              "PermittedDNSDomains": null,
+              "ExcludedDNSDomains": null,
+              "PermittedIPRanges": null,
+              "ExcludedIPRanges": null,
+              "PermittedEmailAddresses": null,
+              "ExcludedEmailAddresses": null,
+              "PermittedURIDomains": null,
+              "ExcludedURIDomains": null,
+              "CRLDistributionPoints": [
+                "http://c.pki.goog/r/r1.crl"
+              ],
+              "PolicyIdentifiers": [
+                [
+                  2,
+                  23,
+                  140,
+                  1,
+                  2,
+                  1
+                ]
+              ],
+              "Policies": [
+                "2.23.140.1.2.1"
+              ]
+            },
+            {
+              "Raw": "MIIFYjCCBEqgAwIBAgIQd70NbNs2+RrqIQ/E8FjTDTANBgkqhkiG9w0BAQsFADBXMQswCQYDVQQGEwJCRTEZMBcGA1UEChMQR2xvYmFsU2lnbiBudi1zYTEQMA4GA1UECxMHUm9vdCBDQTEbMBkGA1UEAxMSR2xvYmFsU2lnbiBSb290IENBMB4XDTIwMDYxOTAwMDA0MloXDTI4MDEyODAwMDA0MlowRzELMAkGA1UEBhMCVVMxIjAgBgNVBAoTGUdvb2dsZSBUcnVzdCBTZXJ2aWNlcyBMTEMxFDASBgNVBAMTC0dUUyBSb290IFIxMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAthECix7joXebO9y/lD63ladAPKH9gvl9MgaCcfb2jH/76Nu8ai6Xl6OMS/kr9rH5zoQdsfnFl97vufKj6bwSiV6nqlKr+CMny6SxnGPb15l+8Ape62im9MZaRw1NEDPjTrETo8gYbEvs/AmQ351kKSUjB6G00j0uYODP0gmHu81I8E3CwnqIiru6z1kZ1q+PsAewnjHxgsHA3y6mbWwZDrXYfiYaRQM9sHmklCitD38m5agI/pboPGiUU+6DOogrFZYJsuB6jC511pzrp1Zkj5ZPaK49l8KEj8C8QMALXL32h7M1bKwYUH+E4EzNktMg6TO8UpmvMrUpsyUqtEj5cuHKZPfmghCN6J3Cioj6OGaK/GP5Afl4/Xtcd/p2h/rs37EOeZVXtL0m79YB0esWCruOC7XFxYpVq9Os6pFLKcwZpDIlTirxZUTQAs6qzkm06p98g7BAe+dDq6dso499iYH6TKX/1Y7DzkvgtdizjkXPdsDtQCv9Uw+wp9U7DbGKogPeMa3Md+pvez7W35EiEua++tgy/BBjFFFy3l3WFpO9KWgz7zpm7AeKJt8T11dleCfeXkkUAKIAf5qoIbapsZWwpbkNFhHax2xIPEDgfg1azVY80ZcFuctL7TlLnMQ/0lUTbiSw1nH69MG6zO0b9f6BQdgAmD06yK56mDcYBZUCAwEAAaOCATgwggE0MA4GA1UdDwEB/wQEAwIBhjAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBTkrysmcRorSCeFL1JmLO/wiRNxPjAfBgNVHSMEGDAWgBRge2YaRQ2XyolQL30EzTSo//z9SzBgBggrBgEFBQcBAQRUMFIwJQYIKwYBBQUHMAGGGWh0dHA6Ly9vY3NwLnBraS5nb29nL2dzcjEwKQYIKwYBBQUHMAKGHWh0dHA6Ly9wa2kuZ29vZy9nc3IxL2dzcjEuY3J0MDIGA1UdHwQrMCkwJ6AloCOGIWh0dHA6Ly9jcmwucGtpLmdvb2cvZ3NyMS9nc3IxLmNybDA7BgNVHSAENDAyMAgGBmeBDAECATAIBgZngQwBAgIwDQYLKwYBBAHWeQIFAwIwDQYLKwYBBAHWeQIFAwMwDQYJKoZIhvcNAQELBQADggEBADSkHrEoo9C0dhemMXoh6dFSPsjbdBZBiLg9NR3t5P+T4Vxfq7vqfM/b5A3Ri1fyJm9bvhdGaJQ3b2t6yMAYN/olUazsaL+yyEn9WprKASOshIArAoyZl+tJaox118fessmXn1hIVw41oeQa1v1vg4Fv74zPl6/AhSrw9U5pCZEt4Wi4wStz6dTZ/CLANx8LZh1J7QJVj2fhMtfTJr9w4z30Z209fOU0iOMy+qduBmpvvYuR7hZL6Dupszfnw0Skfths18dG9ZKb59UhvmaSGZRVbNQpsg3BZlvid0lIKO2d1xozclOzgjXPYovJJIultzkMu34qQb9Sz/yilrbCgj8=",
+              "RawTBSCertificate": "MIIESqADAgECAhB3vQ1s2zb5GuohD8TwWNMNMA0GCSqGSIb3DQEBCwUAMFcxCzAJBgNVBAYTAkJFMRkwFwYDVQQKExBHbG9iYWxTaWduIG52LXNhMRAwDgYDVQQLEwdSb290IENBMRswGQYDVQQDExJHbG9iYWxTaWduIFJvb3QgQ0EwHhcNMjAwNjE5MDAwMDQyWhcNMjgwMTI4MDAwMDQyWjBHMQswCQYDVQQGEwJVUzEiMCAGA1UEChMZR29vZ2xlIFRydXN0IFNlcnZpY2VzIExMQzEUMBIGA1UEAxMLR1RTIFJvb3QgUjEwggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQC2EQKLHuOhd5s73L+UPreVp0A8of2C+X0yBoJx9vaMf/vo27xqLpeXo4xL+Sv2sfnOhB2x+cWX3u+58qPpvBKJXqeqUqv4IyfLpLGcY9vXmX7wCl7raKb0xlpHDU0QM+NOsROjyBhsS+z8CZDfnWQpJSMHobTSPS5g4M/SCYe7zUjwTcLCeoiKu7rPWRnWr4+wB7CeMfGCwcDfLqZtbBkOtdh+JhpFAz2weaSUKK0PfyblqAj+lug8aJRT7oM6iCsVlgmy4HqMLnXWnOunVmSPlk9orj2XwoSPwLxAwAtcvfaHszVsrBhQf4TgTM2S0yDpM7xSma8ytSmzJSq0SPly4cpk9+aCEI3oncKKiPo4Zor8Y/kB+Xj9e1x3+naH+uzfsQ55lVe0vSbv1gHR6xYKu44LtcXFilWr06zqkUspzBmkMiVOKvFlRNACzqrOSbTqn3yDsEB750Orp2yjj32JgfpMpf/VjsPOS+C12LOORc92wO1AK/1TD7Cn1TsNsYqiA94xrcx36m97PtbfkSIS5r762DL8EGMUUXLeXdYWk70paDPvOmbsB4om3xPXV2V4J95eSRQAogB/mqghtqmxlbCluQ0WEdrHbEg8QOB+DVrNVjzRlwW5y0vtOUucxD/SVRNuJLDWcfr0wbrM7Rv1/oFB2ACYPTrIrnqYNxgFlQIDAQABo4IBODCCATQwDgYDVR0PAQH/BAQDAgGGMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFOSvKyZxGitIJ4UvUmYs7/CJE3E+MB8GA1UdIwQYMBaAFGB7ZhpFDZfKiVAvfQTNNKj//P1LMGAGCCsGAQUFBwEBBFQwUjAlBggrBgEFBQcwAYYZaHR0cDovL29jc3AucGtpLmdvb2cvZ3NyMTApBggrBgEFBQcwAoYdaHR0cDovL3BraS5nb29nL2dzcjEvZ3NyMS5jcnQwMgYDVR0fBCswKTAnoCWgI4YhaHR0cDovL2NybC5wa2kuZ29vZy9nc3IxL2dzcjEuY3JsMDsGA1UdIAQ0MDIwCAYGZ4EMAQIBMAgGBmeBDAECAjANBgsrBgEEAdZ5AgUDAjANBgsrBgEEAdZ5AgUDAw==",
+              "RawSubjectPublicKeyInfo": "MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAthECix7joXebO9y/lD63ladAPKH9gvl9MgaCcfb2jH/76Nu8ai6Xl6OMS/kr9rH5zoQdsfnFl97vufKj6bwSiV6nqlKr+CMny6SxnGPb15l+8Ape62im9MZaRw1NEDPjTrETo8gYbEvs/AmQ351kKSUjB6G00j0uYODP0gmHu81I8E3CwnqIiru6z1kZ1q+PsAewnjHxgsHA3y6mbWwZDrXYfiYaRQM9sHmklCitD38m5agI/pboPGiUU+6DOogrFZYJsuB6jC511pzrp1Zkj5ZPaK49l8KEj8C8QMALXL32h7M1bKwYUH+E4EzNktMg6TO8UpmvMrUpsyUqtEj5cuHKZPfmghCN6J3Cioj6OGaK/GP5Afl4/Xtcd/p2h/rs37EOeZVXtL0m79YB0esWCruOC7XFxYpVq9Os6pFLKcwZpDIlTirxZUTQAs6qzkm06p98g7BAe+dDq6dso499iYH6TKX/1Y7DzkvgtdizjkXPdsDtQCv9Uw+wp9U7DbGKogPeMa3Md+pvez7W35EiEua++tgy/BBjFFFy3l3WFpO9KWgz7zpm7AeKJt8T11dleCfeXkkUAKIAf5qoIbapsZWwpbkNFhHax2xIPEDgfg1azVY80ZcFuctL7TlLnMQ/0lUTbiSw1nH69MG6zO0b9f6BQdgAmD06yK56mDcYBZUCAwEAAQ==",
+              "RawSubject": "MEcxCzAJBgNVBAYTAlVTMSIwIAYDVQQKExlHb29nbGUgVHJ1c3QgU2VydmljZXMgTExDMRQwEgYDVQQDEwtHVFMgUm9vdCBSMQ==",
+              "RawIssuer": "MFcxCzAJBgNVBAYTAkJFMRkwFwYDVQQKExBHbG9iYWxTaWduIG52LXNhMRAwDgYDVQQLEwdSb290IENBMRswGQYDVQQDExJHbG9iYWxTaWduIFJvb3QgQ0E=",
+              "Signature": "NKQesSij0LR2F6YxeiHp0VI+yNt0FkGIuD01He3k/5PhXF+ru+p8z9vkDdGLV/Imb1u+F0ZolDdva3rIwBg3+iVRrOxov7LISf1amsoBI6yEgCsCjJmX60lqjHXXx96yyZefWEhXDjWh5BrW/W+DgW/vjM+Xr8CFKvD1TmkJkS3haLjBK3Pp1Nn8IsA3HwtmHUntAlWPZ+Ey19Mmv3DjPfRnbT185TSI4zL6p24Gam+9i5HuFkvoO6mzN+fDRKR+2GzXx0b1kpvn1SG+ZpIZlFVs1CmyDcFmW+J3SUgo7Z3XGjNyU7OCNc9ii8kki6W3OQy7fipBv1LP/KKWtsKCPw==",
+              "SignatureAlgorithm": 4,
+              "PublicKeyAlgorithm": 1,
+              "PublicKey": null,
+              "Version": 3,
+              "SerialNumber": 159159747900478145820483398898491642637,
+              "Issuer": {
+                "Country": [
+                  "BE"
+                ],
+                "Organization": [
+                  "GlobalSign nv-sa"
+                ],
+                "OrganizationalUnit": [
+                  "Root CA"
+                ],
+                "Locality": null,
+                "Province": null,
+                "StreetAddress": null,
+                "PostalCode": null,
+                "SerialNumber": "",
+                "CommonName": "GlobalSign Root CA",
+                "Names": [
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      6
+                    ],
+                    "Value": "BE"
+                  },
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      10
+                    ],
+                    "Value": "GlobalSign nv-sa"
+                  },
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      11
+                    ],
+                    "Value": "Root CA"
+                  },
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      3
+                    ],
+                    "Value": "GlobalSign Root CA"
+                  }
+                ],
+                "ExtraNames": null
+              },
+              "Subject": {
+                "Country": [
+                  "US"
+                ],
+                "Organization": [
+                  "Google Trust Services LLC"
+                ],
+                "OrganizationalUnit": null,
+                "Locality": null,
+                "Province": null,
+                "StreetAddress": null,
+                "PostalCode": null,
+                "SerialNumber": "",
+                "CommonName": "GTS Root R1",
+                "Names": [
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      6
+                    ],
+                    "Value": "US"
+                  },
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      10
+                    ],
+                    "Value": "Google Trust Services LLC"
+                  },
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      3
+                    ],
+                    "Value": "GTS Root R1"
+                  }
+                ],
+                "ExtraNames": null
+              },
+              "NotBefore": "2020-06-19T00:00:42Z",
+              "NotAfter": "2028-01-28T00:00:42Z",
+              "KeyUsage": 97,
+              "Extensions": [
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    15
+                  ],
+                  "Critical": true,
+                  "Value": "AwIBhg=="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    19
+                  ],
+                  "Critical": true,
+                  "Value": "MAMBAf8="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    14
+                  ],
+                  "Critical": false,
+                  "Value": "BBTkrysmcRorSCeFL1JmLO/wiRNxPg=="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    35
+                  ],
+                  "Critical": false,
+                  "Value": "MBaAFGB7ZhpFDZfKiVAvfQTNNKj//P1L"
+                },
+                {
+                  "Id": [
+                    1,
+                    3,
+                    6,
+                    1,
+                    5,
+                    5,
+                    7,
+                    1,
+                    1
+                  ],
+                  "Critical": false,
+                  "Value": "MFIwJQYIKwYBBQUHMAGGGWh0dHA6Ly9vY3NwLnBraS5nb29nL2dzcjEwKQYIKwYBBQUHMAKGHWh0dHA6Ly9wa2kuZ29vZy9nc3IxL2dzcjEuY3J0"
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    31
+                  ],
+                  "Critical": false,
+                  "Value": "MCkwJ6AloCOGIWh0dHA6Ly9jcmwucGtpLmdvb2cvZ3NyMS9nc3IxLmNybA=="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    32
+                  ],
+                  "Critical": false,
+                  "Value": "MDIwCAYGZ4EMAQIBMAgGBmeBDAECAjANBgsrBgEEAdZ5AgUDAjANBgsrBgEEAdZ5AgUDAw=="
+                }
+              ],
+              "ExtraExtensions": null,
+              "UnhandledCriticalExtensions": null,
+              "ExtKeyUsage": null,
+              "UnknownExtKeyUsage": null,
+              "BasicConstraintsValid": true,
+              "IsCA": true,
+              "MaxPathLen": -1,
+              "MaxPathLenZero": false,
+              "SubjectKeyId": "5K8rJnEaK0gnhS9SZizv8IkTcT4=",
+              "AuthorityKeyId": "YHtmGkUNl8qJUC99BM00qP/8/Us=",
+              "OCSPServer": [
+                "http://ocsp.pki.goog/gsr1"
+              ],
+              "IssuingCertificateURL": [
+                "http://pki.goog/gsr1/gsr1.crt"
+              ],
+              "DNSNames": null,
+              "EmailAddresses": null,
+              "IPAddresses": null,
+              "URIs": null,
+              "PermittedDNSDomainsCritical": false,
+              "PermittedDNSDomains": null,
+              "ExcludedDNSDomains": null,
+              "PermittedIPRanges": null,
+              "ExcludedIPRanges": null,
+              "PermittedEmailAddresses": null,
+              "ExcludedEmailAddresses": null,
+              "PermittedURIDomains": null,
+              "ExcludedURIDomains": null,
+              "CRLDistributionPoints": [
+                "http://crl.pki.goog/gsr1/gsr1.crl"
+              ],
+              "PolicyIdentifiers": [
+                [
+                  2,
+                  23,
+                  140,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  2,
+                  23,
+                  140,
+                  1,
+                  2,
+                  2
+                ],
+                [
+                  1,
+                  3,
+                  6,
+                  1,
+                  4,
+                  1,
+                  11129,
+                  2,
+                  5,
+                  3,
+                  2
+                ],
+                [
+                  1,
+                  3,
+                  6,
+                  1,
+                  4,
+                  1,
+                  11129,
+                  2,
+                  5,
+                  3,
+                  3
+                ]
+              ],
+              "Policies": [
+                "2.23.140.1.2.1",
+                "2.23.140.1.2.2",
+                "1.3.6.1.4.1.11129.2.5.3.2",
+                "1.3.6.1.4.1.11129.2.5.3.3"
+              ]
+            }
+          ],
+          "VerifiedChains": [
+            [
+              {
+                "Raw": "MIIF0zCCBLugAwIBAgIRAPwJuKrz6BUdEsOaK4KwsQwwDQYJKoZIhvcNAQELBQAwOzELMAkGA1UEBhMCVVMxHjAcBgNVBAoTFUdvb2dsZSBUcnVzdCBTZXJ2aWNlczEMMAoGA1UEAxMDV1IzMB4XDTI1MDIxODEzNTI1MVoXDTI1MDUxOTE0NDcwNVowFjEUMBIGA1UEAxMLcnBnZ2Vlay5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDK0TnXl96F+NQ2GsyDUG3CTyrRIcpoiPQg+72RFXMx69we82xX6uXL73fIXM5JizrfVvzPYg3rvXdYvOM+L1evyNvQr5vKFFKAwJncFDJNFV3iFLZGDqQBimieLQQ21gYzIu+UXobO9ePKf3vMh+xefSiEYwXx3SCmGx3ufnFsgMhc+mzqYToHVLPIchVxbV4eMOcfRQ5IN0HtpVtCaMM0oCeam2x2NTSTDuNJmFhN6vgKENBaogRpUSLwkMjpol2YpYETzrig5klG0OSQopri9zmwll6/O2hRCIy8kLIRU4M4pLEJfwUEsCN7O0qENImHkjEhnpoIX43VkRMLT0BvAgMBAAGjggL1MIIC8TAOBgNVHQ8BAf8EBAMCBaAwEwYDVR0lBAwwCgYIKwYBBQUHAwEwDAYDVR0TAQH/BAIwADAdBgNVHQ4EFgQUFMT2WvX1TzjLoB1xKHzYjI4K/VYwHwYDVR0jBBgwFoAUx4H1/Y6I2QA8TWOiUDEkoM4j/iMwXgYIKwYBBQUHAQEEUjBQMCcGCCsGAQUFBzABhhtodHRwOi8vby5wa2kuZ29vZy9zL3dyMy9fQWswJQYIKwYBBQUHMAKGGWh0dHA6Ly9pLnBraS5nb29nL3dyMy5jcnQwgcUGA1UdEQSBvTCBuoILcnBnZ2Vlay5jb22CD3d3dy5ycGdnZWVrLmNvbYIRdmlkZW9nYW1lZ2Vlay5jb22CFXd3dy52aWRlb2dhbWVnZWVrLmNvbYIRYm9hcmRnYW1lZ2Vlay5jb22CFXd3dy5ib2FyZGdhbWVnZWVrLmNvbYIOcHV6emxlZ2Vlay5jb22CEnd3dy5wdXp6bGVnZWVrLmNvbYIGYmdnLmNjggp3d3cuYmdnLmNjgg5hcGkuZ2Vla2RvLmNvbTATBgNVHSAEDDAKMAgGBmeBDAECATA2BgNVHR8ELzAtMCugKaAnhiVodHRwOi8vYy5wa2kuZ29vZy93cjMvaEQxNkFsdkNHbmcuY3JsMIIBBQYKKwYBBAHWeQIEAgSB9gSB8wDxAHcAfVkeEuF4KnscYWd8Xv340IdcFKBOlZ65Ay/ZDowuebgAAAGVGYwvwAAABAMASDBGAiEAzMKy4GfCy1fxeRpAscEInoVUg7vV4+oh71ntZvbhYjkCIQCMqwAdFx3AWgQYCVT8/dzeMMoSwiVpIPw/hJcJYwYaJgB2AM8RVu7VLnyv84db2Wkum+kacWdKsBfsrAHSW3fOzDsIAAABlRmML88AAAQDAEcwRQIhAO3V4x/LpLnVMTQLFs4+GxdK5g4G9414YUqLI7kyxggPAiBtNveW0uBO8tVLZL34+KubzWzP1qsj1eaRy1nxm4/uqDANBgkqhkiG9w0BAQsFAAOCAQEAQ+FuZQ6Xg60nAon4WhRJ/K6kmMgF6iMjqgkB+cJCWyxG7T2seSti578HwmHaytId8NdRxr2av2wCXDfTdlHi5oyKWqhlMTRiuLEAD6Ggfp1Aft7CSMdfuId5U4n14jSD/J+o+66OLzamqd598yAWy9uvhJSWyI80rK815v6grW6QW/a8oj09iF/mchlxsHgb7+1RFjDGL8qVEJdIxnxJoJAtYpvHH7hzuJlcpmMKQ244378vlMe1tfqpuy+fLVWoAQUYmhiapGrw2nxIxtwMCWwuqj6z2bmohJGsmx78VDkJVCseKI+A++g2WyBUS36S+x3lZ/3PRnOBpkmSINptzg==",
+                "RawTBSCertificate": "MIIEu6ADAgECAhEA/Am4qvPoFR0Sw5orgrCxDDANBgkqhkiG9w0BAQsFADA7MQswCQYDVQQGEwJVUzEeMBwGA1UEChMVR29vZ2xlIFRydXN0IFNlcnZpY2VzMQwwCgYDVQQDEwNXUjMwHhcNMjUwMjE4MTM1MjUxWhcNMjUwNTE5MTQ0NzA1WjAWMRQwEgYDVQQDEwtycGdnZWVrLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMrROdeX3oX41DYazINQbcJPKtEhymiI9CD7vZEVczHr3B7zbFfq5cvvd8hczkmLOt9W/M9iDeu9d1i84z4vV6/I29Cvm8oUUoDAmdwUMk0VXeIUtkYOpAGKaJ4tBDbWBjMi75Rehs7148p/e8yH7F59KIRjBfHdIKYbHe5+cWyAyFz6bOphOgdUs8hyFXFtXh4w5x9FDkg3Qe2lW0JowzSgJ5qbbHY1NJMO40mYWE3q+AoQ0FqiBGlRIvCQyOmiXZilgRPOuKDmSUbQ5JCimuL3ObCWXr87aFEIjLyQshFTgziksQl/BQSwI3s7SoQ0iYeSMSGemghfjdWREwtPQG8CAwEAAaOCAvUwggLxMA4GA1UdDwEB/wQEAwIFoDATBgNVHSUEDDAKBggrBgEFBQcDATAMBgNVHRMBAf8EAjAAMB0GA1UdDgQWBBQUxPZa9fVPOMugHXEofNiMjgr9VjAfBgNVHSMEGDAWgBTHgfX9jojZADxNY6JQMSSgziP+IzBeBggrBgEFBQcBAQRSMFAwJwYIKwYBBQUHMAGGG2h0dHA6Ly9vLnBraS5nb29nL3Mvd3IzL19BazAlBggrBgEFBQcwAoYZaHR0cDovL2kucGtpLmdvb2cvd3IzLmNydDCBxQYDVR0RBIG9MIG6ggtycGdnZWVrLmNvbYIPd3d3LnJwZ2dlZWsuY29tghF2aWRlb2dhbWVnZWVrLmNvbYIVd3d3LnZpZGVvZ2FtZWdlZWsuY29tghFib2FyZGdhbWVnZWVrLmNvbYIVd3d3LmJvYXJkZ2FtZWdlZWsuY29tgg5wdXp6bGVnZWVrLmNvbYISd3d3LnB1enpsZWdlZWsuY29tggZiZ2cuY2OCCnd3dy5iZ2cuY2OCDmFwaS5nZWVrZG8uY29tMBMGA1UdIAQMMAowCAYGZ4EMAQIBMDYGA1UdHwQvMC0wK6ApoCeGJWh0dHA6Ly9jLnBraS5nb29nL3dyMy9oRDE2QWx2Q0duZy5jcmwwggEFBgorBgEEAdZ5AgQCBIH2BIHzAPEAdwB9WR4S4XgqexxhZ3xe/fjQh1wUoE6VnrkDL9kOjC55uAAAAZUZjC/AAAAEAwBIMEYCIQDMwrLgZ8LLV/F5GkCxwQiehVSDu9Xj6iHvWe1m9uFiOQIhAIyrAB0XHcBaBBgJVPz93N4wyhLCJWkg/D+ElwljBhomAHYAzxFW7tUufK/zh1vZaS6b6RpxZ0qwF+ysAdJbd87MOwgAAAGVGYwvzwAABAMARzBFAiEA7dXjH8ukudUxNAsWzj4bF0rmDgb3jXhhSosjuTLGCA8CIG0295bS4E7y1Utkvfj4q5vNbM/WqyPV5pHLWfGbj+6o",
+                "RawSubjectPublicKeyInfo": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAytE515fehfjUNhrMg1Btwk8q0SHKaIj0IPu9kRVzMevcHvNsV+rly+93yFzOSYs631b8z2IN6713WLzjPi9Xr8jb0K+byhRSgMCZ3BQyTRVd4hS2Rg6kAYponi0ENtYGMyLvlF6GzvXjyn97zIfsXn0ohGMF8d0gphsd7n5xbIDIXPps6mE6B1SzyHIVcW1eHjDnH0UOSDdB7aVbQmjDNKAnmptsdjU0kw7jSZhYTer4ChDQWqIEaVEi8JDI6aJdmKWBE864oOZJRtDkkKKa4vc5sJZevztoUQiMvJCyEVODOKSxCX8FBLAjeztKhDSJh5IxIZ6aCF+N1ZETC09AbwIDAQAB",
+                "RawSubject": "MBYxFDASBgNVBAMTC3JwZ2dlZWsuY29t",
+                "RawIssuer": "MDsxCzAJBgNVBAYTAlVTMR4wHAYDVQQKExVHb29nbGUgVHJ1c3QgU2VydmljZXMxDDAKBgNVBAMTA1dSMw==",
+                "Signature": "Q+FuZQ6Xg60nAon4WhRJ/K6kmMgF6iMjqgkB+cJCWyxG7T2seSti578HwmHaytId8NdRxr2av2wCXDfTdlHi5oyKWqhlMTRiuLEAD6Ggfp1Aft7CSMdfuId5U4n14jSD/J+o+66OLzamqd598yAWy9uvhJSWyI80rK815v6grW6QW/a8oj09iF/mchlxsHgb7+1RFjDGL8qVEJdIxnxJoJAtYpvHH7hzuJlcpmMKQ244378vlMe1tfqpuy+fLVWoAQUYmhiapGrw2nxIxtwMCWwuqj6z2bmohJGsmx78VDkJVCseKI+A++g2WyBUS36S+x3lZ/3PRnOBpkmSINptzg==",
+                "SignatureAlgorithm": 4,
+                "PublicKeyAlgorithm": 1,
+                "PublicKey": null,
+                "Version": 3,
+                "SerialNumber": 335015931117165740635452808747906281740,
+                "Issuer": {
+                  "Country": [
+                    "US"
+                  ],
+                  "Organization": [
+                    "Google Trust Services"
+                  ],
+                  "OrganizationalUnit": null,
+                  "Locality": null,
+                  "Province": null,
+                  "StreetAddress": null,
+                  "PostalCode": null,
+                  "SerialNumber": "",
+                  "CommonName": "WR3",
+                  "Names": [
+                    {
+                      "Type": [
+                        2,
+                        5,
+                        4,
+                        6
+                      ],
+                      "Value": "US"
+                    },
+                    {
+                      "Type": [
+                        2,
+                        5,
+                        4,
+                        10
+                      ],
+                      "Value": "Google Trust Services"
+                    },
+                    {
+                      "Type": [
+                        2,
+                        5,
+                        4,
+                        3
+                      ],
+                      "Value": "WR3"
+                    }
+                  ],
+                  "ExtraNames": null
+                },
+                "Subject": {
+                  "Country": null,
+                  "Organization": null,
+                  "OrganizationalUnit": null,
+                  "Locality": null,
+                  "Province": null,
+                  "StreetAddress": null,
+                  "PostalCode": null,
+                  "SerialNumber": "",
+                  "CommonName": "rpggeek.com",
+                  "Names": [
+                    {
+                      "Type": [
+                        2,
+                        5,
+                        4,
+                        3
+                      ],
+                      "Value": "rpggeek.com"
+                    }
+                  ],
+                  "ExtraNames": null
+                },
+                "NotBefore": "2025-02-18T13:52:51Z",
+                "NotAfter": "2025-05-19T14:47:05Z",
+                "KeyUsage": 5,
+                "Extensions": [
+                  {
+                    "Id": [
+                      2,
+                      5,
+                      29,
+                      15
+                    ],
+                    "Critical": true,
+                    "Value": "AwIFoA=="
+                  },
+                  {
+                    "Id": [
+                      2,
+                      5,
+                      29,
+                      37
+                    ],
+                    "Critical": false,
+                    "Value": "MAoGCCsGAQUFBwMB"
+                  },
+                  {
+                    "Id": [
+                      2,
+                      5,
+                      29,
+                      19
+                    ],
+                    "Critical": true,
+                    "Value": "MAA="
+                  },
+                  {
+                    "Id": [
+                      2,
+                      5,
+                      29,
+                      14
+                    ],
+                    "Critical": false,
+                    "Value": "BBQUxPZa9fVPOMugHXEofNiMjgr9Vg=="
+                  },
+                  {
+                    "Id": [
+                      2,
+                      5,
+                      29,
+                      35
+                    ],
+                    "Critical": false,
+                    "Value": "MBaAFMeB9f2OiNkAPE1jolAxJKDOI/4j"
+                  },
+                  {
+                    "Id": [
+                      1,
+                      3,
+                      6,
+                      1,
+                      5,
+                      5,
+                      7,
+                      1,
+                      1
+                    ],
+                    "Critical": false,
+                    "Value": "MFAwJwYIKwYBBQUHMAGGG2h0dHA6Ly9vLnBraS5nb29nL3Mvd3IzL19BazAlBggrBgEFBQcwAoYZaHR0cDovL2kucGtpLmdvb2cvd3IzLmNydA=="
+                  },
+                  {
+                    "Id": [
+                      2,
+                      5,
+                      29,
+                      17
+                    ],
+                    "Critical": false,
+                    "Value": "MIG6ggtycGdnZWVrLmNvbYIPd3d3LnJwZ2dlZWsuY29tghF2aWRlb2dhbWVnZWVrLmNvbYIVd3d3LnZpZGVvZ2FtZWdlZWsuY29tghFib2FyZGdhbWVnZWVrLmNvbYIVd3d3LmJvYXJkZ2FtZWdlZWsuY29tgg5wdXp6bGVnZWVrLmNvbYISd3d3LnB1enpsZWdlZWsuY29tggZiZ2cuY2OCCnd3dy5iZ2cuY2OCDmFwaS5nZWVrZG8uY29t"
+                  },
+                  {
+                    "Id": [
+                      2,
+                      5,
+                      29,
+                      32
+                    ],
+                    "Critical": false,
+                    "Value": "MAowCAYGZ4EMAQIB"
+                  },
+                  {
+                    "Id": [
+                      2,
+                      5,
+                      29,
+                      31
+                    ],
+                    "Critical": false,
+                    "Value": "MC0wK6ApoCeGJWh0dHA6Ly9jLnBraS5nb29nL3dyMy9oRDE2QWx2Q0duZy5jcmw="
+                  },
+                  {
+                    "Id": [
+                      1,
+                      3,
+                      6,
+                      1,
+                      4,
+                      1,
+                      11129,
+                      2,
+                      4,
+                      2
+                    ],
+                    "Critical": false,
+                    "Value": "BIHzAPEAdwB9WR4S4XgqexxhZ3xe/fjQh1wUoE6VnrkDL9kOjC55uAAAAZUZjC/AAAAEAwBIMEYCIQDMwrLgZ8LLV/F5GkCxwQiehVSDu9Xj6iHvWe1m9uFiOQIhAIyrAB0XHcBaBBgJVPz93N4wyhLCJWkg/D+ElwljBhomAHYAzxFW7tUufK/zh1vZaS6b6RpxZ0qwF+ysAdJbd87MOwgAAAGVGYwvzwAABAMARzBFAiEA7dXjH8ukudUxNAsWzj4bF0rmDgb3jXhhSosjuTLGCA8CIG0295bS4E7y1Utkvfj4q5vNbM/WqyPV5pHLWfGbj+6o"
+                  }
+                ],
+                "ExtraExtensions": null,
+                "UnhandledCriticalExtensions": null,
+                "ExtKeyUsage": [
+                  1
+                ],
+                "UnknownExtKeyUsage": null,
+                "BasicConstraintsValid": true,
+                "IsCA": false,
+                "MaxPathLen": -1,
+                "MaxPathLenZero": false,
+                "SubjectKeyId": "FMT2WvX1TzjLoB1xKHzYjI4K/VY=",
+                "AuthorityKeyId": "x4H1/Y6I2QA8TWOiUDEkoM4j/iM=",
+                "OCSPServer": [
+                  "http://o.pki.goog/s/wr3/_Ak"
+                ],
+                "IssuingCertificateURL": [
+                  "http://i.pki.goog/wr3.crt"
+                ],
+                "DNSNames": [
+                  "rpggeek.com",
+                  "www.rpggeek.com",
+                  "videogamegeek.com",
+                  "www.videogamegeek.com",
+                  "boardgamegeek.com",
+                  "www.boardgamegeek.com",
+                  "puzzlegeek.com",
+                  "www.puzzlegeek.com",
+                  "bgg.cc",
+                  "www.bgg.cc",
+                  "api.geekdo.com"
+                ],
+                "EmailAddresses": null,
+                "IPAddresses": null,
+                "URIs": null,
+                "PermittedDNSDomainsCritical": false,
+                "PermittedDNSDomains": null,
+                "ExcludedDNSDomains": null,
+                "PermittedIPRanges": null,
+                "ExcludedIPRanges": null,
+                "PermittedEmailAddresses": null,
+                "ExcludedEmailAddresses": null,
+                "PermittedURIDomains": null,
+                "ExcludedURIDomains": null,
+                "CRLDistributionPoints": [
+                  "http://c.pki.goog/wr3/hD16AlvCGng.crl"
+                ],
+                "PolicyIdentifiers": [
+                  [
+                    2,
+                    23,
+                    140,
+                    1,
+                    2,
+                    1
+                  ]
+                ],
+                "Policies": [
+                  "2.23.140.1.2.1"
+                ]
+              },
+              {
+                "Raw": "MIIFCzCCAvOgAwIBAgIQf/AFqRVo1jq8IoYWhKpLWjANBgkqhkiG9w0BAQsFADBHMQswCQYDVQQGEwJVUzEiMCAGA1UEChMZR29vZ2xlIFRydXN0IFNlcnZpY2VzIExMQzEUMBIGA1UEAxMLR1RTIFJvb3QgUjEwHhcNMjMxMjEzMDkwMDAwWhcNMjkwMjIwMTQwMDAwWjA7MQswCQYDVQQGEwJVUzEeMBwGA1UEChMVR29vZ2xlIFRydXN0IFNlcnZpY2VzMQwwCgYDVQQDEwNXUjMwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCPNHWHr4RyFI0HEJFvA6zx1Ag1mhnymxiJNGyYj3rU3eoF6N4bfIxUErp5ivsYDQ18nPO9OOSoXsYzy0aJb0ag6TdjjdzM1ZdOMq17HSMFufV7SUOY0LxXx1N4GLHtp1SyfIa+8FRFvIe6mVkd9LjbAPuBT0YrYl6xOqUqFyOsor7FjuVe/XEefaS0I30EUrI00t+ZrIfGTFlf+OZPjnWSwrIwRpLQtg3H5Iln/z9UlCdl4wHISiyEL2Vfza1c/aatQVvcTD8XlpF9qdg8Uyoc0ObUd+ZDSsK3+Eiiza1jtSVrlnIdgUVvhmnE5OZ4TDHmoX+nAXMKh++HiXLM08WNAgMBAAGjgf4wgfswDgYDVR0PAQH/BAQDAgGGMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjASBgNVHRMBAf8ECDAGAQH/AgEAMB0GA1UdDgQWBBTHgfX9jojZADxNY6JQMSSgziP+IzAfBgNVHSMEGDAWgBTkrysmcRorSCeFL1JmLO/wiRNxPjA0BggrBgEFBQcBAQQoMCYwJAYIKwYBBQUHMAKGGGh0dHA6Ly9pLnBraS5nb29nL3IxLmNydDArBgNVHR8EJDAiMCCgHqAchhpodHRwOi8vYy5wa2kuZ29vZy9yL3IxLmNybDATBgNVHSAEDDAKMAgGBmeBDAECATANBgkqhkiG9w0BAQsFAAOCAgEAnI1DlJQzSKcWbyXXrJSsgKMo6KG74TMqhsuTg67a0FX02752+eiJb5YsOJc8DVOHalwpOvbuPdl5BuAEgIK4Va7l9j3J9M1/EjeWjGTM3RoszmBJGu82oz6EWi5q75xeF+onJmh2Hm98a/yJAI/mODXq5LofYcQ9AffKP9ZMZu+YwW+/qHqyX2JhaOntvl7i8S+l1Y8CcKEqM1NFK4s4EBYPRFjZDawOHX7fSchbSMVPn5Nu04lrU6xufuZqRosEQw2o0UAyzDoyA52NXzJTWr1G2FVg/0A9hdrQ/6fe9G3167zKxNqXErs6MpHttEouGbpm2ftzrmcvruYxTfxc4G2GwBi3LFLozNpy042gDfXBzDyn1staWsy7+QnzMlR59Fz6jBOk5R4LT+ma0+KjnfRhMh5T2ucm69HkvNQtDZlVa1tLUlzs0zLEdQSehTCjZ6SYsGt2bMVK6dvtxzcyCP0QDUFnNXCwgw12+mGSkAuj4ORi8kMRpnL8UEjkNbdw9KL1eYbEC3D0GPue2Yk2AGhxkmcdm1BoOp05kYw/Nnqgh7QV8DKyBTUHbjH0pXlLiOsSOY+CLh1eTM+Do6rSjqGnDQeUXylZmPCmuveaw38IVnBaa6Eiz6pngZ1u6OeO/1UzfhmyTm0n0G+9JZ3KS2Mq08isNgXHLnhlHJaphpE=",
+                "RawTBSCertificate": "MIIC86ADAgECAhB/8AWpFWjWOrwihhaEqktaMA0GCSqGSIb3DQEBCwUAMEcxCzAJBgNVBAYTAlVTMSIwIAYDVQQKExlHb29nbGUgVHJ1c3QgU2VydmljZXMgTExDMRQwEgYDVQQDEwtHVFMgUm9vdCBSMTAeFw0yMzEyMTMwOTAwMDBaFw0yOTAyMjAxNDAwMDBaMDsxCzAJBgNVBAYTAlVTMR4wHAYDVQQKExVHb29nbGUgVHJ1c3QgU2VydmljZXMxDDAKBgNVBAMTA1dSMzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAI80dYevhHIUjQcQkW8DrPHUCDWaGfKbGIk0bJiPetTd6gXo3ht8jFQSunmK+xgNDXyc87045KhexjPLRolvRqDpN2ON3MzVl04yrXsdIwW59XtJQ5jQvFfHU3gYse2nVLJ8hr7wVEW8h7qZWR30uNsA+4FPRitiXrE6pSoXI6yivsWO5V79cR59pLQjfQRSsjTS35msh8ZMWV/45k+OdZLCsjBGktC2DcfkiWf/P1SUJ2XjAchKLIQvZV/NrVz9pq1BW9xMPxeWkX2p2DxTKhzQ5tR35kNKwrf4SKLNrWO1JWuWch2BRW+GacTk5nhMMeahf6cBcwqH74eJcszTxY0CAwEAAaOB/jCB+zAOBgNVHQ8BAf8EBAMCAYYwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMBIGA1UdEwEB/wQIMAYBAf8CAQAwHQYDVR0OBBYEFMeB9f2OiNkAPE1jolAxJKDOI/4jMB8GA1UdIwQYMBaAFOSvKyZxGitIJ4UvUmYs7/CJE3E+MDQGCCsGAQUFBwEBBCgwJjAkBggrBgEFBQcwAoYYaHR0cDovL2kucGtpLmdvb2cvcjEuY3J0MCsGA1UdHwQkMCIwIKAeoByGGmh0dHA6Ly9jLnBraS5nb29nL3IvcjEuY3JsMBMGA1UdIAQMMAowCAYGZ4EMAQIB",
+                "RawSubjectPublicKeyInfo": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjzR1h6+EchSNBxCRbwOs8dQINZoZ8psYiTRsmI961N3qBejeG3yMVBK6eYr7GA0NfJzzvTjkqF7GM8tGiW9GoOk3Y43czNWXTjKtex0jBbn1e0lDmNC8V8dTeBix7adUsnyGvvBURbyHuplZHfS42wD7gU9GK2JesTqlKhcjrKK+xY7lXv1xHn2ktCN9BFKyNNLfmayHxkxZX/jmT451ksKyMEaS0LYNx+SJZ/8/VJQnZeMByEoshC9lX82tXP2mrUFb3Ew/F5aRfanYPFMqHNDm1HfmQ0rCt/hIos2tY7Ula5ZyHYFFb4ZpxOTmeEwx5qF/pwFzCofvh4lyzNPFjQIDAQAB",
+                "RawSubject": "MDsxCzAJBgNVBAYTAlVTMR4wHAYDVQQKExVHb29nbGUgVHJ1c3QgU2VydmljZXMxDDAKBgNVBAMTA1dSMw==",
+                "RawIssuer": "MEcxCzAJBgNVBAYTAlVTMSIwIAYDVQQKExlHb29nbGUgVHJ1c3QgU2VydmljZXMgTExDMRQwEgYDVQQDEwtHVFMgUm9vdCBSMQ==",
+                "Signature": "nI1DlJQzSKcWbyXXrJSsgKMo6KG74TMqhsuTg67a0FX02752+eiJb5YsOJc8DVOHalwpOvbuPdl5BuAEgIK4Va7l9j3J9M1/EjeWjGTM3RoszmBJGu82oz6EWi5q75xeF+onJmh2Hm98a/yJAI/mODXq5LofYcQ9AffKP9ZMZu+YwW+/qHqyX2JhaOntvl7i8S+l1Y8CcKEqM1NFK4s4EBYPRFjZDawOHX7fSchbSMVPn5Nu04lrU6xufuZqRosEQw2o0UAyzDoyA52NXzJTWr1G2FVg/0A9hdrQ/6fe9G3167zKxNqXErs6MpHttEouGbpm2ftzrmcvruYxTfxc4G2GwBi3LFLozNpy042gDfXBzDyn1staWsy7+QnzMlR59Fz6jBOk5R4LT+ma0+KjnfRhMh5T2ucm69HkvNQtDZlVa1tLUlzs0zLEdQSehTCjZ6SYsGt2bMVK6dvtxzcyCP0QDUFnNXCwgw12+mGSkAuj4ORi8kMRpnL8UEjkNbdw9KL1eYbEC3D0GPue2Yk2AGhxkmcdm1BoOp05kYw/Nnqgh7QV8DKyBTUHbjH0pXlLiOsSOY+CLh1eTM+Do6rSjqGnDQeUXylZmPCmuveaw38IVnBaa6Eiz6pngZ1u6OeO/1UzfhmyTm0n0G+9JZ3KS2Mq08isNgXHLnhlHJaphpE=",
+                "SignatureAlgorithm": 4,
+                "PublicKeyAlgorithm": 1,
+                "PublicKey": null,
+                "Version": 3,
+                "SerialNumber": 170058221518966082820039192336031959898,
+                "Issuer": {
+                  "Country": [
+                    "US"
+                  ],
+                  "Organization": [
+                    "Google Trust Services LLC"
+                  ],
+                  "OrganizationalUnit": null,
+                  "Locality": null,
+                  "Province": null,
+                  "StreetAddress": null,
+                  "PostalCode": null,
+                  "SerialNumber": "",
+                  "CommonName": "GTS Root R1",
+                  "Names": [
+                    {
+                      "Type": [
+                        2,
+                        5,
+                        4,
+                        6
+                      ],
+                      "Value": "US"
+                    },
+                    {
+                      "Type": [
+                        2,
+                        5,
+                        4,
+                        10
+                      ],
+                      "Value": "Google Trust Services LLC"
+                    },
+                    {
+                      "Type": [
+                        2,
+                        5,
+                        4,
+                        3
+                      ],
+                      "Value": "GTS Root R1"
+                    }
+                  ],
+                  "ExtraNames": null
+                },
+                "Subject": {
+                  "Country": [
+                    "US"
+                  ],
+                  "Organization": [
+                    "Google Trust Services"
+                  ],
+                  "OrganizationalUnit": null,
+                  "Locality": null,
+                  "Province": null,
+                  "StreetAddress": null,
+                  "PostalCode": null,
+                  "SerialNumber": "",
+                  "CommonName": "WR3",
+                  "Names": [
+                    {
+                      "Type": [
+                        2,
+                        5,
+                        4,
+                        6
+                      ],
+                      "Value": "US"
+                    },
+                    {
+                      "Type": [
+                        2,
+                        5,
+                        4,
+                        10
+                      ],
+                      "Value": "Google Trust Services"
+                    },
+                    {
+                      "Type": [
+                        2,
+                        5,
+                        4,
+                        3
+                      ],
+                      "Value": "WR3"
+                    }
+                  ],
+                  "ExtraNames": null
+                },
+                "NotBefore": "2023-12-13T09:00:00Z",
+                "NotAfter": "2029-02-20T14:00:00Z",
+                "KeyUsage": 97,
+                "Extensions": [
+                  {
+                    "Id": [
+                      2,
+                      5,
+                      29,
+                      15
+                    ],
+                    "Critical": true,
+                    "Value": "AwIBhg=="
+                  },
+                  {
+                    "Id": [
+                      2,
+                      5,
+                      29,
+                      37
+                    ],
+                    "Critical": false,
+                    "Value": "MBQGCCsGAQUFBwMBBggrBgEFBQcDAg=="
+                  },
+                  {
+                    "Id": [
+                      2,
+                      5,
+                      29,
+                      19
+                    ],
+                    "Critical": true,
+                    "Value": "MAYBAf8CAQA="
+                  },
+                  {
+                    "Id": [
+                      2,
+                      5,
+                      29,
+                      14
+                    ],
+                    "Critical": false,
+                    "Value": "BBTHgfX9jojZADxNY6JQMSSgziP+Iw=="
+                  },
+                  {
+                    "Id": [
+                      2,
+                      5,
+                      29,
+                      35
+                    ],
+                    "Critical": false,
+                    "Value": "MBaAFOSvKyZxGitIJ4UvUmYs7/CJE3E+"
+                  },
+                  {
+                    "Id": [
+                      1,
+                      3,
+                      6,
+                      1,
+                      5,
+                      5,
+                      7,
+                      1,
+                      1
+                    ],
+                    "Critical": false,
+                    "Value": "MCYwJAYIKwYBBQUHMAKGGGh0dHA6Ly9pLnBraS5nb29nL3IxLmNydA=="
+                  },
+                  {
+                    "Id": [
+                      2,
+                      5,
+                      29,
+                      31
+                    ],
+                    "Critical": false,
+                    "Value": "MCIwIKAeoByGGmh0dHA6Ly9jLnBraS5nb29nL3IvcjEuY3Js"
+                  },
+                  {
+                    "Id": [
+                      2,
+                      5,
+                      29,
+                      32
+                    ],
+                    "Critical": false,
+                    "Value": "MAowCAYGZ4EMAQIB"
+                  }
+                ],
+                "ExtraExtensions": null,
+                "UnhandledCriticalExtensions": null,
+                "ExtKeyUsage": [
+                  1,
+                  2
+                ],
+                "UnknownExtKeyUsage": null,
+                "BasicConstraintsValid": true,
+                "IsCA": true,
+                "MaxPathLen": 0,
+                "MaxPathLenZero": true,
+                "SubjectKeyId": "x4H1/Y6I2QA8TWOiUDEkoM4j/iM=",
+                "AuthorityKeyId": "5K8rJnEaK0gnhS9SZizv8IkTcT4=",
+                "OCSPServer": null,
+                "IssuingCertificateURL": [
+                  "http://i.pki.goog/r1.crt"
+                ],
+                "DNSNames": null,
+                "EmailAddresses": null,
+                "IPAddresses": null,
+                "URIs": null,
+                "PermittedDNSDomainsCritical": false,
+                "PermittedDNSDomains": null,
+                "ExcludedDNSDomains": null,
+                "PermittedIPRanges": null,
+                "ExcludedIPRanges": null,
+                "PermittedEmailAddresses": null,
+                "ExcludedEmailAddresses": null,
+                "PermittedURIDomains": null,
+                "ExcludedURIDomains": null,
+                "CRLDistributionPoints": [
+                  "http://c.pki.goog/r/r1.crl"
+                ],
+                "PolicyIdentifiers": [
+                  [
+                    2,
+                    23,
+                    140,
+                    1,
+                    2,
+                    1
+                  ]
+                ],
+                "Policies": [
+                  "2.23.140.1.2.1"
+                ]
+              },
+              {
+                "Raw": "MIIFVzCCAz+gAwIBAgINAgPlk28xsBNJiGuiFzANBgkqhkiG9w0BAQwFADBHMQswCQYDVQQGEwJVUzEiMCAGA1UEChMZR29vZ2xlIFRydXN0IFNlcnZpY2VzIExMQzEUMBIGA1UEAxMLR1RTIFJvb3QgUjEwHhcNMTYwNjIyMDAwMDAwWhcNMzYwNjIyMDAwMDAwWjBHMQswCQYDVQQGEwJVUzEiMCAGA1UEChMZR29vZ2xlIFRydXN0IFNlcnZpY2VzIExMQzEUMBIGA1UEAxMLR1RTIFJvb3QgUjEwggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQC2EQKLHuOhd5s73L+UPreVp0A8of2C+X0yBoJx9vaMf/vo27xqLpeXo4xL+Sv2sfnOhB2x+cWX3u+58qPpvBKJXqeqUqv4IyfLpLGcY9vXmX7wCl7raKb0xlpHDU0QM+NOsROjyBhsS+z8CZDfnWQpJSMHobTSPS5g4M/SCYe7zUjwTcLCeoiKu7rPWRnWr4+wB7CeMfGCwcDfLqZtbBkOtdh+JhpFAz2weaSUKK0PfyblqAj+lug8aJRT7oM6iCsVlgmy4HqMLnXWnOunVmSPlk9orj2XwoSPwLxAwAtcvfaHszVsrBhQf4TgTM2S0yDpM7xSma8ytSmzJSq0SPly4cpk9+aCEI3oncKKiPo4Zor8Y/kB+Xj9e1x3+naH+uzfsQ55lVe0vSbv1gHR6xYKu44LtcXFilWr06zqkUspzBmkMiVOKvFlRNACzqrOSbTqn3yDsEB750Orp2yjj32JgfpMpf/VjsPOS+C12LOORc92wO1AK/1TD7Cn1TsNsYqiA94xrcx36m97PtbfkSIS5r762DL8EGMUUXLeXdYWk70paDPvOmbsB4om3xPXV2V4J95eSRQAogB/mqghtqmxlbCluQ0WEdrHbEg8QOB+DVrNVjzRlwW5y0vtOUucxD/SVRNuJLDWcfr0wbrM7Rv1/oFB2ACYPTrIrnqYNxgFlQIDAQABo0IwQDAOBgNVHQ8BAf8EBAMCAYYwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQU5K8rJnEaK0gnhS9SZizv8IkTcT4wDQYJKoZIhvcNAQEMBQADggIBAJ+qQibbC5u+/x6Wki4+omVKapi6Ist9wTrYggoGxval3sBOh2Z5ofmmWJyq+bXmYOfg6LEeQkEzCzc9zolwFcq1JKjPa7XSQCGYzyI0zzvFIoTgxQ6KfF2I5DUkzps+GlQebtuyh6f88/qBVRRiClmpIgUxPoLW7ttXNLwzldMXG+gnoot7TiYaelpkttGsN/H9oPM47HLwEXWdyzRSjeZ2axfG34arJ45JK3VmgRAhpuo+9K4l/3wV3s6MJT/KYnAK9y8JZgfIPxz88NtFMN9iiMG1D53Dn0reWVlHxYciNuaCp+0KueIHoI17eko8cdLiA6EfMgfdG+RCzgwARWGAtQsgWSl4vflVy2PFPEz0tv/bal8xa5meLMFrUKTX5hgUvYU/Z6tGn6D/Qqc6f1zLXbBwHSs09dR2CQzreExZBfMzQsNhFRAbd03OIozUhfJFfbdT6u9AWpQKXCBfTkBdYiJ23//OYb2MI3jSNwLgjt7RETeJ9r/tSQdirpLsQBqvFAnZ0E6yove+7u7Y/9waLd64NnHi/Hm3lCXRSHNboTXns5lndcEZOitHTtNCjv0xyBZm2tIMPNuzjsmhDYAPexZ3FL//2wmUspO8IFgV6dtxQ/PeEMMA3KgqlbbC1j+Qa3bbbP6MvPJwNQzcmRk13NfIRmPVNnGuV/u3gm3c",
+                "RawTBSCertificate": "MIIDP6ADAgECAg0CA+WTbzGwE0mIa6IXMA0GCSqGSIb3DQEBDAUAMEcxCzAJBgNVBAYTAlVTMSIwIAYDVQQKExlHb29nbGUgVHJ1c3QgU2VydmljZXMgTExDMRQwEgYDVQQDEwtHVFMgUm9vdCBSMTAeFw0xNjA2MjIwMDAwMDBaFw0zNjA2MjIwMDAwMDBaMEcxCzAJBgNVBAYTAlVTMSIwIAYDVQQKExlHb29nbGUgVHJ1c3QgU2VydmljZXMgTExDMRQwEgYDVQQDEwtHVFMgUm9vdCBSMTCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBALYRAose46F3mzvcv5Q+t5WnQDyh/YL5fTIGgnH29ox/++jbvGoul5ejjEv5K/ax+c6EHbH5xZfe77nyo+m8Eolep6pSq/gjJ8uksZxj29eZfvAKXutopvTGWkcNTRAz406xE6PIGGxL7PwJkN+dZCklIwehtNI9LmDgz9IJh7vNSPBNwsJ6iIq7us9ZGdavj7AHsJ4x8YLBwN8upm1sGQ612H4mGkUDPbB5pJQorQ9/JuWoCP6W6DxolFPugzqIKxWWCbLgeowuddac66dWZI+WT2iuPZfChI/AvEDAC1y99oezNWysGFB/hOBMzZLTIOkzvFKZrzK1KbMlKrRI+XLhymT35oIQjeidwoqI+jhmivxj+QH5eP17XHf6dof67N+xDnmVV7S9Ju/WAdHrFgq7jgu1xcWKVavTrOqRSynMGaQyJU4q8WVE0ALOqs5JtOqffIOwQHvnQ6unbKOPfYmB+kyl/9WOw85L4LXYs45Fz3bA7UAr/VMPsKfVOw2xiqID3jGtzHfqb3s+1t+RIhLmvvrYMvwQYxRRct5d1haTvSloM+86ZuwHiibfE9dXZXgn3l5JFACiAH+aqCG2qbGVsKW5DRYR2sdsSDxA4H4NWs1WPNGXBbnLS+05S5zEP9JVE24ksNZx+vTBusztG/X+gUHYAJg9Osiuepg3GAWVAgMBAAGjQjBAMA4GA1UdDwEB/wQEAwIBhjAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBTkrysmcRorSCeFL1JmLO/wiRNxPg==",
+                "RawSubjectPublicKeyInfo": "MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAthECix7joXebO9y/lD63ladAPKH9gvl9MgaCcfb2jH/76Nu8ai6Xl6OMS/kr9rH5zoQdsfnFl97vufKj6bwSiV6nqlKr+CMny6SxnGPb15l+8Ape62im9MZaRw1NEDPjTrETo8gYbEvs/AmQ351kKSUjB6G00j0uYODP0gmHu81I8E3CwnqIiru6z1kZ1q+PsAewnjHxgsHA3y6mbWwZDrXYfiYaRQM9sHmklCitD38m5agI/pboPGiUU+6DOogrFZYJsuB6jC511pzrp1Zkj5ZPaK49l8KEj8C8QMALXL32h7M1bKwYUH+E4EzNktMg6TO8UpmvMrUpsyUqtEj5cuHKZPfmghCN6J3Cioj6OGaK/GP5Afl4/Xtcd/p2h/rs37EOeZVXtL0m79YB0esWCruOC7XFxYpVq9Os6pFLKcwZpDIlTirxZUTQAs6qzkm06p98g7BAe+dDq6dso499iYH6TKX/1Y7DzkvgtdizjkXPdsDtQCv9Uw+wp9U7DbGKogPeMa3Md+pvez7W35EiEua++tgy/BBjFFFy3l3WFpO9KWgz7zpm7AeKJt8T11dleCfeXkkUAKIAf5qoIbapsZWwpbkNFhHax2xIPEDgfg1azVY80ZcFuctL7TlLnMQ/0lUTbiSw1nH69MG6zO0b9f6BQdgAmD06yK56mDcYBZUCAwEAAQ==",
+                "RawSubject": "MEcxCzAJBgNVBAYTAlVTMSIwIAYDVQQKExlHb29nbGUgVHJ1c3QgU2VydmljZXMgTExDMRQwEgYDVQQDEwtHVFMgUm9vdCBSMQ==",
+                "RawIssuer": "MEcxCzAJBgNVBAYTAlVTMSIwIAYDVQQKExlHb29nbGUgVHJ1c3QgU2VydmljZXMgTExDMRQwEgYDVQQDEwtHVFMgUm9vdCBSMQ==",
+                "Signature": "n6pCJtsLm77/HpaSLj6iZUpqmLoiy33BOtiCCgbG9qXewE6HZnmh+aZYnKr5teZg5+DosR5CQTMLNz3OiXAVyrUkqM9rtdJAIZjPIjTPO8UihODFDop8XYjkNSTOmz4aVB5u27KHp/zz+oFVFGIKWakiBTE+gtbu21c0vDOV0xcb6Ceii3tOJhp6WmS20aw38f2g8zjscvARdZ3LNFKN5nZrF8bfhqsnjkkrdWaBECGm6j70riX/fBXezowlP8picAr3LwlmB8g/HPzw20Uw32KIwbUPncOfSt5ZWUfFhyI25oKn7Qq54gegjXt6Sjxx0uIDoR8yB90b5ELODABFYYC1CyBZKXi9+VXLY8U8TPS2/9tqXzFrmZ4swWtQpNfmGBS9hT9nq0afoP9Cpzp/XMtdsHAdKzT11HYJDOt4TFkF8zNCw2EVEBt3Tc4ijNSF8kV9t1Pq70BalApcIF9OQF1iInbf/85hvYwjeNI3AuCO3tERN4n2v+1JB2KukuxAGq8UCdnQTrKi977u7tj/3Bot3rg2ceL8ebeUJdFIc1uhNeezmWd1wRk6K0dO00KO/THIFmba0gw827OOyaENgA97FncUv//bCZSyk7wgWBXp23FD894QwwDcqCqVtsLWP5Brdtts/oy88nA1DNyZGTXc18hGY9U2ca5X+7eCbdw=",
+                "SignatureAlgorithm": 5,
+                "PublicKeyAlgorithm": 1,
+                "PublicKey": null,
+                "Version": 3,
+                "SerialNumber": 159662320309726417404178440727,
+                "Issuer": {
+                  "Country": [
+                    "US"
+                  ],
+                  "Organization": [
+                    "Google Trust Services LLC"
+                  ],
+                  "OrganizationalUnit": null,
+                  "Locality": null,
+                  "Province": null,
+                  "StreetAddress": null,
+                  "PostalCode": null,
+                  "SerialNumber": "",
+                  "CommonName": "GTS Root R1",
+                  "Names": [
+                    {
+                      "Type": [
+                        2,
+                        5,
+                        4,
+                        6
+                      ],
+                      "Value": "US"
+                    },
+                    {
+                      "Type": [
+                        2,
+                        5,
+                        4,
+                        10
+                      ],
+                      "Value": "Google Trust Services LLC"
+                    },
+                    {
+                      "Type": [
+                        2,
+                        5,
+                        4,
+                        3
+                      ],
+                      "Value": "GTS Root R1"
+                    }
+                  ],
+                  "ExtraNames": null
+                },
+                "Subject": {
+                  "Country": [
+                    "US"
+                  ],
+                  "Organization": [
+                    "Google Trust Services LLC"
+                  ],
+                  "OrganizationalUnit": null,
+                  "Locality": null,
+                  "Province": null,
+                  "StreetAddress": null,
+                  "PostalCode": null,
+                  "SerialNumber": "",
+                  "CommonName": "GTS Root R1",
+                  "Names": [
+                    {
+                      "Type": [
+                        2,
+                        5,
+                        4,
+                        6
+                      ],
+                      "Value": "US"
+                    },
+                    {
+                      "Type": [
+                        2,
+                        5,
+                        4,
+                        10
+                      ],
+                      "Value": "Google Trust Services LLC"
+                    },
+                    {
+                      "Type": [
+                        2,
+                        5,
+                        4,
+                        3
+                      ],
+                      "Value": "GTS Root R1"
+                    }
+                  ],
+                  "ExtraNames": null
+                },
+                "NotBefore": "2016-06-22T00:00:00Z",
+                "NotAfter": "2036-06-22T00:00:00Z",
+                "KeyUsage": 97,
+                "Extensions": [
+                  {
+                    "Id": [
+                      2,
+                      5,
+                      29,
+                      15
+                    ],
+                    "Critical": true,
+                    "Value": "AwIBhg=="
+                  },
+                  {
+                    "Id": [
+                      2,
+                      5,
+                      29,
+                      19
+                    ],
+                    "Critical": true,
+                    "Value": "MAMBAf8="
+                  },
+                  {
+                    "Id": [
+                      2,
+                      5,
+                      29,
+                      14
+                    ],
+                    "Critical": false,
+                    "Value": "BBTkrysmcRorSCeFL1JmLO/wiRNxPg=="
+                  }
+                ],
+                "ExtraExtensions": null,
+                "UnhandledCriticalExtensions": null,
+                "ExtKeyUsage": null,
+                "UnknownExtKeyUsage": null,
+                "BasicConstraintsValid": true,
+                "IsCA": true,
+                "MaxPathLen": -1,
+                "MaxPathLenZero": false,
+                "SubjectKeyId": "5K8rJnEaK0gnhS9SZizv8IkTcT4=",
+                "AuthorityKeyId": null,
+                "OCSPServer": null,
+                "IssuingCertificateURL": null,
+                "DNSNames": null,
+                "EmailAddresses": null,
+                "IPAddresses": null,
+                "URIs": null,
+                "PermittedDNSDomainsCritical": false,
+                "PermittedDNSDomains": null,
+                "ExcludedDNSDomains": null,
+                "PermittedIPRanges": null,
+                "ExcludedIPRanges": null,
+                "PermittedEmailAddresses": null,
+                "ExcludedEmailAddresses": null,
+                "PermittedURIDomains": null,
+                "ExcludedURIDomains": null,
+                "CRLDistributionPoints": null,
+                "PolicyIdentifiers": null,
+                "Policies": null
+              }
+            ]
+          ],
+          "SignedCertificateTimestamps": null,
+          "OCSPResponse": "",
+          "TLSUnique": "",
+          "ECHAccepted": false
+        },
+        "Request": null
+      },
+      "ErrType": null,
+      "ErrMsg": null,
+      "UUID": "e94b61e7-0a2e-4fe5-aa58-c93b7d594039"
     }
   ]
 }

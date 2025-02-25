@@ -312,6 +312,21 @@ func iRequestTheCollectionForUserWithFilterOn(ctx context.Context, username, fil
 	return context.WithValue(ctx, resultKey{}, results), nil
 }
 
+func theErrorMessageShouldIndicateThatTheNumberOfIDsIsInvalid(ctx context.Context) (context.Context, error) {
+	err, ok := ctx.Value(errKey{}).(error)
+	if !ok {
+		return ctx, errors.New("error not found in context")
+	}
+	if err == nil {
+		return ctx, errors.New("error is nil")
+	}
+	if !errors.As(err, &customerrors.CannotLoadMoreThenItemsError{}) {
+		return ctx, errors.New("error is not CannotLoadMoreThenItemsError")
+	}
+	return ctx, nil
+
+}
+
 func InitializeScenario(ctx *godog.ScenarioContext) {
 	ctx.Step(`^the API is initialized with a valid base URL and HTTP client$`, theAPIIsInitializedWithAValidBaseURLAndHTTPClient)
 	ctx.Step(`^I search for "([^"]*)"$`, iSearchFor)
@@ -336,6 +351,7 @@ func InitializeScenario(ctx *godog.ScenarioContext) {
 	ctx.Step(`^the error message should indicate that the username is invalid$`, theErrorMessageShouldIndicateThatTheUsernameIsInvalid)
 	ctx.Step(`^I request the collection for user "([^"]*)" with ([\w\s]*) (\d+)$`, iRequestTheCollectionForUserWithInt)
 	ctx.Step(`^I request the collection for user "([^"]*)" with ([\w\s]*) only$`, iRequestTheCollectionForUserWithFilterOn)
+	ctx.Step(`^the error message should indicate that the number of IDs is invalid$`, theErrorMessageShouldIndicateThatTheNumberOfIDsIsInvalid)
 }
 
 func TestFeatures(t *testing.T) {

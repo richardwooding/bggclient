@@ -5,6 +5,8 @@ import (
 	"github.com/richardwooding/bggclient/xml1/customerrors"
 	"github.com/richardwooding/bggclient/xml1/model"
 	"golang.org/x/time/rate"
+	"io"
+	"mime"
 	"net/http"
 	"net/url"
 	"regexp"
@@ -13,6 +15,7 @@ import (
 )
 
 var MAX_ALLOWED_RETRIES = 5
+var MAX_ALLOWED_BOARDGAME_IDS = 20
 
 type Options struct {
 	HttpClient *http.Client
@@ -75,6 +78,21 @@ func (a *API) getInternal(ctx context.Context, params map[string]string, success
 		return nil, customerrors.TooManyRetriesError{Retries: MAX_ALLOWED_RETRIES}
 	}
 	if !slices.Contains(successCodes, resp.StatusCode) {
+		contentType, _, contentTypeError := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if contentTypeError == nil {
+			switch contentType {
+			case "application/xml":
+				_, decodedError := model.Decode(resp.Body)
+				if decodedError != nil {
+					return nil, decodedError
+				}
+			default:
+				body, readError := io.ReadAll(resp.Body)
+				if readError == nil {
+					return nil, customerrors.New(strings.TrimSpace(string(body)))
+				}
+			}
+		}
 		return nil, customerrors.UnexpectedStatusError{Status: resp.Status}
 	}
 	return model.Decode(resp.Body)
@@ -99,6 +117,9 @@ func (x *API) SearchBoardgames(ctx context.Context, search string, searchOptions
 var validIdRegex = regexp.MustCompile(`^\d+$`)
 
 func (x *API) GetBoardgamesById(ctx context.Context, ids ...string) (*model.Boardgames, error) {
+	if len(ids) > MAX_ALLOWED_BOARDGAME_IDS {
+		return nil, customerrors.CannotLoadMoreThenItemsError{MaxItems: MAX_ALLOWED_BOARDGAME_IDS}
+	}
 	for _, id := range ids {
 		if !validIdRegex.MatchString(id) {
 			return nil, customerrors.InvalidIdError{ID: id}
