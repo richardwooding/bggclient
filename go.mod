@@ -7,6 +7,7 @@ require (
 	github.com/henvic/httpretty v0.1.4
 	github.com/pborman/indent v1.2.1
 	github.com/seborama/govcr/v15 v15.2.0
+	golang.org/x/time v0.10.0
 )
 
 require (

@@ -50,7 +50,7 @@ func theAPIIsInitializedWithAValidBaseURLAndHTTPClient(ctx context.Context) (con
 	return context.WithValue(ctx, apiKey{}, api), nil
 }
 
-func ISearchFor(ctx context.Context, search string) (context.Context, error) {
+func iSearchFor(ctx context.Context, search string) (context.Context, error) {
 	api, ok := ctx.Value(apiKey{}).(*API)
 	if !ok {
 		return ctx, errors.New("api not found in context")
@@ -95,7 +95,7 @@ func iShouldReceiveAnEmptyListOfBoardgames(ctx context.Context) (context.Context
 }
 
 func iSearchForAnEmptyString(ctx context.Context) (context.Context, error) {
-	return ISearchFor(ctx, "")
+	return iSearchFor(ctx, "")
 }
 
 func iRequestTheBoardgameWithID(ctx context.Context, id string) (context.Context, error) {
@@ -225,9 +225,96 @@ func theListShouldContainABoardgameWithTheIDs(ctx context.Context, table *godog.
 	return ctx, nil
 }
 
+func iRequestTheCollectionForUser(ctx context.Context, username string) (context.Context, error) {
+	api, ok := ctx.Value(apiKey{}).(*API)
+	if !ok {
+		return ctx, errors.New("api not found in context")
+	}
+	results, err := api.GetCollection(username)
+	if err != nil {
+		return context.WithValue(ctx, errKey{}, err), nil
+	}
+	return context.WithValue(ctx, resultKey{}, results), nil
+}
+
+func iShouldReceiveACollectionOfBoardgames(ctx context.Context) (context.Context, error) {
+	_, ok := ctx.Value(resultKey{}).(*model.Items)
+	if !ok {
+		return ctx, errors.New("results is not a collection of boardgames")
+	}
+	return ctx, nil
+}
+
+func theCollectionShouldContainBoardgames(ctx context.Context) (context.Context, error) {
+	items, ok := ctx.Value(resultKey{}).(*model.Items)
+	if !ok {
+		return ctx, errors.New("results is not a collection of boardgames")
+	}
+	if len(items.Items) == 0 {
+		return ctx, errors.New("collection is empty")
+	}
+	return ctx, nil
+}
+
+func theErrorMessageShouldIndicateThatTheUserWasNotFound(ctx context.Context) (context.Context, error) {
+	err, ok := ctx.Value(errKey{}).(error)
+	if !ok {
+		return ctx, errors.New("error not found in context")
+	}
+	if err == nil {
+		return ctx, errors.New("error is nil")
+	}
+	if !errors.As(err, &customerrors.InvalidUsernameSpecifiedError{}) {
+		return ctx, errors.New("error is not InvalidUsernameSpecifiedError")
+	}
+	return ctx, nil
+}
+
+func iRequestTheCollectionWithAnEmptyUsername(ctx context.Context) (context.Context, error) {
+	return iRequestTheCollectionForUser(ctx, "")
+}
+
+func theErrorMessageShouldIndicateThatTheUsernameIsInvalid(ctx context.Context) (context.Context, error) {
+	err, ok := ctx.Value(errKey{}).(error)
+	if !ok {
+		return ctx, errors.New("error not found in context")
+	}
+	if err == nil {
+		return ctx, errors.New("error is nil")
+	}
+	if !errors.As(err, &customerrors.InvalidUsernameSpecifiedError{}) {
+		return ctx, errors.New("error is not InvalidUsernameSpecifiedError")
+	}
+	return ctx, nil
+}
+
+func iRequestTheCollectionForUserWithInt(ctx context.Context, username, filter string, value int) (context.Context, error) {
+	api, ok := ctx.Value(apiKey{}).(*API)
+	if !ok {
+		return ctx, errors.New("api not found in context")
+	}
+	results, err := api.GetCollection(username, Filter(filter, value))
+	if err != nil {
+		return context.WithValue(ctx, errKey{}, err), nil
+	}
+	return context.WithValue(ctx, resultKey{}, results), nil
+}
+
+func iRequestTheCollectionForUserWithFilterOn(ctx context.Context, username, filter string) (context.Context, error) {
+	api, ok := ctx.Value(apiKey{}).(*API)
+	if !ok {
+		return ctx, errors.New("api not found in context")
+	}
+	results, err := api.GetCollection(username, Filter(filter, true))
+	if err != nil {
+		return context.WithValue(ctx, errKey{}, err), nil
+	}
+	return context.WithValue(ctx, resultKey{}, results), nil
+}
+
 func InitializeScenario(ctx *godog.ScenarioContext) {
 	ctx.Step(`^the API is initialized with a valid base URL and HTTP client$`, theAPIIsInitializedWithAValidBaseURLAndHTTPClient)
-	ctx.Step(`^I search for "([^"]*)"$`, ISearchFor)
+	ctx.Step(`^I search for "([^"]*)"$`, iSearchFor)
 	ctx.Step(`^I should receive a list of boardgames$`, IShouldReceiveAListOfBoardgames)
 	ctx.Step(`^the list should contain a boardgame with the name "([^"]*)"$`, theListShouldContainABoardgameWithTheName)
 	ctx.Step(`^I should receive an empty list of boardgames$`, iShouldReceiveAnEmptyListOfBoardgames)
@@ -241,6 +328,14 @@ func InitializeScenario(ctx *godog.ScenarioContext) {
 	ctx.Step(`^the error message should indicate that the boardgame was not found$`, theErrorMessageShouldIndicateThatTheBoardgameWasNotFound)
 	ctx.Step(`^the error message should indicate that the ID is invalid$`, theErrorMessageShouldIndicateThatTheIDisInvalid)
 	ctx.Step(`^the list should contain a boardgame with the IDs$`, theListShouldContainABoardgameWithTheIDs)
+	ctx.Step(`^I request the collection for user "([^"]*)"$`, iRequestTheCollectionForUser)
+	ctx.Step(`^I should receive a collection of boardgames$`, iShouldReceiveACollectionOfBoardgames)
+	ctx.Step(`^the collection should contain boardgames$`, theCollectionShouldContainBoardgames)
+	ctx.Step(`^the error message should indicate that the user was not found$`, theErrorMessageShouldIndicateThatTheUserWasNotFound)
+	ctx.Step(`^I request the collection with an empty username$`, iRequestTheCollectionWithAnEmptyUsername)
+	ctx.Step(`^the error message should indicate that the username is invalid$`, theErrorMessageShouldIndicateThatTheUsernameIsInvalid)
+	ctx.Step(`^I request the collection for user "([^"]*)" with ([\w\s]*) (\d+)$`, iRequestTheCollectionForUserWithInt)
+	ctx.Step(`^I request the collection for user "([^"]*)" with ([\w\s]*) only$`, iRequestTheCollectionForUserWithFilterOn)
 }
 
 func TestFeatures(t *testing.T) {

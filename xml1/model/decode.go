@@ -3,10 +3,13 @@ package model
 import (
 	"encoding/xml"
 	"fmt"
+	"github.com/richardwooding/bggclient/xml1/customerrors"
 	"io"
 )
 
 var BOARDGAMES_XML_NAME = "boardgames"
+var ITEMS_XML_NAME = "items"
+var ERRORS_XML_NAME = "errors"
 
 func Decode(reader io.Reader) (XML1Model, error) {
 	decoder := xml.NewDecoder(reader)
@@ -22,10 +25,18 @@ func Decode(reader io.Reader) (XML1Model, error) {
 		switch token := token.(type) {
 		case xml.StartElement:
 			switch token.Name.Local {
+			case ERRORS_XML_NAME:
+				var errors Errors
+				err = decoder.DecodeElement(&errors, &token)
+				result = &errors
 			case BOARDGAMES_XML_NAME:
 				var bgs Boardgames
 				err = decoder.DecodeElement(&bgs, &token)
 				result = &bgs
+			case ITEMS_XML_NAME:
+				var items Items
+				err = decoder.DecodeElement(&items, &token)
+				result = &items
 			default:
 				err = fmt.Errorf("unknown element: %v", token.Name.Local)
 			}
@@ -33,6 +44,9 @@ func Decode(reader io.Reader) (XML1Model, error) {
 		if err != nil {
 			return nil, err
 		}
+	}
+	if errors, ok := result.(*Errors); ok {
+		return nil, customerrors.New(errors.Errors[0].Message)
 	}
 	return result, nil
 }
