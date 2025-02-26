@@ -8,6 +8,7 @@ import (
 )
 
 var BOARDGAMES_XML_NAME = "boardgames"
+var GEEKLIST_XML_NAME = "geeklist"
 var ITEMS_XML_NAME = "items"
 var ERRORS_XML_NAME = "errors"
 
@@ -37,6 +38,10 @@ func Decode(reader io.Reader) (XML1Model, error) {
 				var items Items
 				err = decoder.DecodeElement(&items, &token)
 				result = &items
+			case GEEKLIST_XML_NAME:
+				var geeklist Geeklist
+				err = decoder.DecodeElement(&geeklist, &token)
+				result = &geeklist
 			default:
 				err = fmt.Errorf("unknown element: %v", token.Name.Local)
 			}

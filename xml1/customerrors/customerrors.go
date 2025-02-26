@@ -1,10 +1,20 @@
 package customerrors
 
-import "errors"
+import (
+	"errors"
+	"regexp"
+	"strconv"
+)
+
+var cannotLoadMoreThenItems = regexp.MustCompile(`^Cgit comannot load more than (\d+) items$`)
 
 func New(message string) error {
-	switch message {
-	case "Invalid username specified":
+	switch {
+	case cannotLoadMoreThenItems.MatchString(message):
+		matches := cannotLoadMoreThenItems.FindStringSubmatch(message)
+		maxItems, _ := strconv.Atoi(matches[1])
+		return CannotLoadMoreThenItemsError{MaxItems: maxItems}
+	case message == "Invalid username specified":
 		return InvalidUsernameSpecifiedError{}
 	default:
 		return errors.New(message)
