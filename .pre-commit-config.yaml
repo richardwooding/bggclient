@@ -6,7 +6,7 @@ repos:
       - id: end-of-file-fixer
       - id: check-yaml
       - id: check-added-large-files
-        exclude: ^xml1/fixtures/bgg.jsongi$
+        exclude: ^xml1/fixtures/bgg.json$
   - repo: https://github.com/dnephin/pre-commit-golang
     rev: v0.5.0
     hooks:
