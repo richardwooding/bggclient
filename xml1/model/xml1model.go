@@ -13,3 +13,6 @@ func (b *Items) xml1Model() {}
 
 //nolint:golint,unused
 func (b *Errors) xml1Model() {}
+
+//nolint:golint,unused
+func (b *Geeklist) xml1Model() {}

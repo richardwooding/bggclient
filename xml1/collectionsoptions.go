@@ -104,7 +104,7 @@ func MaxPlays(plays int) CollectionOption {
 	}
 }
 
-func filterString(name, value string) CollectionOption {
+func collectionFilterString(name, value string) CollectionOption {
 	switch name {
 	default:
 		return func(m map[string]string) (map[string]string, error) {
@@ -113,7 +113,7 @@ func filterString(name, value string) CollectionOption {
 	}
 }
 
-func filterInt(name string, value int) CollectionOption {
+func collectionFilterInt(name string, value int) CollectionOption {
 	switch name {
 	case "wishlist priority":
 		return WishlistPriority(value)
@@ -136,7 +136,7 @@ func filterInt(name string, value int) CollectionOption {
 	}
 }
 
-func filterBool(name string, value bool) CollectionOption {
+func collectionFilterBool(name string, value bool) CollectionOption {
 	switch name {
 	case "own", "own games":
 		return Own(value)
@@ -179,14 +179,14 @@ func filterBool(name string, value bool) CollectionOption {
 	}
 }
 
-func Filter(name string, value any) CollectionOption {
+func CollectionFilter(name string, value any) CollectionOption {
 	switch v := value.(type) {
 	case string:
-		return filterString(name, v)
+		return collectionFilterString(name, v)
 	case int:
-		return filterInt(name, v)
+		return collectionFilterInt(name, v)
 	case bool:
-		return filterBool(name, v)
+		return collectionFilterBool(name, v)
 	default:
 		return func(m map[string]string) (map[string]string, error) {
 			return nil, customerrors.New("Invalid filter value specified")

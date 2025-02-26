@@ -11,6 +11,7 @@ import (
 	"github.com/seborama/govcr/v15"
 	"net/http"
 	"os"
+	"strconv"
 	"strings"
 	"testing"
 )
@@ -19,8 +20,9 @@ type apiKey struct{}
 type resultKey struct{}
 type errKey struct{}
 
-func theAPIIsInitializedWithAValidBaseURLAndHTTPClient(ctx context.Context) (context.Context, error) {
+var api *API
 
+func init() {
 	logger := &httpretty.Logger{
 		Time:           true,
 		TLS:            true,
@@ -43,10 +45,13 @@ func theAPIIsInitializedWithAValidBaseURLAndHTTPClient(ctx context.Context) (con
 		govcr.WithClient(httpClient),
 	)
 
-	api := NewAPI(Options{
+	api = NewAPI(Options{
 		HttpClient: vcr.HTTPClient(),
 		BaseURL:    "https://boardgamegeek.com/xmlapi",
 	})
+}
+
+func theAPIIsInitializedWithAValidBaseURLAndHTTPClient(ctx context.Context) (context.Context, error) {
 	return context.WithValue(ctx, apiKey{}, api), nil
 }
 
@@ -293,7 +298,7 @@ func iRequestTheCollectionForUserWithInt(ctx context.Context, username, filter s
 	if !ok {
 		return ctx, errors.New("api not found in context")
 	}
-	results, err := api.GetCollection(username, Filter(filter, value))
+	results, err := api.GetCollection(username, CollectionFilter(filter, value))
 	if err != nil {
 		return context.WithValue(ctx, errKey{}, err), nil
 	}
@@ -305,7 +310,7 @@ func iRequestTheCollectionForUserWithFilterOn(ctx context.Context, username, fil
 	if !ok {
 		return ctx, errors.New("api not found in context")
 	}
-	results, err := api.GetCollection(username, Filter(filter, true))
+	results, err := api.GetCollection(username, CollectionFilter(filter, true))
 	if err != nil {
 		return context.WithValue(ctx, errKey{}, err), nil
 	}
@@ -322,6 +327,129 @@ func theErrorMessageShouldIndicateThatTheNumberOfIDsIsInvalid(ctx context.Contex
 	}
 	if !errors.As(err, &customerrors.CannotLoadMoreThenItemsError{}) {
 		return ctx, errors.New("error is not CannotLoadMoreThenItemsError")
+	}
+	return ctx, nil
+
+}
+
+func iRequestTheBoardgameWithIDWithFilterIncluded(ctx context.Context, id, filter string) (context.Context, error) {
+	api, ok := ctx.Value(apiKey{}).(*API)
+	if !ok {
+		return ctx, errors.New("api not found in context")
+	}
+	results, err := api.GetBoardgameById(ctx, id, BoardgameFilter(filter, true))
+	if err != nil {
+		return context.WithValue(ctx, errKey{}, err), nil
+	}
+	return context.WithValue(ctx, resultKey{}, results), nil
+}
+
+func theBoardgameShouldHaveComments(ctx context.Context) (context.Context, error) {
+	boardgame, ok := ctx.Value(resultKey{}).(*model.Boardgame)
+	if !ok {
+		return ctx, errors.New("result is not boardgame")
+	}
+	if len(boardgame.Comments) == 0 {
+		return ctx, errors.New("boardgame does not have comments")
+	}
+	return ctx, nil
+}
+
+func iRequestTheBoardgameWithIDWithHistoricalDataIncludedFromTo(ctx context.Context, id, from, to string) (context.Context, error) {
+	api, ok := ctx.Value(apiKey{}).(*API)
+	if !ok {
+		return ctx, errors.New("api not found in context")
+	}
+	results, err := api.GetBoardgameById(ctx, id, BoardgameFilter("historical data", true), BoardgameFilter("from", from), BoardgameFilter("to", to))
+	if err != nil {
+		return context.WithValue(ctx, errKey{}, err), nil
+	}
+	return context.WithValue(ctx, resultKey{}, results), nil
+}
+
+func theBoardgameShouldHaveStats(ctx context.Context) (context.Context, error) {
+	boardgame, ok := ctx.Value(resultKey{}).(*model.Boardgame)
+	if !ok {
+		return ctx, errors.New("result is not boardgame")
+	}
+	if boardgame.Statistics == nil {
+		return ctx, errors.New("boardgame does not have stats")
+	}
+	return ctx, nil
+}
+
+func iRequestTheGeeklistWithID(ctx context.Context, id string) (context.Context, error) {
+	api, ok := ctx.Value(apiKey{}).(*API)
+	if !ok {
+		return ctx, errors.New("api not found in context")
+	}
+	results, err := api.GetGeeklist(ctx, id)
+	if err != nil {
+		return context.WithValue(ctx, errKey{}, err), nil
+	}
+	return context.WithValue(ctx, resultKey{}, results), nil
+}
+
+func iRequestTheGeeklistWithAnEmptyID(ctx context.Context) (context.Context, error) {
+	return iRequestTheGeeklistWithID(ctx, "")
+}
+
+func iRequestTheGeeklistWithIDWithFilterIncluded(ctx context.Context, id, filter string) (context.Context, error) {
+	api, ok := ctx.Value(apiKey{}).(*API)
+	if !ok {
+		return ctx, errors.New("api not found in context")
+	}
+	results, err := api.GetGeeklist(ctx, id, GeeklistFilter(filter))
+	if err != nil {
+		return context.WithValue(ctx, errKey{}, err), nil
+	}
+	return context.WithValue(ctx, resultKey{}, results), nil
+}
+
+func iShouldReceiveASingleGeeklist(ctx context.Context) (context.Context, error) {
+	_, ok := ctx.Value(resultKey{}).(*model.Geeklist)
+	if !ok {
+		return ctx, errors.New("result is not geeklist")
+	}
+	return ctx, nil
+}
+
+func theErrorMessageShouldIndicateThatTheGeeklistWasNotFound(ctx context.Context) (context.Context, error) {
+	err, ok := ctx.Value(errKey{}).(error)
+	if !ok {
+		return ctx, errors.New("error not found in context")
+	}
+	if err == nil {
+		return ctx, errors.New("error is nil")
+	}
+	if !errors.As(err, &customerrors.NotFoundError{}) {
+		return ctx, errors.New("error is not NotFoundError")
+	}
+	return ctx, nil
+}
+
+func theGeeklistShouldHaveComments(ctx context.Context) (context.Context, error) {
+	geeklist, ok := ctx.Value(resultKey{}).(*model.Geeklist)
+	if !ok {
+		return ctx, errors.New("result is not geeklist")
+	}
+	if len(geeklist.Comments) == 0 {
+		return ctx, errors.New("geeklist does not have comments")
+	}
+	return ctx, nil
+}
+
+func theGeeklistShouldHaveTheID(ctx context.Context, id string) (context.Context, error) {
+	geeklist, ok := ctx.Value(resultKey{}).(*model.Geeklist)
+	if !ok {
+		return ctx, errors.New("result is not geeklist")
+	}
+	compare, err := strconv.Atoi(id)
+	if err != nil {
+		return ctx, customerrors.InvalidIdError{}
+	}
+	if geeklist.ID != compare {
+		return ctx, errors.New("geeklist has wrong ID")
 	}
 	return ctx, nil
 
@@ -352,6 +480,17 @@ func InitializeScenario(ctx *godog.ScenarioContext) {
 	ctx.Step(`^I request the collection for user "([^"]*)" with ([\w\s]*) (\d+)$`, iRequestTheCollectionForUserWithInt)
 	ctx.Step(`^I request the collection for user "([^"]*)" with ([\w\s]*) only$`, iRequestTheCollectionForUserWithFilterOn)
 	ctx.Step(`^the error message should indicate that the number of IDs is invalid$`, theErrorMessageShouldIndicateThatTheNumberOfIDsIsInvalid)
+	ctx.Step(`^I request the boardgame with ID "([^"]*)" with ([\w\s]*) included$`, iRequestTheBoardgameWithIDWithFilterIncluded)
+	ctx.Step(`^the boardgame should have comments$`, theBoardgameShouldHaveComments)
+	ctx.Step(`^I request the boardgame with ID "([^"]*)" with historical data included from (\d+\-\d+\-\d+) to (\d+\-\d+\-\d+)$`, iRequestTheBoardgameWithIDWithHistoricalDataIncludedFromTo)
+	ctx.Step(`^the boardgame should have stats$`, theBoardgameShouldHaveStats)
+	ctx.Step(`^I request the geeklist with ID "([^"]*)"$`, iRequestTheGeeklistWithID)
+	ctx.Step(`^I request the geeklist with an empty ID$`, iRequestTheGeeklistWithAnEmptyID)
+	ctx.Step(`^I request the geeklist with ID "([^"]*)" with ([\w\s]*) included$`, iRequestTheGeeklistWithIDWithFilterIncluded)
+	ctx.Step(`^I should receive a single geeklist$`, iShouldReceiveASingleGeeklist)
+	ctx.Step(`^the error message should indicate that the geeklist was not found$`, theErrorMessageShouldIndicateThatTheGeeklistWasNotFound)
+	ctx.Step(`^the geeklist should have comments$`, theGeeklistShouldHaveComments)
+	ctx.Step(`^the geeklist should have the ID "([^"]*)"$`, theGeeklistShouldHaveTheID)
 }
 
 func TestFeatures(t *testing.T) {

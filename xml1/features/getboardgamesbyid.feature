@@ -57,3 +57,24 @@ Feature: Get boardgames by ID
     When I request the boardgame with an empty ID
     Then I should receive an error message
     And the error message should indicate that the ID is invalid
+
+  Scenario: Get boardgames with comments included
+    Given the API is initialized with a valid base URL and HTTP client
+    When I request the boardgame with ID "12345" with comments included
+    Then I should receive a single boardgame
+    And the boardgame should have the ID "12345"
+    And the boardgame should have comments
+
+  Scenario: Get boardgames with stats included
+    Given the API is initialized with a valid base URL and HTTP client
+    When I request the boardgame with ID "12345" with stats included
+    Then I should receive a single boardgame
+    And the boardgame should have the ID "12345"
+    And the boardgame should have stats
+
+  Scenario: Get boardgames with historical data included
+    Given the API is initialized with a valid base URL and HTTP client
+    When I request the boardgame with ID "12345" with historical data included from 2009-01-01 to 2009-03-17
+    Then I should receive a single boardgame
+    And the boardgame should have the ID "12345"
+    # And the boardgame should have historical data

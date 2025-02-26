@@ -1,8 +1,21 @@
 package xml1
 
-type GeeklistOption func(m map[string]string) map[string]string
+import "errors"
 
-var IncludeComments = func(m map[string]string) map[string]string {
+type GeeklistOption func(m map[string]string) (map[string]string, error)
+
+var GeeklistComments = func(m map[string]string) (map[string]string, error) {
 	m["comments"] = "1"
-	return m
+	return m, nil
+}
+
+func GeeklistFilter(name string) GeeklistOption {
+	switch name {
+	case "comments":
+		return GeeklistComments
+	default:
+		return func(m map[string]string) (map[string]string, error) {
+			return nil, errors.New("Invalid filter name specified")
+		}
+	}
 }

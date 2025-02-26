@@ -1,11 +1,7 @@
 package customerrors
 
-import "fmt"
-
-type NotFoundError struct {
-	ID string
-}
+type NotFoundError struct{}
 
 func (e NotFoundError) Error() string {
-	return fmt.Sprintf("not found: %s", e.ID)
+	return "not found"
 }

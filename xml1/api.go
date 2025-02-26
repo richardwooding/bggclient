@@ -39,6 +39,7 @@ func NewAPI(options Options) *API {
 var generalSuccessCodes = []int{http.StatusOK}
 var generalRetryableCodes = []int{http.StatusTooManyRequests}
 var collectrionRetryableCodes = []int{http.StatusAccepted, http.StatusTooManyRequests}
+var geeklistRetryableCodes = []int{http.StatusAccepted, http.StatusTooManyRequests}
 
 func (a *API) get(ctx context.Context, params map[string]string, successCodes []int, retryableCodes []int, elem ...string) (xmlModel model.XML1Model, err error) {
 	return a.getInternal(ctx, params, successCodes, retryableCodes, MAX_ALLOWED_RETRIES, elem...)
@@ -71,6 +72,9 @@ func (a *API) getInternal(ctx context.Context, params map[string]string, success
 		return nil, err
 	}
 	defer resp.Body.Close()
+	if resp.StatusCode == http.StatusNotFound {
+		return nil, customerrors.NotFoundError{}
+	}
 	if slices.Contains(retryableCodes, resp.StatusCode) {
 		if allowedRetries > 0 {
 			return a.getInternal(ctx, params, successCodes, retryableCodes, allowedRetries-1, elem...)
@@ -150,10 +154,10 @@ func (a *API) GetBoardgameById(ctx context.Context, id string, options ...Boardg
 		return nil, err
 	}
 	if len(bg.Boardgames) == 0 {
-		return nil, customerrors.NotFoundError{ID: id}
+		return nil, customerrors.NotFoundError{}
 	}
 	if bg.Boardgames[0].ObjectID != id {
-		return nil, customerrors.NotFoundError{ID: id}
+		return nil, customerrors.NotFoundError{}
 	}
 	return &bg.Boardgames[0], nil
 }
@@ -179,4 +183,27 @@ func (a *API) GetCollection(username string, collectionOptions ...CollectionOpti
 		return nil, customerrors.UnexpectedResponseTypeError{Response: resp}
 	}
 	return c, nil
+}
+
+func (a *API) GetGeeklist(ctx context.Context, id string, options ...GeeklistOption) (*model.Geeklist, error) {
+	if id == "" {
+		return nil, customerrors.InvalidIdError{}
+	}
+	params := map[string]string{}
+	var err error
+	for _, opt := range options {
+		params, err = opt(params)
+		if err != nil {
+			return nil, err
+		}
+	}
+	resp, err := a.get(ctx, params, generalSuccessCodes, geeklistRetryableCodes, "geeklist", id)
+	if err != nil {
+		return nil, err
+	}
+	g, ok := resp.(*model.Geeklist)
+	if !ok {
+		return nil, customerrors.UnexpectedResponseTypeError{Response: resp}
+	}
+	return g, nil
 }

@@ -2,6 +2,7 @@ package xml1
 
 import (
 	"errors"
+	"regexp"
 	"time"
 )
 
@@ -42,3 +43,55 @@ func boardgameParamDateOption(param string) boardgameDateOption {
 
 var From = boardgameParamDateOption("from")
 var To = boardgameParamDateOption("to")
+
+func boardGameFilterBool(name string, b bool) BoardgameOption {
+	switch name {
+	case "comments":
+		return Comments(b)
+	case "stats":
+		return Stats(b)
+	case "history", "historical", "historical data":
+		return Historical(b)
+	default:
+		return func(m map[string]string) (map[string]string, error) {
+			return nil, errors.New("Invalid filter name specified")
+		}
+	}
+}
+
+func boardGameFilterTime(name string, t *time.Time) BoardgameOption {
+	switch name {
+	case "from":
+		return From(t)
+	case "to":
+		return To(t)
+	default:
+		return func(m map[string]string) (map[string]string, error) {
+			return nil, errors.New("Invalid filter name specified")
+		}
+	}
+}
+
+var datePattern = regexp.MustCompile(`\d+\-\d+\-\d+`)
+
+func BoardgameFilter(name string, value any) BoardgameOption {
+	switch v := value.(type) {
+	case bool:
+		return boardGameFilterBool(name, v)
+	case *time.Time:
+		return boardGameFilterTime(name, v)
+	case string:
+		if datePattern.MatchString(v) {
+			t, err := time.Parse(time.DateOnly, v)
+			if err != nil {
+				return func(m map[string]string) (map[string]string, error) {
+					return nil, err
+				}
+			}
+			return boardGameFilterTime(name, &t)
+		}
+	}
+	return func(m map[string]string) (map[string]string, error) {
+		return nil, errors.New("Invalid filter value specified")
+	}
+}

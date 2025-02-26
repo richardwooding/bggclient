@@ -3,19 +3,20 @@ package model
 import "encoding/xml"
 
 type Geeklist struct {
-	XMLName           xml.Name       `xml:"geeklist"`
-	ID                int            `xml:"id,attr"`
-	TermsOfUse        string         `xml:"termsofuse,attr"`
-	PostDate          string         `xml:"postdate"`
-	PostDateTimestamp int            `xml:"postdate_timestamp"`
-	EditDate          string         `xml:"editdate"`
-	EditDateTimestamp int            `xml:"editdate_timestamp"`
-	Thumbs            int            `xml:"thumbs"`
-	NumItems          int            `xml:"numitems"`
-	Username          string         `xml:"username"`
-	Title             string         `xml:"title"`
-	Description       string         `xml:"description"`
-	Items             []GeeklistItem `xml:"item"`
+	XMLName           xml.Name          `xml:"geeklist"`
+	ID                int               `xml:"id,attr"`
+	TermsOfUse        string            `xml:"termsofuse,attr"`
+	PostDate          string            `xml:"postdate"`
+	PostDateTimestamp int               `xml:"postdate_timestamp"`
+	EditDate          string            `xml:"editdate"`
+	EditDateTimestamp int               `xml:"editdate_timestamp"`
+	Thumbs            int               `xml:"thumbs"`
+	NumItems          int               `xml:"numitems"`
+	Username          string            `xml:"username"`
+	Title             string            `xml:"title"`
+	Description       string            `xml:"description"`
+	Comments          []GeeklistComment `xml:"comment"`
+	Items             []GeeklistItem    `xml:"item"`
 }
 
 type GeeklistItem struct {
@@ -30,4 +31,13 @@ type GeeklistItem struct {
 	Thumbs     int    `xml:"thumbs,attr"`
 	ImageID    int    `xml:"imageid,attr"`
 	Body       string `xml:"body"`
+}
+
+type GeeklistComment struct {
+	Username string `xml:"username,attr"`
+	Date     string `xml:"date,attr"`
+	PostDate string `xml:"postdate,attr"`
+	EditDate string `xml:"editdate,attr"`
+	Thumbs   int    `xml:"thumbs,attr"`
+	Body     string `xml:",chardata"`
 }
