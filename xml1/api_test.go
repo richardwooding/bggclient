@@ -132,7 +132,7 @@ func iRequestTheBoardGamesWithIDs(ctx context.Context, table *godog.Table) (cont
 	if !ok {
 		return ctx, errors.New("api not found in context")
 	}
-	results, err := api.GetBoardgamesById(ctx, ids...)
+	results, err := api.GetBoardgamesById(ctx, ids)
 	if err != nil {
 		return context.WithValue(ctx, errKey{}, err), nil
 	}

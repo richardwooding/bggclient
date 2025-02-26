@@ -116,7 +116,7 @@ func (x *API) SearchBoardgames(ctx context.Context, search string, searchOptions
 
 var validIdRegex = regexp.MustCompile(`^\d+$`)
 
-func (x *API) GetBoardgamesById(ctx context.Context, ids ...string) (*model.Boardgames, error) {
+func (x *API) GetBoardgamesById(ctx context.Context, ids []string, options ...BoardgameOption) (*model.Boardgames, error) {
 	if len(ids) > MAX_ALLOWED_BOARDGAME_IDS {
 		return nil, customerrors.CannotLoadMoreThenItemsError{MaxItems: MAX_ALLOWED_BOARDGAME_IDS}
 	}
@@ -125,7 +125,15 @@ func (x *API) GetBoardgamesById(ctx context.Context, ids ...string) (*model.Boar
 			return nil, customerrors.InvalidIdError{ID: id}
 		}
 	}
-	resp, err := x.getInternal(ctx, map[string]string{}, generalSuccessCodes, nil, 0, "boardgame", strings.Join(ids, ","))
+	m := map[string]string{}
+	var err error
+	for _, option := range options {
+		m, err = option(m)
+		if err != nil {
+			return nil, err
+		}
+	}
+	resp, err := x.getInternal(ctx, m, generalSuccessCodes, nil, 0, "boardgame", strings.Join(ids, ","))
 	if err != nil {
 		return nil, err
 	}
@@ -136,8 +144,8 @@ func (x *API) GetBoardgamesById(ctx context.Context, ids ...string) (*model.Boar
 	return bg, nil
 }
 
-func (a *API) GetBoardgameById(ctx context.Context, id string) (*model.Boardgame, error) {
-	bg, err := a.GetBoardgamesById(ctx, id)
+func (a *API) GetBoardgameById(ctx context.Context, id string, options ...BoardgameOption) (*model.Boardgame, error) {
+	bg, err := a.GetBoardgamesById(ctx, []string{id}, options...)
 	if err != nil {
 		return nil, err
 	}
