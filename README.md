@@ -19,33 +19,29 @@ go get github.com/richardwooding/bggclient@latest
 package main
 
 import (
-    "context"
-    "fmt"
-    "log"
+	"context"
+	"fmt"
+	"log"
+	"net/http"
 
-    "github.com/richardwooding/bggclient"
+	"github.com/richardwooding/bggclient/xml1"
 )
 
 func main() {
-    client := bggclient.NewClient(nil)
-    ctx := context.Background()
+	api := xml1.NewAPI(xml1.Options{
+		HttpClient: http.DefaultClient,
+		BaseURL:    "https://boardgamegeek.com/xmlapi",
+	})
+	ctx := context.Background()
 
-    // Search for board games
-    boardgames, err := client.SearchBoardgames(ctx, "Catan")
-    if err != nil {
-        log.Fatal(err)
-    }
-	for _, bg := range boardgames.Boardgames {
-		fmt.Println(bg.Name)
+	// Search for board games
+	boardgames, err := api.SearchBoardgames(ctx, "Catan")
+	if err != nil {
+		log.Fatal(err)
 	}
-    fmt.Println(boardgames)
-
-    // Get board game by ID
-    boardgame, err := client.GetBoardgameById(ctx, "13")
-    if err != nil {
-        log.Fatal(err)
-    }
-    fmt.Println(boardgame)
+	for _, bg := range boardgames.Boardgames {
+		fmt.Printf("%s https://boardgamegeek.com/boardgame/%s\n", bg.Name.Value, bg.ObjectID)
+	}
 }
 ```
 
