@@ -1,13 +1,13 @@
 module github.com/richardwooding/bggclient
 
-go 1.23.4
+go 1.25.0
 
 require (
 	github.com/cucumber/godog v0.15.0
 	github.com/henvic/httpretty v0.1.4
 	github.com/pborman/indent v1.2.1
 	github.com/seborama/govcr/v15 v15.2.0
-	golang.org/x/time v0.10.0
+	golang.org/x/time v0.15.0
 )
 
 require (
