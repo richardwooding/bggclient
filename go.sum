@@ -84,8 +84,8 @@ github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINE
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/russross/blackfriday/v2 v2.1.0/go.mod h1:+Rmxgy9KzJVeS9/2gXHxylqXiyQDYRxCVz55jmeOWTM=
-github.com/seborama/govcr/v15 v15.2.0 h1:u7PCPlQrburFgup+6tL/xmRhA830oBUBJCDTV6IXi+U=
-github.com/seborama/govcr/v15 v15.2.0/go.mod h1:XASvClxoCv+gmbyn0f2A9VZjQco3u843YuFDgcTBpsU=
+github.com/seborama/govcr/v15 v15.3.0 h1:J999ca3LGUWjwcLcTESlBQyr/u8s+fSy8WmzHECwcaI=
+github.com/seborama/govcr/v15 v15.3.0/go.mod h1:XASvClxoCv+gmbyn0f2A9VZjQco3u843YuFDgcTBpsU=
 github.com/spf13/cobra v1.7.0/go.mod h1:uLxZILRyS/50WlhOIKD7W6V5bgeIt+4sICxh6uRMrb0=
 github.com/spf13/pflag v1.0.5 h1:iy+VFUOCP1a+8yFto/drg2CJ5u0yRoB7fZw3DKv/JXA=
 github.com/spf13/pflag v1.0.5/go.mod h1:McXfInJRrz4CZXVZOBLb0bTZqETkiAhM9Iw0y3An2Bg=
