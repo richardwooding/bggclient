@@ -5,6 +5,7 @@ import (
 	"errors"
 	"log"
 	"net/http"
+	"time"
 
 	"github.com/modelcontextprotocol/go-sdk/mcp"
 	"github.com/richardwooding/bggclient/internal/mcpserver"
@@ -26,8 +27,15 @@ func (c *ServeCmd) Run(ctx context.Context, g *Globals) error {
 	httpServer := &http.Server{Addr: c.HTTP, Handler: handler}
 	go func() {
 		<-ctx.Done()
-		if err := httpServer.Shutdown(context.Background()); err != nil {
-			log.Printf("shutdown: %v", err)
+		// Give in-flight requests a bounded window to drain, then force
+		// the remaining connections (e.g. hung streaming clients) closed.
+		shutdownCtx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+		defer cancel()
+		if err := httpServer.Shutdown(shutdownCtx); err != nil {
+			log.Printf("shutdown: %v; forcing close", err)
+			if err := httpServer.Close(); err != nil {
+				log.Printf("close: %v", err)
+			}
 		}
 	}()
 	log.Printf("serving MCP over HTTP on %s", c.HTTP)

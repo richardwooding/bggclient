@@ -64,6 +64,11 @@ func (a *API) get(ctx context.Context, params map[string]string, successCodes []
 }
 
 func (a *API) getInternal(ctx context.Context, params map[string]string, successCodes []int, retryableCodes []int, allowedRetries int, elem ...string) (model.XML1Model, error) {
+	// Checked explicitly so every retry iteration bails out promptly on a
+	// cancelled context, independent of the limiter's behaviour.
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
 	err := a.limiter.Wait(ctx)
 	if err != nil {
 		return nil, err
