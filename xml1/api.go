@@ -21,6 +21,10 @@ var MAX_ALLOWED_BOARDGAME_IDS = 20
 type Options struct {
 	HttpClient *http.Client
 	BaseURL    string
+	// APIToken is sent as an Authorization Bearer token. BGG requires
+	// registered applications to authenticate; register at
+	// https://boardgamegeek.com/using_the_xml_api
+	APIToken string
 	// RequestInterval is the minimum time between requests to the BGG API.
 	// If zero, it defaults to 5 seconds.
 	RequestInterval time.Duration
@@ -29,6 +33,7 @@ type Options struct {
 type API struct {
 	httpClient *http.Client
 	baseURL    string
+	apiToken   string
 	limiter    *rate.Limiter
 }
 
@@ -37,9 +42,14 @@ func NewAPI(options Options) *API {
 	if interval == 0 {
 		interval = 5 * time.Second
 	}
+	httpClient := options.HttpClient
+	if httpClient == nil {
+		httpClient = http.DefaultClient
+	}
 	return &API{
-		httpClient: options.HttpClient,
+		httpClient: httpClient,
 		baseURL:    options.BaseURL,
+		apiToken:   options.APIToken,
 		limiter:    rate.NewLimiter(rate.Every(interval), 1),
 	}
 }
@@ -74,6 +84,9 @@ func (a *API) getInternal(ctx context.Context, params map[string]string, success
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url.String(), nil)
 	if err != nil {
 		return nil, err
+	}
+	if a.apiToken != "" {
+		req.Header.Set("Authorization", "Bearer "+a.apiToken)
 	}
 	resp, err := a.httpClient.Do(req)
 	if err != nil {
@@ -170,7 +183,7 @@ func (a *API) GetBoardgameById(ctx context.Context, id string, options ...Boardg
 	return &bg.Boardgames[0], nil
 }
 
-func (a *API) GetCollection(username string, collectionOptions ...CollectionOption) (*model.Items, error) {
+func (a *API) GetCollection(ctx context.Context, username string, collectionOptions ...CollectionOption) (*model.Items, error) {
 	if username == "" {
 		return nil, customerrors.InvalidUsernameSpecifiedError{}
 	}
@@ -182,7 +195,7 @@ func (a *API) GetCollection(username string, collectionOptions ...CollectionOpti
 			return nil, err
 		}
 	}
-	resp, err := a.get(context.Background(), params, generalSuccessCodes, collectrionRetryableCodes, "collection", username)
+	resp, err := a.get(ctx, params, generalSuccessCodes, collectrionRetryableCodes, "collection", username)
 	if err != nil {
 		return nil, err
 	}

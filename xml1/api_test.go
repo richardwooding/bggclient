@@ -238,7 +238,7 @@ func iRequestTheCollectionForUser(ctx context.Context, username string) (context
 	if !ok {
 		return ctx, errors.New("api not found in context")
 	}
-	results, err := api.GetCollection(username)
+	results, err := api.GetCollection(ctx, username)
 	if err != nil {
 		return context.WithValue(ctx, errKey{}, err), nil
 	}
@@ -301,7 +301,7 @@ func iRequestTheCollectionForUserWithInt(ctx context.Context, username, filter s
 	if !ok {
 		return ctx, errors.New("api not found in context")
 	}
-	results, err := api.GetCollection(username, CollectionFilter(filter, value))
+	results, err := api.GetCollection(ctx, username, CollectionFilter(filter, value))
 	if err != nil {
 		return context.WithValue(ctx, errKey{}, err), nil
 	}
@@ -313,7 +313,7 @@ func iRequestTheCollectionForUserWithFilterOn(ctx context.Context, username, fil
 	if !ok {
 		return ctx, errors.New("api not found in context")
 	}
-	results, err := api.GetCollection(username, CollectionFilter(filter, true))
+	results, err := api.GetCollection(ctx, username, CollectionFilter(filter, true))
 	if err != nil {
 		return context.WithValue(ctx, errKey{}, err), nil
 	}
