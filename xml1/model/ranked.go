@@ -9,8 +9,8 @@ import (
 var NOT_RANKED = "Not Ranked"
 
 type RankedInt struct {
-	Ranked bool
-	Value  *int
+	Ranked bool `json:"ranked"`
+	Value  *int `json:"value,omitempty"`
 }
 
 func (a *RankedInt) UnmarshalXMLAttr(attr xml.Attr) error {
@@ -44,18 +44,18 @@ func (a RankedInt) MarshalXMLAttr(name xml.Name) (xml.Attr, error) {
 }
 
 type RankedFloat64 struct {
-	Ranked bool
-	Value  *float64
+	Ranked bool     `json:"ranked"`
+	Value  *float64 `json:"value,omitempty"`
 }
 
 func (a *RankedFloat64) UnmarshalXMLAttr(attr xml.Attr) error {
 	switch attr.Value {
 	default:
-		var err error
-		*a.Value, err = strconv.ParseFloat(attr.Value, 64)
+		v, err := strconv.ParseFloat(attr.Value, 64)
 		if err != nil {
 			return err
 		}
+		a.Value = &v
 		a.Ranked = true
 	case NOT_RANKED:
 		a.Ranked = false
