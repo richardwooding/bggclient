@@ -26,3 +26,22 @@ jobs:
 
     - name: Test
       run: go test -v ./...
+
+  modernize:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v7
+
+    - name: Set up Go
+      uses: actions/setup-go@v6
+      with:
+        go-version-file: go.mod
+
+    - name: go fix produces no diff
+      run: |
+        diff=$(go fix -diff ./...)
+        if [ -n "$diff" ]; then
+          echo "$diff"
+          echo "::error::go fix would modernize code; run 'go fix ./...' and commit."
+          exit 1
+        fi

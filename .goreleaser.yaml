@@ -1,0 +1,85 @@
+version: 2
+
+project_name: bggclient
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: bggclient
+    main: .
+    binary: bggclient
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    flags:
+      - -trimpath
+    ldflags:
+      - -s -w
+      - -X main.version={{ .Version }}
+      - -X main.commit={{ .Commit }}
+      - -X main.date={{ .Date }}
+    mod_timestamp: "{{ .CommitTimestamp }}"
+
+archives:
+  - formats: [tar.gz]
+    format_overrides:
+      - goos: windows
+        formats: [zip]
+
+kos:
+  - id: bggclient
+    build: bggclient
+    base_image: cgr.dev/chainguard/static
+    repositories:
+      - ghcr.io/richardwooding/bggclient
+    platforms:
+      - linux/amd64
+      - linux/arm64
+    tags:
+      - "{{ .Version }}"
+      - "{{ if not .Prerelease }}latest{{ end }}"
+    sbom: spdx
+    bare: true
+    preserve_import_paths: false
+    labels:
+      org.opencontainers.image.source: https://github.com/richardwooding/bggclient
+      org.opencontainers.image.description: BoardGameGeek XML API client — CLI and MCP server
+      org.opencontainers.image.licenses: MIT
+
+homebrew_casks:
+  - name: bggclient
+    binaries:
+      - bggclient
+    directory: Casks
+    homepage: "https://richardwooding.github.io/bggclient/"
+    description: "BoardGameGeek XML API client — CLI and MCP server"
+    license: "MIT"
+    commit_msg_template: "Brew cask update for {{ .ProjectName }} {{ .Tag }}"
+    hooks:
+      post:
+        install: |
+          if OS.mac?
+            system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/bggclient"]
+          end
+    repository:
+      owner: richardwooding
+      name: homebrew-tap
+      branch: main
+      token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
+
+changelog:
+  use: github
+  filters:
+    exclude:
+      - "^docs:"
+      - "^chore:"
+      - "^test:"
+      - "^ci:"
