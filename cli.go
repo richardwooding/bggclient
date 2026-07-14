@@ -13,7 +13,7 @@ import (
 	"github.com/alecthomas/kong"
 	"github.com/charmbracelet/lipgloss"
 	"github.com/muesli/termenv"
-	"github.com/richardwooding/bggclient/xml1"
+	"github.com/richardwooding/shelfofshame/xml1"
 )
 
 type Globals struct {

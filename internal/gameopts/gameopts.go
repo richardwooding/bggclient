@@ -1,13 +1,13 @@
-// Package bggopts defines option structs shared by the CLI (kong tags) and
+// Package gameopts defines option structs shared by the CLI (kong tags) and
 // the MCP server (json/jsonschema tags), converting them to the functional
 // options of the xml1 package.
-package bggopts
+package gameopts
 
 import (
 	"fmt"
 	"time"
 
-	"github.com/richardwooding/bggclient/xml1"
+	"github.com/richardwooding/shelfofshame/xml1"
 )
 
 // BoardgameFlags are the optional parameters of the boardgame endpoint.

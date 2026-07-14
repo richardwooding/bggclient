@@ -1,7 +1,7 @@
 package xml1
 
 import (
-	"github.com/richardwooding/bggclient/xml1/customerrors"
+	"github.com/richardwooding/shelfofshame/xml1/customerrors"
 	"strconv"
 )
 

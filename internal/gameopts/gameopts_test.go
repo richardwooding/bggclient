@@ -1,10 +1,10 @@
-package bggopts
+package gameopts
 
 import (
 	"maps"
 	"testing"
 
-	"github.com/richardwooding/bggclient/xml1"
+	"github.com/richardwooding/shelfofshame/xml1"
 )
 
 func applyBoardgame(t *testing.T, opts []xml1.BoardgameOption) map[string]string {

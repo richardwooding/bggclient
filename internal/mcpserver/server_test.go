@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"github.com/modelcontextprotocol/go-sdk/mcp"
-	"github.com/richardwooding/bggclient/xml1"
-	"github.com/richardwooding/bggclient/xml1/model"
+	"github.com/richardwooding/shelfofshame/xml1"
+	"github.com/richardwooding/shelfofshame/xml1/model"
 	"github.com/seborama/govcr/v15"
 )
 
@@ -68,10 +68,10 @@ func TestListTools(t *testing.T) {
 		t.Fatalf("listing tools: %v", err)
 	}
 	want := map[string]bool{
-		"bgg_search":         false,
-		"bgg_get_boardgames": false,
-		"bgg_get_collection": false,
-		"bgg_get_geeklist":   false,
+		"search_boardgames": false,
+		"get_boardgames":    false,
+		"get_collection":    false,
+		"get_geeklist":      false,
 	}
 	for _, tool := range res.Tools {
 		if _, ok := want[tool.Name]; ok {
@@ -87,7 +87,7 @@ func TestListTools(t *testing.T) {
 
 func TestSearch(t *testing.T) {
 	session := newSession(t)
-	got := callTool[model.Boardgames](t, session, "bgg_search", map[string]any{"query": "Catan"})
+	got := callTool[model.Boardgames](t, session, "search_boardgames", map[string]any{"query": "Catan"})
 	if len(got.Boardgames) == 0 {
 		t.Fatal("expected search results, got none")
 	}
@@ -105,7 +105,7 @@ func TestSearch(t *testing.T) {
 
 func TestGetCollection(t *testing.T) {
 	session := newSession(t)
-	got := callTool[model.Items](t, session, "bgg_get_collection", map[string]any{
+	got := callTool[model.Items](t, session, "get_collection", map[string]any{
 		"username": "richardwooding",
 		"own":      true,
 	})
@@ -116,7 +116,7 @@ func TestGetCollection(t *testing.T) {
 
 func TestGetGeeklist(t *testing.T) {
 	session := newSession(t)
-	got := callTool[model.Geeklist](t, session, "bgg_get_geeklist", map[string]any{"id": "11205"})
+	got := callTool[model.Geeklist](t, session, "get_geeklist", map[string]any{"id": "11205"})
 	if got.ID != 11205 {
 		t.Errorf("geeklist ID = %d, want 11205", got.ID)
 	}
@@ -155,7 +155,7 @@ func TestToolCallCancellation(t *testing.T) {
 	done := make(chan error, 1)
 	go func() {
 		_, err := session.CallTool(callCtx, &mcp.CallToolParams{
-			Name:      "bgg_search",
+			Name:      "search_boardgames",
 			Arguments: map[string]any{"query": "anything"},
 		})
 		done <- err
@@ -184,7 +184,7 @@ func TestToolCallCancellation(t *testing.T) {
 func TestSearchError(t *testing.T) {
 	session := newSession(t)
 	res, err := session.CallTool(context.Background(), &mcp.CallToolParams{
-		Name:      "bgg_get_boardgames",
+		Name:      "get_boardgames",
 		Arguments: map[string]any{"ids": []string{"not-a-number"}},
 	})
 	if err != nil {

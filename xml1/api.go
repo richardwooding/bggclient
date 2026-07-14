@@ -2,8 +2,8 @@ package xml1
 
 import (
 	"context"
-	"github.com/richardwooding/bggclient/xml1/customerrors"
-	"github.com/richardwooding/bggclient/xml1/model"
+	"github.com/richardwooding/shelfofshame/xml1/customerrors"
+	"github.com/richardwooding/shelfofshame/xml1/model"
 	"golang.org/x/time/rate"
 	"io"
 	"mime"

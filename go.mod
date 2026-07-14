@@ -1,4 +1,4 @@
-module github.com/richardwooding/bggclient
+module github.com/richardwooding/shelfofshame
 
 go 1.26.0
 

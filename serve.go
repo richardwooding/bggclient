@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/modelcontextprotocol/go-sdk/mcp"
-	"github.com/richardwooding/bggclient/internal/mcpserver"
+	"github.com/richardwooding/shelfofshame/internal/mcpserver"
 )
 
 type ServeCmd struct {

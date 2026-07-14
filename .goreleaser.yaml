@@ -1,15 +1,15 @@
 version: 2
 
-project_name: bggclient
+project_name: shelfofshame
 
 before:
   hooks:
     - go mod tidy
 
 builds:
-  - id: bggclient
+  - id: shelfofshame
     main: .
-    binary: bggclient
+    binary: shelfofshame
     env:
       - CGO_ENABLED=0
     goos:
@@ -35,11 +35,11 @@ archives:
         formats: [zip]
 
 kos:
-  - id: bggclient
-    build: bggclient
+  - id: shelfofshame
+    build: shelfofshame
     base_image: cgr.dev/chainguard/static
     repositories:
-      - ghcr.io/richardwooding/bggclient
+      - ghcr.io/richardwooding/shelfofshame
     platforms:
       - linux/amd64
       - linux/arm64
@@ -50,16 +50,16 @@ kos:
     bare: true
     preserve_import_paths: false
     labels:
-      org.opencontainers.image.source: https://github.com/richardwooding/bggclient
+      org.opencontainers.image.source: https://github.com/richardwooding/shelfofshame
       org.opencontainers.image.description: BoardGameGeek XML API client — CLI and MCP server
       org.opencontainers.image.licenses: MIT
 
 homebrew_casks:
-  - name: bggclient
+  - name: shelfofshame
     binaries:
-      - bggclient
+      - shelfofshame
     directory: Casks
-    homepage: "https://richardwooding.github.io/bggclient/"
+    homepage: "https://richardwooding.github.io/shelfofshame/"
     description: "BoardGameGeek XML API client — CLI and MCP server"
     license: "MIT"
     commit_msg_template: "Brew cask update for {{ .ProjectName }} {{ .Tag }}"
@@ -67,7 +67,7 @@ homebrew_casks:
       post:
         install: |
           if OS.mac?
-            system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/bggclient"]
+            system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/shelfofshame"]
           end
     repository:
       owner: richardwooding

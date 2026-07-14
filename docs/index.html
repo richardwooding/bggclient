@@ -3,22 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>bggclient · BoardGameGeek CLI + MCP server</title>
-  <meta name="description" content="BoardGameGeek from your terminal and your AI assistant — a colourful CLI, an MCP server for Claude and other MCP hosts, and a Go client library for the BGG XML API.">
-  <link rel="canonical" href="https://richardwooding.github.io/bggclient/">
+  <title>shelfofshame · CLI + MCP server for the BoardGameGeek® XML API</title>
+  <meta name="description" content="Browse your shelf of shame from your terminal and your AI assistant — a colourful CLI, an MCP server for Claude and other MCP hosts, and a Go client library for the BoardGameGeek® XML API. An independent project, not affiliated with BoardGameGeek.">
+  <link rel="canonical" href="https://richardwooding.github.io/shelfofshame/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="bggclient · BoardGameGeek CLI + MCP server">
-  <meta property="og:description" content="BoardGameGeek from your terminal and your AI assistant — a colourful CLI, an MCP server for Claude and other MCP hosts, and a Go client library for the BGG XML API.">
-  <meta property="og:url" content="https://richardwooding.github.io/bggclient/">
+  <meta property="og:title" content="shelfofshame · CLI + MCP server for the BoardGameGeek® XML API">
+  <meta property="og:description" content="Browse your shelf of shame from your terminal and your AI assistant — a colourful CLI, an MCP server for Claude and other MCP hosts, and a Go client library for the BoardGameGeek® XML API. An independent project, not affiliated with BoardGameGeek.">
+  <meta property="og:url" content="https://richardwooding.github.io/shelfofshame/">
   <meta property="og:site_name" content="Richard Wooding">
-  <meta property="og:image" content="https://richardwooding.github.io/bggclient/og.png">
+  <meta property="og:image" content="https://richardwooding.github.io/shelfofshame/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="bggclient · BoardGameGeek CLI + MCP server">
+  <meta property="og:image:alt" content="shelfofshame · CLI + MCP server for the BoardGameGeek® XML API">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="bggclient · BoardGameGeek CLI + MCP server">
-  <meta name="twitter:description" content="BoardGameGeek from your terminal and your AI assistant — a colourful CLI, an MCP server for Claude and other MCP hosts, and a Go client library for the BGG XML API.">
-  <meta name="twitter:image" content="https://richardwooding.github.io/bggclient/og.png">
+  <meta name="twitter:title" content="shelfofshame · CLI + MCP server for the BoardGameGeek® XML API">
+  <meta name="twitter:description" content="Browse your shelf of shame from your terminal and your AI assistant — a colourful CLI, an MCP server for Claude and other MCP hosts, and a Go client library for the BoardGameGeek® XML API. An independent project, not affiliated with BoardGameGeek.">
+  <meta name="twitter:image" content="https://richardwooding.github.io/shelfofshame/og.png">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23151521'/%3E%3Crect x='5' y='12' width='3.5' height='7' rx='1' fill='%238b5cf6'/%3E%3Crect x='10.25' y='8' width='3.5' height='11' rx='1' fill='%23a78bfa'/%3E%3Crect x='15.5' y='4' width='3.5' height='15' rx='1' fill='%23d2b3ff'/%3E%3C/svg%3E">
   <script>try{var t=localStorage.getItem("gl-theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
   <link rel="stylesheet" href="gloam.css">
@@ -35,7 +35,7 @@
           <rect x="10.25" y="8" width="3.5" height="11" rx="1" fill="var(--gl-accent-2)"/>
           <rect x="15.5" y="4" width="3.5" height="15" rx="1" fill="#d2b3ff"/>
         </svg>
-        bggclient
+        shelfofshame
       </span>
       <button class="gl-nav-toggle" aria-label="Toggle navigation" data-gl-nav-toggle="nav" aria-expanded="false">☰</button>
       <nav id="nav">
@@ -47,7 +47,7 @@
           <svg class="gl-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
           <svg class="gl-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>
         </button>
-        <a class="gl-btn ghost" href="https://github.com/richardwooding/bggclient">GitHub ★</a>
+        <a class="gl-btn ghost" href="https://github.com/richardwooding/shelfofshame">GitHub ★</a>
       </nav>
     </div>
   </header>
@@ -57,11 +57,11 @@
       <div class="gl-wrap gl-hero-grid">
         <div>
           <p class="gl-eyebrow">cli · mcp server · go library</p>
-          <h1>BoardGameGeek, <span class="gl-grad">everywhere you work.</span></h1>
-          <p class="sub">Search games, browse collections, and pull geeklists from your terminal — or hand the same tools to Claude and any other MCP host. Built on a rate-limited, retry-aware Go client for the BGG XML API.</p>
+          <h1>Your shelf of shame, <span class="gl-grad">everywhere you work.</span></h1>
+          <p class="sub">Search games, browse collections, and pull geeklists from your terminal — or hand the same tools to Claude and any other MCP host. Built on a rate-limited, retry-aware Go client for the BoardGameGeek® XML API.</p>
           <div class="gl-cta">
             <a class="gl-btn primary" href="#install">Install</a>
-            <a class="gl-btn ghost" href="https://github.com/richardwooding/bggclient">View on GitHub</a>
+            <a class="gl-btn ghost" href="https://github.com/richardwooding/shelfofshame">View on GitHub</a>
           </div>
           <p class="gl-hint" style="margin-top:14px">Requires your own free BGG API token — <a href="https://boardgamegeek.com/using_the_xml_api">register with BGG</a> to get one.</p>
         </div>
@@ -70,9 +70,9 @@
             <span class="dot" style="background:#ff5f56"></span>
             <span class="dot" style="background:#ffbd2e"></span>
             <span class="dot" style="background:#27c93f"></span>
-            <span class="t">bggclient</span>
+            <span class="t">shelfofshame</span>
           </div>
-<pre><span class="pr">$</span> bggclient search "Brass Birmingham" --exact
+<pre><span class="pr">$</span> shelfofshame search "Brass Birmingham" --exact
 <span class="hd">{</span>
   <span class="n">"boardgames"</span>: [{
     <span class="n">"objectId"</span>: <span class="ok">"224517"</span>,
@@ -80,7 +80,7 @@
     <span class="n">"name"</span>: { <span class="n">"value"</span>: <span class="ok">"Brass: Birmingham"</span> }
   }]
 <span class="hd">}</span>
-<span class="pr">$</span> bggclient serve  <span class="loc"># MCP over stdio</span></pre>
+<span class="pr">$</span> shelfofshame serve  <span class="loc"># MCP over stdio</span></pre>
         </div>
       </div>
     </section>
@@ -129,22 +129,22 @@
         <p class="gl-lede">Every endpoint of the BGG XML API 1, with flags for all the filters. Set <code>BGG_API_TOKEN</code> once and go.</p>
         <div class="gl-split" style="margin-top:24px">
           <pre class="gl-code"><span class="c"># search by name</span>
-<span class="k">bggclient</span> search <span class="s">"Catan"</span>
+<span class="k">shelfofshame</span> search <span class="s">"Catan"</span>
 
 <span class="c"># full details, stats included</span>
-<span class="k">bggclient</span> boardgame 13 224517 --stats
+<span class="k">shelfofshame</span> boardgame 13 224517 --stats
 
 <span class="c"># owned games rated 7+</span>
-<span class="k">bggclient</span> collection richardwooding \
+<span class="k">shelfofshame</span> collection richardwooding \
   --own --min-rating=7</pre>
           <pre class="gl-code"><span class="c"># geeklists, with comments</span>
-<span class="k">bggclient</span> geeklist 11205 --comments
+<span class="k">shelfofshame</span> geeklist 11205 --comments
 
 <span class="c"># plain output for scripts</span>
-<span class="k">bggclient</span> search <span class="s">"Root"</span> --no-color | jq
+<span class="k">shelfofshame</span> search <span class="s">"Root"</span> --no-color | jq
 
 <span class="c"># be extra gentle to BGG</span>
-<span class="k">bggclient</span> --request-interval=10s search <span class="s">"Ark Nova"</span></pre>
+<span class="k">shelfofshame</span> --request-interval=10s search <span class="s">"Ark Nova"</span></pre>
         </div>
       </div>
     </section>
@@ -153,25 +153,25 @@
       <div class="gl-wrap">
         <p class="gl-eyebrow">the mcp server</p>
         <h2>Give your assistant a seat at the table.</h2>
-        <p class="gl-lede"><code>bggclient serve</code> exposes BGG as typed MCP tools — structured output schemas included — over stdio or streamable HTTP.</p>
+        <p class="gl-lede"><code>shelfofshame serve</code> exposes BGG as typed MCP tools — structured output schemas included — over stdio or streamable HTTP.</p>
         <div class="gl-grid two" style="margin-top:24px">
           <div class="gl-card">
             <h3>Tools</h3>
             <ul class="gl-badges" aria-label="MCP tools" style="margin-top:10px">
-              <li class="gl-lang">bgg_search</li>
-              <li class="gl-lang">bgg_get_boardgames</li>
-              <li class="gl-lang">bgg_get_collection</li>
-              <li class="gl-lang">bgg_get_geeklist</li>
+              <li class="gl-lang">search_boardgames</li>
+              <li class="gl-lang">get_boardgames</li>
+              <li class="gl-lang">get_collection</li>
+              <li class="gl-lang">get_geeklist</li>
             </ul>
             <p style="margin-top:14px">Search, fetch up to 20 games with stats, filter collections by ownership/rating/plays, and pull geeklists.</p>
           </div>
           <pre class="gl-code"><span class="c"># Claude Code</span>
-<span class="k">claude</span> mcp add bggclient \
+<span class="k">claude</span> mcp add shelfofshame \
   --env BGG_API_TOKEN=your-token \
-  -- bggclient serve
+  -- shelfofshame serve
 
 <span class="c"># or remote, over streamable HTTP</span>
-<span class="k">bggclient</span> serve --http :8080</pre>
+<span class="k">shelfofshame</span> serve --http :8080</pre>
         </div>
       </div>
     </section>
@@ -191,7 +191,7 @@ items, err := api.GetCollection(ctx, <span class="s">"user"</span>, xml1.Own(<sp
           <div class="gl-card">
             <h3>Typed all the way down</h3>
             <p>Functional options per endpoint, typed errors (<code>NotFoundError</code>, <code>TooManyRetriesError</code>, …), and models that marshal to both XML and JSON. Tested offline against a recorded BGG cassette.</p>
-            <p class="gl-hint" style="margin-top:14px"><a href="https://pkg.go.dev/github.com/richardwooding/bggclient/xml1">pkg.go.dev reference ↗</a></p>
+            <p class="gl-hint" style="margin-top:14px"><a href="https://pkg.go.dev/github.com/richardwooding/shelfofshame/xml1">pkg.go.dev reference ↗</a></p>
           </div>
         </div>
       </div>
@@ -216,23 +216,23 @@ items, err := api.GetCollection(ctx, <span class="s">"user"</span>, xml1.Own(<sp
           </div>
           <div class="gl-card">
             <h3>Play by the rules</h3>
-            <p>Your use of the data is governed by the <a href="https://boardgamegeek.com/wiki/page/XML_API_Terms_of_Use">XML API Terms of Use</a>: the data is licensed for <strong>non-commercial</strong> purposes, must be credited to BoardGameGeek, and may not be used to train AI/LLM systems. bggclient rate-limits itself to stay well within BGG's guidance.</p>
+            <p>Your use of the data is governed by the <a href="https://boardgamegeek.com/wiki/page/XML_API_Terms_of_Use">XML API Terms of Use</a>: the data is licensed for <strong>non-commercial</strong> purposes, must be credited to BoardGameGeek, and may not be used to train AI/LLM systems. shelfofshame rate-limits itself to stay well within BGG's guidance.</p>
           </div>
         </div>
         <div class="gl-install" style="margin-top:24px">
           <div class="gl-snip">
             <span class="lbl">brew</span>
-            <code id="i-brew">brew install richardwooding/tap/bggclient</code>
+            <code id="i-brew">brew install richardwooding/tap/shelfofshame</code>
             <button class="gl-copy" data-gl-copy="i-brew">Copy</button>
           </div>
           <div class="gl-snip">
             <span class="lbl">go</span>
-            <code id="i-go">go install github.com/richardwooding/bggclient@latest</code>
+            <code id="i-go">go install github.com/richardwooding/shelfofshame@latest</code>
             <button class="gl-copy" data-gl-copy="i-go">Copy</button>
           </div>
           <div class="gl-snip">
             <span class="lbl">oci</span>
-            <code id="i-docker">docker run --rm -e BGG_API_TOKEN ghcr.io/richardwooding/bggclient search "Catan"</code>
+            <code id="i-docker">docker run --rm -e BGG_API_TOKEN ghcr.io/richardwooding/shelfofshame search "Catan"</code>
             <button class="gl-copy" data-gl-copy="i-docker">Copy</button>
           </div>
         </div>
@@ -245,16 +245,17 @@ items, err := api.GetCollection(ctx, <span class="s">"user"</span>, xml1.Own(<sp
           <img src="powered-by-bgg.png" alt="Powered by BGG" width="240" height="71" style="max-width:100%; height:auto">
         </a>
         <p class="gl-hint" style="margin-top:12px">All game data is sourced from <a href="https://boardgamegeek.com">BoardGameGeek</a> and used under the <a href="https://boardgamegeek.com/wiki/page/XML_API_Terms_of_Use">XML API Terms of Use</a>.</p>
+        <p class="gl-hint" style="margin-top:8px">BoardGameGeek® and BGG® are registered trademarks of BoardGameGeek, LLC. shelfofshame is an independent project and is not affiliated with, sponsored by, or endorsed by BoardGameGeek.</p>
       </div>
     </section>
   </main>
 
   <footer class="gl-footer">
     <div class="gl-wrap">
-      <span class="gl-brand" style="font-size:.98rem">bggclient · MIT · <span data-gl-year></span></span>
+      <span class="gl-brand" style="font-size:.98rem">shelfofshame · MIT · <span data-gl-year></span></span>
       <nav class="gl-fnav">
-        <a href="https://github.com/richardwooding/bggclient">GitHub</a>
-        <a href="https://pkg.go.dev/github.com/richardwooding/bggclient">Docs</a>
+        <a href="https://github.com/richardwooding/shelfofshame">GitHub</a>
+        <a href="https://pkg.go.dev/github.com/richardwooding/shelfofshame">Docs</a>
         <a href="https://boardgamegeek.com">Powered by BGG</a>
         <a href="https://richardwooding.github.io/">More projects</a>
       </nav>

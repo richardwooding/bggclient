@@ -5,9 +5,9 @@ import (
 	"context"
 
 	"github.com/modelcontextprotocol/go-sdk/mcp"
-	"github.com/richardwooding/bggclient/internal/bggopts"
-	"github.com/richardwooding/bggclient/xml1"
-	"github.com/richardwooding/bggclient/xml1/model"
+	"github.com/richardwooding/shelfofshame/internal/gameopts"
+	"github.com/richardwooding/shelfofshame/xml1"
+	"github.com/richardwooding/shelfofshame/xml1/model"
 )
 
 type server struct {
@@ -20,21 +20,21 @@ type server struct {
 // elapses.
 func New(api *xml1.API, version string) *mcp.Server {
 	s := &server{api: api}
-	srv := mcp.NewServer(&mcp.Implementation{Name: "bggclient", Version: version}, nil)
+	srv := mcp.NewServer(&mcp.Implementation{Name: "shelfofshame", Version: version}, nil)
 	mcp.AddTool(srv, &mcp.Tool{
-		Name:        "bgg_search",
+		Name:        "search_boardgames",
 		Description: "Search BoardGameGeek for board games by name. Returns matching games with their BGG ids and publication years.",
 	}, s.search)
 	mcp.AddTool(srv, &mcp.Tool{
-		Name:        "bgg_get_boardgames",
+		Name:        "get_boardgames",
 		Description: "Get full details for up to 20 board games by BGG id, optionally including user comments, rating statistics, and historical data.",
 	}, s.getBoardgames)
 	mcp.AddTool(srv, &mcp.Tool{
-		Name:        "bgg_get_collection",
+		Name:        "get_collection",
 		Description: "Get a BoardGameGeek user's game collection, filterable by ownership, ratings, plays, wishlist, and trade status.",
 	}, s.getCollection)
 	mcp.AddTool(srv, &mcp.Tool{
-		Name:        "bgg_get_geeklist",
+		Name:        "get_geeklist",
 		Description: "Get a BoardGameGeek geeklist by id, optionally including comments.",
 	}, s.getGeeklist)
 	return srv
@@ -59,7 +59,7 @@ func (s *server) search(ctx context.Context, req *mcp.CallToolRequest, in Search
 
 type BoardgamesIn struct {
 	IDs []string `json:"ids" jsonschema:"BGG numeric object ids of the games to fetch, maximum 20"`
-	bggopts.BoardgameFlags
+	gameopts.BoardgameFlags
 }
 
 func (s *server) getBoardgames(ctx context.Context, req *mcp.CallToolRequest, in BoardgamesIn) (*mcp.CallToolResult, model.Boardgames, error) {
@@ -76,7 +76,7 @@ func (s *server) getBoardgames(ctx context.Context, req *mcp.CallToolRequest, in
 
 type CollectionIn struct {
 	Username string `json:"username" jsonschema:"BGG username whose collection to fetch"`
-	bggopts.CollectionFlags
+	gameopts.CollectionFlags
 }
 
 func (s *server) getCollection(ctx context.Context, req *mcp.CallToolRequest, in CollectionIn) (*mcp.CallToolResult, model.Items, error) {

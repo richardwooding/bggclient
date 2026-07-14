@@ -3,8 +3,8 @@ package main
 import (
 	"context"
 
-	"github.com/richardwooding/bggclient/internal/bggopts"
-	"github.com/richardwooding/bggclient/xml1"
+	"github.com/richardwooding/shelfofshame/internal/gameopts"
+	"github.com/richardwooding/shelfofshame/xml1"
 )
 
 type SearchCmd struct {
@@ -26,7 +26,7 @@ func (c *SearchCmd) Run(ctx context.Context, g *Globals) error {
 
 type BoardgameCmd struct {
 	IDs []string `arg:"" name:"id" help:"BGG object ids of the games to fetch (max 20)."`
-	bggopts.BoardgameFlags
+	gameopts.BoardgameFlags
 }
 
 func (c *BoardgameCmd) Run(ctx context.Context, g *Globals) error {
@@ -43,7 +43,7 @@ func (c *BoardgameCmd) Run(ctx context.Context, g *Globals) error {
 
 type CollectionCmd struct {
 	Username string `arg:"" help:"BGG username whose collection to fetch."`
-	bggopts.CollectionFlags
+	gameopts.CollectionFlags
 }
 
 func (c *CollectionCmd) Run(ctx context.Context, g *Globals) error {
