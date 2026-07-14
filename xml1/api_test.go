@@ -14,6 +14,7 @@ import (
 	"strconv"
 	"strings"
 	"testing"
+	"time"
 )
 
 type apiKey struct{}
@@ -48,6 +49,8 @@ func init() {
 	api = NewAPI(Options{
 		HttpClient: vcr.HTTPClient(),
 		BaseURL:    "https://boardgamegeek.com/xmlapi",
+		// Responses are replayed from the cassette, so no need to rate limit.
+		RequestInterval: time.Millisecond,
 	})
 }
 

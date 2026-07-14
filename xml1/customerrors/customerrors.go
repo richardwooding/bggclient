@@ -6,7 +6,7 @@ import (
 	"strconv"
 )
 
-var cannotLoadMoreThenItems = regexp.MustCompile(`^Cgit comannot load more than (\d+) items$`)
+var cannotLoadMoreThenItems = regexp.MustCompile(`^Cannot load more than (\d+) items$`)
 
 func New(message string) error {
 	switch {

@@ -12,6 +12,7 @@ import (
 	"regexp"
 	"slices"
 	"strings"
+	"time"
 )
 
 var MAX_ALLOWED_RETRIES = 5
@@ -20,6 +21,9 @@ var MAX_ALLOWED_BOARDGAME_IDS = 20
 type Options struct {
 	HttpClient *http.Client
 	BaseURL    string
+	// RequestInterval is the minimum time between requests to the BGG API.
+	// If zero, it defaults to 5 seconds.
+	RequestInterval time.Duration
 }
 
 type API struct {
@@ -29,10 +33,14 @@ type API struct {
 }
 
 func NewAPI(options Options) *API {
+	interval := options.RequestInterval
+	if interval == 0 {
+		interval = 5 * time.Second
+	}
 	return &API{
 		httpClient: options.HttpClient,
 		baseURL:    options.BaseURL,
-		limiter:    rate.NewLimiter(rate.Every(5), 1),
+		limiter:    rate.NewLimiter(rate.Every(interval), 1),
 	}
 }
 
