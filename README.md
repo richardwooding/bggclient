@@ -10,11 +10,30 @@ underlying Go client available as a library.
 
 **Website:** https://richardwooding.github.io/bggclient/
 
-> [!IMPORTANT]
-> BGG now requires registered applications to authenticate with an API token.
-> Register at [Using the XML API](https://boardgamegeek.com/using_the_xml_api),
-> then pass your token via `--token` or the `BGG_API_TOKEN` environment variable.
-> Please abide by the [BGG API Terms of Use](https://boardgamegeek.com/wiki/page/BGG_XML_API_Terms_of_Use).
+[![Powered by BGG](docs/powered-by-bgg-badge.png)](https://boardgamegeek.com)
+
+All game data is sourced from [BoardGameGeek](https://boardgamegeek.com) and used
+under the [XML API Terms of Use](https://boardgamegeek.com/wiki/page/XML_API_Terms_of_Use).
+
+## You need your own BGG API token
+
+BGG restricts the XML API to **registered applications** — without a token every
+request returns `401 Unauthorized`. Registration is free for non-commercial use:
+
+1. Read [Using the XML API](https://boardgamegeek.com/using_the_xml_api) and
+   register your application there (requires a BGG account).
+2. Create an API token for your registered application on the same page.
+3. Provide it to bggclient via the `BGG_API_TOKEN` environment variable or the
+   `--token` flag:
+
+   ```sh
+   export BGG_API_TOKEN=your-token
+   ```
+
+By using the API you agree to the
+[XML API Terms of Use](https://boardgamegeek.com/wiki/page/XML_API_Terms_of_Use)
+— note in particular that the data is licensed for **non-commercial** use and
+may not be used to train AI/LLM systems.
 
 ## Install
 

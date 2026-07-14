@@ -63,6 +63,7 @@
             <a class="gl-btn primary" href="#install">Install</a>
             <a class="gl-btn ghost" href="https://github.com/richardwooding/bggclient">View on GitHub</a>
           </div>
+          <p class="gl-hint" style="margin-top:14px">Requires your own free BGG API token — <a href="https://boardgamegeek.com/using_the_xml_api">register with BGG</a> to get one.</p>
         </div>
         <div class="gl-term">
           <div class="bar">
@@ -200,7 +201,24 @@ items, err := api.GetCollection(ctx, <span class="s">"user"</span>, xml1.Own(<sp
       <div class="gl-wrap">
         <p class="gl-eyebrow">install</p>
         <h2>Pick your poison.</h2>
-        <p class="gl-lede">BGG now requires a registered API token — grab one at <a href="https://boardgamegeek.com/using_the_xml_api">boardgamegeek.com/using_the_xml_api</a>.</p>
+        <div class="gl-grid two" style="margin-top:24px">
+          <div class="gl-card">
+            <h3>
+              <span class="gl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2l-2 2m-7.6 7.6a5.5 5.5 0 1 1-7.8 7.8 5.5 5.5 0 0 1 7.8-7.8zm0 0L19 3m-3.5 3.5L18 9"/></svg></span>
+              First: get your own BGG API token
+            </h3>
+            <p>The BGG XML API only accepts <strong>registered applications</strong> — without a token every request is rejected with 401 Unauthorized. Registration is free for non-commercial use:</p>
+            <ol style="margin:12px 0 0 20px; display:grid; gap:6px">
+              <li><a href="https://boardgamegeek.com/using_the_xml_api">Register your application with BGG</a> (needs a BGG account)</li>
+              <li>Create an API token on the same page</li>
+              <li>Export it: <code>export BGG_API_TOKEN=your-token</code></li>
+            </ol>
+          </div>
+          <div class="gl-card">
+            <h3>Play by the rules</h3>
+            <p>Your use of the data is governed by the <a href="https://boardgamegeek.com/wiki/page/XML_API_Terms_of_Use">XML API Terms of Use</a>: the data is licensed for <strong>non-commercial</strong> purposes, must be credited to BoardGameGeek, and may not be used to train AI/LLM systems. bggclient rate-limits itself to stay well within BGG's guidance.</p>
+          </div>
+        </div>
         <div class="gl-install" style="margin-top:24px">
           <div class="gl-snip">
             <span class="lbl">brew</span>
@@ -218,7 +236,15 @@ items, err := api.GetCollection(ctx, <span class="s">"user"</span>, xml1.Own(<sp
             <button class="gl-copy" data-gl-copy="i-docker">Copy</button>
           </div>
         </div>
-        <p class="gl-hint" style="margin-top:16px">Please abide by the <a href="https://boardgamegeek.com/wiki/page/BGG_XML_API_Terms_of_Use">BGG API Terms of Use</a>.</p>
+      </div>
+    </section>
+
+    <section aria-label="Attribution">
+      <div class="gl-wrap" style="text-align:center">
+        <a href="https://boardgamegeek.com" style="display:inline-block; background:#fff; border:1px solid #d9d7e4; border-radius:12px; padding:14px 22px; line-height:0">
+          <img src="powered-by-bgg.png" alt="Powered by BGG" width="240" height="71" style="max-width:100%; height:auto">
+        </a>
+        <p class="gl-hint" style="margin-top:12px">All game data is sourced from <a href="https://boardgamegeek.com">BoardGameGeek</a> and used under the <a href="https://boardgamegeek.com/wiki/page/XML_API_Terms_of_Use">XML API Terms of Use</a>.</p>
       </div>
     </section>
   </main>
@@ -229,6 +255,7 @@ items, err := api.GetCollection(ctx, <span class="s">"user"</span>, xml1.Own(<sp
       <nav class="gl-fnav">
         <a href="https://github.com/richardwooding/bggclient">GitHub</a>
         <a href="https://pkg.go.dev/github.com/richardwooding/bggclient">Docs</a>
+        <a href="https://boardgamegeek.com">Powered by BGG</a>
         <a href="https://richardwooding.github.io/">More projects</a>
       </nav>
     </div>
