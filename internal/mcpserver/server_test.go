@@ -3,6 +3,8 @@ package mcpserver
 import (
 	"context"
 	"encoding/json"
+	"net/http"
+	"net/http/httptest"
 	"testing"
 	"time"
 
@@ -117,6 +119,65 @@ func TestGetGeeklist(t *testing.T) {
 	got := callTool[model.Geeklist](t, session, "bgg_get_geeklist", map[string]any{"id": "11205"})
 	if got.ID != 11205 {
 		t.Errorf("geeklist ID = %d, want 11205", got.ID)
+	}
+}
+
+// Cancelling a tool call must propagate through the MCP session
+// (notifications/cancelled) into the handler's ctx and abort the in-flight
+// BGG HTTP request.
+func TestToolCallCancellation(t *testing.T) {
+	arrived := make(chan struct{})
+	released := make(chan struct{})
+	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		close(arrived)
+		<-r.Context().Done()
+		close(released)
+	}))
+	defer srv.Close()
+
+	api := xml1.NewAPI(xml1.Options{BaseURL: srv.URL, RequestInterval: time.Millisecond})
+	server := New(api, "test")
+
+	ctx := t.Context()
+	serverTransport, clientTransport := mcp.NewInMemoryTransports()
+	if _, err := server.Connect(ctx, serverTransport, nil); err != nil {
+		t.Fatalf("connecting server: %v", err)
+	}
+	client := mcp.NewClient(&mcp.Implementation{Name: "test-client"}, nil)
+	session, err := client.Connect(ctx, clientTransport, nil)
+	if err != nil {
+		t.Fatalf("connecting client: %v", err)
+	}
+	t.Cleanup(func() { _ = session.Close() })
+
+	callCtx, cancel := context.WithCancel(ctx)
+	defer cancel()
+	done := make(chan error, 1)
+	go func() {
+		_, err := session.CallTool(callCtx, &mcp.CallToolParams{
+			Name:      "bgg_search",
+			Arguments: map[string]any{"query": "anything"},
+		})
+		done <- err
+	}()
+
+	<-arrived
+	cancel()
+
+	select {
+	case err := <-done:
+		if err == nil {
+			t.Error("CallTool returned nil error after cancellation")
+		}
+	case <-time.After(5 * time.Second):
+		t.Fatal("CallTool did not return after cancellation")
+	}
+	select {
+	case <-released:
+		// The upstream request was aborted: cancellation reached the
+		// handler's HTTP call.
+	case <-time.After(5 * time.Second):
+		t.Fatal("upstream HTTP request was not cancelled")
 	}
 }
 
