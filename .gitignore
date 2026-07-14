@@ -27,5 +27,4 @@ go.work.sum
 # Jetbrain's IDEs
 .idea/
 
-# no main.go (it's a library)
-main.go
+dist/
