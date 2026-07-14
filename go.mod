@@ -1,13 +1,13 @@
 module github.com/richardwooding/bggclient
 
-go 1.23.4
+go 1.25.0
 
 require (
-	github.com/cucumber/godog v0.15.0
+	github.com/cucumber/godog v0.15.1
 	github.com/henvic/httpretty v0.1.4
 	github.com/pborman/indent v1.2.1
-	github.com/seborama/govcr/v15 v15.2.0
-	golang.org/x/time v0.10.0
+	github.com/seborama/govcr/v15 v15.3.0
+	golang.org/x/time v0.15.0
 )
 
 require (
@@ -33,7 +33,7 @@ require (
 	github.com/jinzhu/copier v0.4.0 // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
-	github.com/spf13/pflag v1.0.5 // indirect
+	github.com/spf13/pflag v1.0.7 // indirect
 	golang.org/x/crypto v0.31.0 // indirect
 	golang.org/x/sys v0.28.0 // indirect
 )
