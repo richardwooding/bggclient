@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>bggclient · BoardGameGeek CLI + MCP server</title>
+  <meta name="description" content="BoardGameGeek from your terminal and your AI assistant — a colourful CLI, an MCP server for Claude and other MCP hosts, and a Go client library for the BGG XML API.">
+  <link rel="canonical" href="https://richardwooding.github.io/bggclient/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="bggclient · BoardGameGeek CLI + MCP server">
+  <meta property="og:description" content="BoardGameGeek from your terminal and your AI assistant — a colourful CLI, an MCP server for Claude and other MCP hosts, and a Go client library for the BGG XML API.">
+  <meta property="og:url" content="https://richardwooding.github.io/bggclient/">
+  <meta property="og:site_name" content="Richard Wooding">
+  <meta property="og:image" content="https://richardwooding.github.io/bggclient/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="bggclient · BoardGameGeek CLI + MCP server">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="bggclient · BoardGameGeek CLI + MCP server">
+  <meta name="twitter:description" content="BoardGameGeek from your terminal and your AI assistant — a colourful CLI, an MCP server for Claude and other MCP hosts, and a Go client library for the BGG XML API.">
+  <meta name="twitter:image" content="https://richardwooding.github.io/bggclient/og.png">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23151521'/%3E%3Crect x='5' y='12' width='3.5' height='7' rx='1' fill='%238b5cf6'/%3E%3Crect x='10.25' y='8' width='3.5' height='11' rx='1' fill='%23a78bfa'/%3E%3Crect x='15.5' y='4' width='3.5' height='15' rx='1' fill='%23d2b3ff'/%3E%3C/svg%3E">
+  <script>try{var t=localStorage.getItem("gl-theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+  <link rel="stylesheet" href="gloam.css">
+</head>
+<body class="gl">
+  <a class="gl-skip" href="#main">Skip to content</a>
+
+  <header class="gl-nav">
+    <div class="gl-wrap">
+      <span class="gl-brand">
+        <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true">
+          <rect width="24" height="24" rx="6" fill="var(--gl-panel-2)"/>
+          <rect x="5" y="12" width="3.5" height="7" rx="1" fill="var(--gl-accent)"/>
+          <rect x="10.25" y="8" width="3.5" height="11" rx="1" fill="var(--gl-accent-2)"/>
+          <rect x="15.5" y="4" width="3.5" height="15" rx="1" fill="#d2b3ff"/>
+        </svg>
+        bggclient
+      </span>
+      <button class="gl-nav-toggle" aria-label="Toggle navigation" data-gl-nav-toggle="nav" aria-expanded="false">☰</button>
+      <nav id="nav">
+        <a href="#cli">CLI</a>
+        <a href="#mcp">MCP</a>
+        <a href="#library">Library</a>
+        <a href="#install">Install</a>
+        <button class="gl-theme-toggle" data-gl-theme-toggle aria-label="Toggle color theme" aria-pressed="true">
+          <svg class="gl-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <svg class="gl-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>
+        </button>
+        <a class="gl-btn ghost" href="https://github.com/richardwooding/bggclient">GitHub ★</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="gl-hero">
+      <div class="gl-wrap gl-hero-grid">
+        <div>
+          <p class="gl-eyebrow">cli · mcp server · go library</p>
+          <h1>BoardGameGeek, <span class="gl-grad">everywhere you work.</span></h1>
+          <p class="sub">Search games, browse collections, and pull geeklists from your terminal — or hand the same tools to Claude and any other MCP host. Built on a rate-limited, retry-aware Go client for the BGG XML API.</p>
+          <div class="gl-cta">
+            <a class="gl-btn primary" href="#install">Install</a>
+            <a class="gl-btn ghost" href="https://github.com/richardwooding/bggclient">View on GitHub</a>
+          </div>
+        </div>
+        <div class="gl-term">
+          <div class="bar">
+            <span class="dot" style="background:#ff5f56"></span>
+            <span class="dot" style="background:#ffbd2e"></span>
+            <span class="dot" style="background:#27c93f"></span>
+            <span class="t">bggclient</span>
+          </div>
+<pre><span class="pr">$</span> bggclient search "Brass Birmingham" --exact
+<span class="hd">{</span>
+  <span class="n">"boardgames"</span>: [{
+    <span class="n">"objectId"</span>: <span class="ok">"224517"</span>,
+    <span class="n">"yearPublished"</span>: <span class="ok">2018</span>,
+    <span class="n">"name"</span>: { <span class="n">"value"</span>: <span class="ok">"Brass: Birmingham"</span> }
+  }]
+<span class="hd">}</span>
+<span class="pr">$</span> bggclient serve  <span class="loc"># MCP over stdio</span></pre>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="gl-wrap">
+        <p class="gl-eyebrow">what you get</p>
+        <h2>One binary, three ways in.</h2>
+        <div class="gl-grid feat" style="margin-top:28px">
+          <div class="gl-card">
+            <h3>
+              <span class="gl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17l6-6-6-6M12 19h8"/></svg></span>
+              Colourful CLI
+            </h3>
+            <p>Syntax-highlighted JSON for search, boardgames, collections, and geeklists. Respects <code>NO_COLOR</code> and pipes cleanly.</p>
+          </div>
+          <div class="gl-card">
+            <h3>
+              <span class="gl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10M12 8v4l3 3"/></svg></span>
+              MCP server
+            </h3>
+            <p>Four typed tools over stdio or streamable HTTP, built on the official MCP Go SDK. Ask Claude about your collection.</p>
+          </div>
+          <div class="gl-card">
+            <h3>
+              <span class="gl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></span>
+              Go library
+            </h3>
+            <p>The <code>xml1</code> package underneath: context-aware, typed errors, functional options, dual xml/json models.</p>
+          </div>
+          <div class="gl-card">
+            <h3>
+              <span class="gl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+              Polite by default
+            </h3>
+            <p>Built-in rate limiting (one request per 5s), automatic retries on 429 and BGG's 202 "still preparing" responses, and Bearer-token auth.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cli">
+      <div class="gl-wrap">
+        <p class="gl-eyebrow">the cli</p>
+        <h2>Your collection, one command away.</h2>
+        <p class="gl-lede">Every endpoint of the BGG XML API 1, with flags for all the filters. Set <code>BGG_API_TOKEN</code> once and go.</p>
+        <div class="gl-split" style="margin-top:24px">
+          <pre class="gl-code"><span class="c"># search by name</span>
+<span class="k">bggclient</span> search <span class="s">"Catan"</span>
+
+<span class="c"># full details, stats included</span>
+<span class="k">bggclient</span> boardgame 13 224517 --stats
+
+<span class="c"># owned games rated 7+</span>
+<span class="k">bggclient</span> collection richardwooding \
+  --own --min-rating=7</pre>
+          <pre class="gl-code"><span class="c"># geeklists, with comments</span>
+<span class="k">bggclient</span> geeklist 11205 --comments
+
+<span class="c"># plain output for scripts</span>
+<span class="k">bggclient</span> search <span class="s">"Root"</span> --no-color | jq
+
+<span class="c"># be extra gentle to BGG</span>
+<span class="k">bggclient</span> --request-interval=10s search <span class="s">"Ark Nova"</span></pre>
+        </div>
+      </div>
+    </section>
+
+    <section id="mcp">
+      <div class="gl-wrap">
+        <p class="gl-eyebrow">the mcp server</p>
+        <h2>Give your assistant a seat at the table.</h2>
+        <p class="gl-lede"><code>bggclient serve</code> exposes BGG as typed MCP tools — structured output schemas included — over stdio or streamable HTTP.</p>
+        <div class="gl-grid two" style="margin-top:24px">
+          <div class="gl-card">
+            <h3>Tools</h3>
+            <ul class="gl-badges" aria-label="MCP tools" style="margin-top:10px">
+              <li class="gl-lang">bgg_search</li>
+              <li class="gl-lang">bgg_get_boardgames</li>
+              <li class="gl-lang">bgg_get_collection</li>
+              <li class="gl-lang">bgg_get_geeklist</li>
+            </ul>
+            <p style="margin-top:14px">Search, fetch up to 20 games with stats, filter collections by ownership/rating/plays, and pull geeklists.</p>
+          </div>
+          <pre class="gl-code"><span class="c"># Claude Code</span>
+<span class="k">claude</span> mcp add bggclient \
+  --env BGG_API_TOKEN=your-token \
+  -- bggclient serve
+
+<span class="c"># or remote, over streamable HTTP</span>
+<span class="k">bggclient</span> serve --http :8080</pre>
+        </div>
+      </div>
+    </section>
+
+    <section id="library">
+      <div class="gl-wrap">
+        <p class="gl-eyebrow">the library</p>
+        <h2>The client underneath.</h2>
+        <div class="gl-split" style="margin-top:24px">
+          <pre class="gl-code"><span class="k">api</span> := xml1.NewAPI(xml1.Options{
+    BaseURL:  <span class="s">"https://boardgamegeek.com/xmlapi"</span>,
+    APIToken: os.Getenv(<span class="s">"BGG_API_TOKEN"</span>),
+})
+
+games, err := api.SearchBoardgames(ctx, <span class="s">"Catan"</span>)
+items, err := api.GetCollection(ctx, <span class="s">"user"</span>, xml1.Own(<span class="k">true</span>))</pre>
+          <div class="gl-card">
+            <h3>Typed all the way down</h3>
+            <p>Functional options per endpoint, typed errors (<code>NotFoundError</code>, <code>TooManyRetriesError</code>, …), and models that marshal to both XML and JSON. Tested offline against a recorded BGG cassette.</p>
+            <p class="gl-hint" style="margin-top:14px"><a href="https://pkg.go.dev/github.com/richardwooding/bggclient/xml1">pkg.go.dev reference ↗</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="install">
+      <div class="gl-wrap">
+        <p class="gl-eyebrow">install</p>
+        <h2>Pick your poison.</h2>
+        <p class="gl-lede">BGG now requires a registered API token — grab one at <a href="https://boardgamegeek.com/using_the_xml_api">boardgamegeek.com/using_the_xml_api</a>.</p>
+        <div class="gl-install" style="margin-top:24px">
+          <div class="gl-snip">
+            <span class="lbl">brew</span>
+            <code id="i-brew">brew install richardwooding/tap/bggclient</code>
+            <button class="gl-copy" data-gl-copy="i-brew">Copy</button>
+          </div>
+          <div class="gl-snip">
+            <span class="lbl">go</span>
+            <code id="i-go">go install github.com/richardwooding/bggclient@latest</code>
+            <button class="gl-copy" data-gl-copy="i-go">Copy</button>
+          </div>
+          <div class="gl-snip">
+            <span class="lbl">oci</span>
+            <code id="i-docker">docker run --rm -e BGG_API_TOKEN ghcr.io/richardwooding/bggclient search "Catan"</code>
+            <button class="gl-copy" data-gl-copy="i-docker">Copy</button>
+          </div>
+        </div>
+        <p class="gl-hint" style="margin-top:16px">Please abide by the <a href="https://boardgamegeek.com/wiki/page/BGG_XML_API_Terms_of_Use">BGG API Terms of Use</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="gl-footer">
+    <div class="gl-wrap">
+      <span class="gl-brand" style="font-size:.98rem">bggclient · MIT · <span data-gl-year></span></span>
+      <nav class="gl-fnav">
+        <a href="https://github.com/richardwooding/bggclient">GitHub</a>
+        <a href="https://pkg.go.dev/github.com/richardwooding/bggclient">Docs</a>
+        <a href="https://richardwooding.github.io/">More projects</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="gloam.js" defer></script>
+</body>
+</html>
