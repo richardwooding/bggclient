@@ -6,7 +6,7 @@ require (
 	github.com/alecthomas/kong v1.16.0
 	github.com/charmbracelet/lipgloss v1.1.0
 	github.com/cucumber/godog v0.15.1
-	github.com/henvic/httpretty v0.1.4
+	github.com/henvic/httpretty v0.2.0
 	github.com/modelcontextprotocol/go-sdk v1.6.1
 	github.com/muesli/termenv v0.16.0
 	github.com/pborman/indent v1.2.1
