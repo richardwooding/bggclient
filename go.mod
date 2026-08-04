@@ -7,7 +7,7 @@ require (
 	github.com/charmbracelet/lipgloss v1.1.0
 	github.com/cucumber/godog v0.15.1
 	github.com/henvic/httpretty v0.2.0
-	github.com/modelcontextprotocol/go-sdk v1.6.1
+	github.com/modelcontextprotocol/go-sdk v1.7.0
 	github.com/muesli/termenv v0.16.0
 	github.com/pborman/indent v1.2.1
 	github.com/seborama/govcr/v15 v15.3.0
@@ -54,5 +54,6 @@ require (
 	github.com/yosida95/uritemplate/v3 v3.0.2 // indirect
 	golang.org/x/crypto v0.31.0 // indirect
 	golang.org/x/oauth2 v0.35.0 // indirect
+	golang.org/x/sync v0.20.0 // indirect
 	golang.org/x/sys v0.41.0 // indirect
 )
