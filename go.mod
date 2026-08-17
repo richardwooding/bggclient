@@ -3,7 +3,7 @@ module github.com/richardwooding/shelfofshame
 go 1.26.0
 
 require (
-	github.com/alecthomas/kong v1.16.0
+	github.com/alecthomas/kong v1.16.1
 	github.com/charmbracelet/lipgloss v1.1.0
 	github.com/cucumber/godog v0.16.0
 	github.com/henvic/httpretty v0.2.0
